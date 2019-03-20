@@ -9,6 +9,6 @@ const express = require('express'),
  * 
  * Our server file prepends /api/ to all API routes, so a router to /path/ 
  * in apiRoutes.js will be served at /api/path/.
- * 
- * Example: router.get('/users/:userid', apiController.getAllUsers)
  ************************************************************************/
+
+ router.get('/users/:id', apiController.getUser);
