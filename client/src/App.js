@@ -5,17 +5,20 @@ import './App.css';
 
 class App extends Component {
   state = {
-    userId: '',
-    username: ''
+    users: []
   }
 
   componentDidMount() {
-    api.getUser(this.state.userId)
+    api.getAllUsers()
+    .then(res => {
+      this.setState({users: res.data})
+    })
+    .catch(err => console.log(err));
   }
 
   render() {
     return <div>
-      <p>{this.state.username}</p>
+      <h1>{this.state.users.map(user => user.username + ', ')}</h1>
     </div>
   }
 }

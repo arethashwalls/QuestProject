@@ -11,4 +11,10 @@ const express = require('express'),
  * in apiRoutes.js will be served at /api/path/.
  ************************************************************************/
 
- router.get('/users/:id', apiController.getUser);
+//  router.get('users', apiController.getAllUsers);
+router.route('/users')
+    .get(apiController.getAllUsers)
+    .post(apiController.createUser)
+
+ // Exports:
+ module.exports = router;

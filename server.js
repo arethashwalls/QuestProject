@@ -20,11 +20,11 @@ mongoose.connect( mongoURI,  { useNewUrlParser: true });
 
 // Define API routes:
 const apiRouter = require('./routes/apiRoutes');
-app.use('/api/', apiRouter);
+app.use('/api', apiRouter);
 
 // Send every other request to the React app:
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, './client/build/index.html'));
+// });
 
 app.listen(PORT, () => console.log(`🌎 ==> API server now listening on port ${PORT}!`));
