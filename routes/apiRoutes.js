@@ -1,7 +1,7 @@
 // Imports:
 const express = require('express'),
       router = express.Router(),
-      { userControllers } = require('../controllers');
+      { userControllers, questControllers } = require('../controllers');
 
 /************************************************************************
  * Routes have the following syntax:
@@ -13,8 +13,16 @@ const express = require('express'),
 
 //  router.get('users', apiController.getAllUsers);
 router.route('/users')
-    .get(userControllers.getAllUsers)
-    .post(userControllers.createUser)
+      .get(userControllers.getAllUsers)
+      .post(userControllers.createUser)
+
+router.route('/quests/:userid')
+      .get(questControllers.getQuestHead)
+
+router.route('/quests')
+      .post(questControllers.createQuest)
+
+
 
  // Exports:
  module.exports = router;
