@@ -1,7 +1,7 @@
 // Imports:
 const express = require('express'),
       router = express.Router(),
-      apiController = require('../controllers/apiControllers');
+      { userControllers } = require('../controllers');
 
 /************************************************************************
  * Routes have the following syntax:
@@ -13,8 +13,8 @@ const express = require('express'),
 
 //  router.get('users', apiController.getAllUsers);
 router.route('/users')
-    .get(apiController.getAllUsers)
-    .post(apiController.createUser)
+    .get(userControllers.getAllUsers)
+    .post(userControllers.createUser)
 
  // Exports:
  module.exports = router;
