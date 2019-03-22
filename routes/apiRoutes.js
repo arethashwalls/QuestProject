@@ -16,12 +16,15 @@ router.route('/users')
       .get(userControllers.getAllUsers)
       .post(userControllers.createUser)
 
-router.route('/quests/:userid')
+router.route('/quests/head/:userid')
       .get(questControllers.getQuestHead)
+      .post(questControllers.createQuestHead)
 
-router.route('/quests')
-      .post(questControllers.createQuest)
+router.route('/quests/child/:userid')
+      .post(questControllers.createQuestChild)
 
+// router.route('/quests/full/:userid')
+//       .get(questControllers.getFullQuest)
 
 
  // Exports:

@@ -11,7 +11,16 @@ const QuestSchema = new Schema({
     children: [{
         type: Schema.Types.ObjectId,
         ref: "QuestItem"
-    }]
+    }],
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
+    isHead: {
+        type: Boolean,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('QuestItem', QuestSchema);

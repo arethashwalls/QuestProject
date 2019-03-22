@@ -1,18 +1,68 @@
 // Imports:
 const db = require('../models');
 
+/*
+{
+    title: blah,
+    children: [
+        {
+            title:
+            chilren: [
+                {item}
+            ]
+        },
+        {
+            title:
+            chilren: [
+                {item}
+            ]
+        }
+    ]
+}
+*/
+
 // Controller functions:
 module.exports = {
+    createQuestHead: (req, res) => {
+        const {title, body} = req.body;
+        const userId = req.params.userid;
+        db.QuestItem.create({
+            title: title,
+            body: body,
+            children: [],
+            user: userId,
+            isHead: true
+        })
+        .then(questHead => res.json(questHead))
+        .catch(err => console.log(err));
+    },
     getQuestHead: (req, res) => {
         const userId = req.params.userid;
-        db.Quest.findOne({user: userId})
+        db.QuestItem.findOne({user: userId, isHead: true})
         .populate('user')
-        .then(data => res.json(data))
+        .then(QuestItem => res.json(QuestItem))
         .catch(err => console.log(err));
     },
-    createQuest: (req, res) => {
-        db.Quest.create(req.body)
-        .then(data => res.json(data))
+    
+
+    createQuestChild: (req, res) => {
+        const {title, body} = req.body;
+        const userId = req.params.userid;
+        db.QuestItem.create({
+            title: title,
+            body: body,
+            children: [],
+            user: userId,
+            isHead: false
+        })
+        .then(newQuestItem => {
+            db.QuestItem.findOneAndUpdate(
+                {_id: req.body.parentid},
+                {$push: {children: newQuestItem._id}}
+            )
+            .then(updatedItem => res.json(newQuestItem))
+            .catch(err => console.log(err));
+        })
         .catch(err => console.log(err));
-    },
+    }
 }
