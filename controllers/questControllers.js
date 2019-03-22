@@ -21,6 +21,21 @@ const db = require('../models');
 }
 */
 
+const getHeadByUserId = id =>  db.QuestItem.findOne({user: id, isHead: true}).populate('user');
+// const recursivePopulate = quest => {
+   
+    
+//     if(quest.children.length === 0) {
+//         return quest;
+//     } else {
+//         quest.children.forEach(child => {
+//             console.log(child)
+//             child.populate('children')
+//             .then(child => recursivePopulate(child))
+//         });
+//     }
+// }
+
 // Controller functions:
 module.exports = {
     createQuestHead: (req, res) => {
@@ -38,13 +53,10 @@ module.exports = {
     },
     getQuestHead: (req, res) => {
         const userId = req.params.userid;
-        db.QuestItem.findOne({user: userId, isHead: true})
-        .populate('user')
+        getHeadByUserId(userId)
         .then(QuestItem => res.json(QuestItem))
         .catch(err => console.log(err));
     },
-    
-
     createQuestChild: (req, res) => {
         const {title, body} = req.body;
         const userId = req.params.userid;
@@ -64,5 +76,18 @@ module.exports = {
             .catch(err => console.log(err));
         })
         .catch(err => console.log(err));
+    },
+    getFullQuest: (req, res) => {
+        const userId = req.params.userid;
+        getHeadByUserId(userId)
+        .populate({
+           path: 'children',
+           populate: {
+               path: 'children'
+           }
+        })
+        .then(quest => res.json(quest))
+        .catch(err => console.log(err));
+
     }
 }
