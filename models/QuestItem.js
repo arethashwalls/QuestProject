@@ -10,7 +10,8 @@ const QuestSchema = new Schema({
     body: String,
     children: [{
         type: Schema.Types.ObjectId,
-        ref: "QuestItem"
+        ref: "QuestItem",
+        autopopulate: true
     }],
     user: {
         type: Schema.Types.ObjectId,
@@ -22,5 +23,6 @@ const QuestSchema = new Schema({
         required: true
     }
 });
+QuestSchema.plugin(require('mongoose-autopopulate'));
 
 module.exports = mongoose.model('QuestItem', QuestSchema);

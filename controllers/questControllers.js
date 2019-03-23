@@ -1,43 +1,12 @@
 // Imports:
 const db = require('../models');
 
-/*
-{
-    title: blah,
-    children: [
-        {
-            title:
-            chilren: [
-                {item}
-            ]
-        },
-        {
-            title:
-            chilren: [
-                {item}
-            ]
-        }
-    ]
-}
-*/
+// Helper function for DRYness:
+const getHeadByUserId = id =>  db.QuestItem.findOne({user: id, isHead: true}, {}, { autopopulate: false }).populate('user');
 
-const getHeadByUserId = id =>  db.QuestItem.findOne({user: id, isHead: true}).populate('user');
-// const recursivePopulate = quest => {
-   
-    
-//     if(quest.children.length === 0) {
-//         return quest;
-//     } else {
-//         quest.children.forEach(child => {
-//             console.log(child)
-//             child.populate('children')
-//             .then(child => recursivePopulate(child))
-//         });
-//     }
-// }
-
-// Controller functions:
+// Controller methods:
 module.exports = {
+    // This method creates the first quest item in a quest:
     createQuestHead: (req, res) => {
         const {title, body} = req.body;
         const userId = req.params.userid;
@@ -51,12 +20,7 @@ module.exports = {
         .then(questHead => res.json(questHead))
         .catch(err => console.log(err));
     },
-    getQuestHead: (req, res) => {
-        const userId = req.params.userid;
-        getHeadByUserId(userId)
-        .then(QuestItem => res.json(QuestItem))
-        .catch(err => console.log(err));
-    },
+    // This method creates a quest item as the child of another item:
     createQuestChild: (req, res) => {
         const {title, body} = req.body;
         const userId = req.params.userid;
@@ -77,15 +41,18 @@ module.exports = {
         })
         .catch(err => console.log(err));
     },
+    // This method gets only the head of a particular quest:
+    getQuestHead: (req, res) => {
+        const userId = req.params.userid;
+        getHeadByUserId(userId)
+        .then(QuestItem => res.json(QuestItem))
+        .catch(err => console.log(err));
+    },
+    // This method gets a full quest:
     getFullQuest: (req, res) => {
         const userId = req.params.userid;
         getHeadByUserId(userId)
-        .populate({
-           path: 'children',
-           populate: {
-               path: 'children'
-           }
-        })
+        .populate('children')
         .then(quest => res.json(quest))
         .catch(err => console.log(err));
 
