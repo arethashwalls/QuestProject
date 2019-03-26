@@ -36,7 +36,7 @@ class Signin extends React.Component {
             Username:
             <input
               name="usermane"
-              type="number"
+              type="text"
               value={this.state.username}
               onChange={this.handleInputChange} />
           </label>
@@ -50,7 +50,7 @@ class Signin extends React.Component {
             Password:
             <input
               name="password"
-              type="number"
+              type="text"
               value={this.state.password}
               onChange={this.handleInputChange} />
           </label>
