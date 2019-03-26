@@ -33,7 +33,7 @@ class newQuest extends React.Component {
         Title:
         <input
           name="title"
-          type="number"
+          type="text"
           value={this.state.title}
           onChange={this.handleInputChange} />
       </label>
@@ -43,7 +43,7 @@ class newQuest extends React.Component {
         <textarea rows="4" cols="30">
         <input
             name="textbox"
-            type="number"
+            type="text"
             size="large"
             value={this.state.textbox}
             onChange={this.handleInputChange}/> 
