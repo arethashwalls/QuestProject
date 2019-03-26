@@ -10,7 +10,6 @@ const QuestNav = props => {
             <Navbar.Brand>Quest App</Navbar.Brand>
             <Button className='btn-nav'>{props.signedIn ? 'Sign Off' : 'Sign In'}</Button>
         </Container>
-        
     </Navbar>
 }
 
