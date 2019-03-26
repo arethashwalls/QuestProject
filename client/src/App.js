@@ -15,17 +15,16 @@ class App extends Component {
   };
 
   render() {
-    return <div>
-    <QuestNav signedIn={this.state.signedIn} />
-      <Router>
-          <Switch>
-            <Route exact path="/" component={this.state.signedIn ? Quest : Welcome} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/signin" component={Signin} />
-            <Route component={NoMatch} />
-          </Switch>
-      </Router>
-    </div>
+    return <Router>
+      <QuestNav signedIn={this.state.signedIn} />
+      <Switch>
+        <Route exact path="/" component={this.state.signedIn ? Quest : Welcome} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/signin" component={Signin} />
+        <Route component={NoMatch} />
+      </Switch>
+    </Router>
+
   }
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -20,10 +21,14 @@ const Welcome = () => {
         </Row>
         <Row className='mt-4 mb-3'>
             <Col className='text-center'>
-                <Button>Sign Up</Button> 
+                <Button>
+                    <Link to='/signup'>Sign In</Link>
+                </Button> 
             </Col>
             <Col className='text-center'>
-                <Button>Sign In</Button> 
+                <Button>
+                    <Link to='/signin'>Sign In</Link>
+                </Button> 
             </Col>
         </Row>
     </Container>
