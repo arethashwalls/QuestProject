@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Baskervville';
+    src: url('./fonts/Baskervville.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Landliebe';
+    src: url('./fonts/Landliebe.eot');
+    src: url('./fonts/Landliebe.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/Landliebe.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1, button {
+    font-family: 'Baskervville', Baskerville, serif
+}
+
+h2, strong {
+    font-family: Landliebe;
+}
+
+strong {
+    font-size: 3rem;
+}
