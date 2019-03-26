@@ -7,11 +7,11 @@ import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 import './style.css';
 
-const Welcome = () => {
+const Welcome = props => {
     return <Container>
         <Row className='my-3'>
             <Col>
-                <h1 className='text-center homepage-title'><strong>A Quest!</strong></h1>
+                <h1 className='text-center homepage-title' style={props.theme.titleText}><strong>A Quest!</strong></h1>
             </Col>
         </Row>
         <Row>
@@ -21,13 +21,13 @@ const Welcome = () => {
         </Row>
         <Row className='mt-4 mb-3'>
             <Col className='text-center'>
-                <Button>
-                    <Link to='/signup'>Sign In</Link>
+                <Button style={props.theme.buttons}>
+                    <Link style={props.theme.lightText} to='/signup'>Sign In</Link>
                 </Button> 
             </Col>
             <Col className='text-center'>
-                <Button>
-                    <Link to='/signin'>Sign In</Link>
+                <Button style={props.theme.buttons}>
+                    <Link style={props.theme.lightText} to='/signin'>Sign In</Link>
                 </Button> 
             </Col>
         </Row>

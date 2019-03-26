@@ -1,0 +1,24 @@
+{
+    "red": {
+        "darkBg": {
+            "backgroundColor": "#393F26"
+        },
+        "lightBg": {
+            "backgroundColor": "#818474"
+        },
+        "lightText": {
+            "color": "#EDDDD4"
+        },
+        "buttons": {
+            "backgroundColor": "#8E0101",
+            "borderColor": "#EDDDD4"
+        },
+        "mainText": {
+            "color": "#AD0101"
+        },
+        "titleText": {
+            "color": "#AD0101",
+            "textShadow": "-1px -1px 0 #EDDDD4, 1px -1px 0 #EDDDD4, -1px 1px 0 #EDDDD4, 1px 1px 0 #EDDDD4"
+        }
+    }
+}
