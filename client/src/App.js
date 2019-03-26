@@ -1,13 +1,31 @@
 // Imports:
 import React, { Component } from 'react';
-import Navbar from './components/Navbar'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import QuestNav from './components/QuestNav';
+import Quest from './pages/Quest';
+import Welcome from './pages/Welcome';
+import Signup from './pages/Signup';
+import Signin from './pages/Signin';
+import NoMatch from './pages/NoMatch';
 import './App.css';
 
 class App extends Component {
-  state = {};
+  state = {
+    signedIn: false
+  };
 
   render() {
-    return <Navbar signedIn={false} />
+    return <div>
+    <QuestNav signedIn={this.state.signedIn} />
+      <Router>
+          <Switch>
+            <Route exact path="/" component={this.state.signedIn ? Quest : Welcome} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/signin" component={Signin} />
+            <Route component={NoMatch} />
+          </Switch>
+      </Router>
+    </div>
   }
 }
 
