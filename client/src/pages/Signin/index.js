@@ -1,13 +1,15 @@
 import React from 'react';
 import SigninForm from '../../components/SigninForm';
+import QuestNav from '../../components/QuestNav';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import './style.css';
 
-const Signin = () => {
+const Signin = props => {
     return <div>
+        <QuestNav theme={props.theme} />
         <Container>
             <Row className='my-3 text-center' >
                 <Col>

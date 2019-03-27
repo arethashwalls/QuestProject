@@ -20,11 +20,10 @@ class App extends Component {
     document.getElementById('root').style.backgroundColor = this.state.theme.lightBg.backgroundColor;
 
     return <Router>
-      <QuestNav signedIn={this.state.signedIn} theme={this.state.theme} />
       <Switch>
         <Route exact path="/" render={() => this.state.signedIn ?  Quest  : <Welcome theme={this.state.theme}/>} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/signin" component={Signin} />
+        <Route exact path="/signup" render={() => <Signup theme={this.state.theme} />} />
+        <Route exact path="/signin" render={() => <Signin theme={this.state.theme} />} />
         <Route component={NoMatch} />
       </Switch>
     </Router>

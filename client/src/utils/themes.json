@@ -11,7 +11,8 @@
         },
         "buttons": {
             "backgroundColor": "#8E0101",
-            "borderColor": "#EDDDD4"
+            "border": "2px solid #EDDDD4",
+            "boxShadow": "0px 5px 10px 0px rgba(0,0,0,0.25)"
         },
         "mainText": {
             "color": "#AD0101"
