@@ -8,11 +8,12 @@ import SignupForm from '../../components/SignupForm'
 
 const Signup = props => {
     return <div>
-        <QuestNav theme={props.theme} />
+        <QuestNav theme={props.theme} signedIn={props.signedIn} />
         <Container style={props.theme.mainText}>
             <Row className='my-3 text-center' >
                 <Col>
                     <h1>Welcome to <strong style={props.theme.titleText}>A Quest!</strong></h1>
+                    <hr />
                 </Col>
             </Row>
             <Row className='mb-3'>

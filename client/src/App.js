@@ -12,7 +12,7 @@ import './App.css';
 
 class App extends Component {
   state = {
-    signedIn: true,
+    signedIn: false,
     theme: themes('redGreen')
   };
 
@@ -20,9 +20,11 @@ class App extends Component {
     document.getElementById('root').style.backgroundColor = this.state.theme.lightBg.backgroundColor;
     return <Router>
       <Switch>
-        <Route exact path="/" render={() => this.state.signedIn ?  <Quest /> : <Welcome theme={this.state.theme}/>} />
-        <Route exact path="/signup" render={() => <Signup theme={this.state.theme} />} />
-        <Route exact path="/signin" render={() => <Signin theme={this.state.theme} />} />
+        <Route exact path="/" render={() => this.state.signedIn 
+          ?  <Quest theme={this.state.theme}  signedIn={this.state.signedIn} /> 
+          : <Welcome theme={this.state.theme} signedIn={this.state.signedIn} />} />
+        <Route exact path="/signup" render={() => <Signup theme={this.state.theme} signedIn={this.state.signedIn} />} />
+        <Route exact path="/signin" render={() => <Signin theme={this.state.theme} signedIn={this.state.signedIn} />} />
         <Route component={NoMatch} />
       </Switch>
     </Router>
