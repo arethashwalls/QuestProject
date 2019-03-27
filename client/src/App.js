@@ -1,7 +1,6 @@
 // Imports:
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import QuestNav from './components/QuestNav';
 import Quest from './pages/Quest';
 import Welcome from './pages/Welcome';
 import Signup from './pages/Signup';
