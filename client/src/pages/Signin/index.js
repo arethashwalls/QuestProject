@@ -10,14 +10,14 @@ import './style.css';
 const Signin = props => {
     return <div>
         <QuestNav theme={props.theme} />
-        <Container>
+        <Container style={props.theme.mainText}>
             <Row className='my-3 text-center' >
                 <Col>
-                    <h1>Welcome back to <strong>A Quest!</strong></h1>
+                    <h1>Welcome back to <strong style={props.theme.titleText}>A Quest!</strong></h1>
                 </Col>
             </Row>
             <Row className='mb-3'>
-                <Col className='d-none d-lg-block' >
+                <Col className='d-none d-lg-block mr-3' >
                     <Image src='https://via.placeholder.com/300x500' fluid />
                 </Col>
                 <Col xs={12} lg={9}>

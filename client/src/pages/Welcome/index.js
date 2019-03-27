@@ -9,11 +9,15 @@ import './style.css';
 
 const Welcome = props => {
     return <Container>
-        <Row className='my-4'>
+        <Row className='mt-4 mb-2 w-md-75 mx-auto'>
+            <Col md={3} className='img-col' >
+                <   Image src='./images/flourish-left.png' className=' d-none d-md-inline-block' fluid />
+            </Col>
             <Col>
-                <Image src='./images/flourish-left.png' />
                 <h1 className='text-center homepage-title' style={props.theme.titleText}><strong>A Quest!</strong></h1>
-                <Image />
+            </Col>
+            <Col md={3} className='img-col' >
+                <Image src='./images/flourish-right.png' className='d-none d-md-inline-block' fluid />
             </Col>
         </Row>
         <Row>
@@ -23,20 +27,24 @@ const Welcome = props => {
         </Row>
         <Row className='mt-4 mb-3'>
             <Col className='text-right'>
-                <Button style={props.theme.buttons}>
-                    <Link style={props.theme.lightText} to='/signup'>Sign Up</Link>
-                </Button> 
+                <Link style={props.theme.lightText} to='/signup'>
+                    <Button style={props.theme.buttons}>
+                     Sign Up
+                    </Button>
+                </Link>
             </Col>
             <Col>
                 <Image src='./images/flourish.png' fluid />
             </Col>
             <Col className='text-left'>
-                <Button style={props.theme.buttons}>
-                    <Link style={props.theme.lightText} to='/signin'>Sign In</Link>
-                </Button> 
+                <Link style={props.theme.lightText} to='/signin'>
+                    <Button style={props.theme.buttons}>
+                        Sign In
+                    </Button> 
+                </Link>
             </Col>
         </Row>
-    </Container>
+    </Container >
 }
 
 export default Welcome;

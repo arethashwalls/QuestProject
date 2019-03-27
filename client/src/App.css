@@ -13,14 +13,21 @@
     font-style: normal;
 }
 
-h1, button {
+body {
     font-family: 'Baskervville', Baskerville, serif
 }
-
 h2, strong {
     font-family: Landliebe;
 }
-
 strong {
     font-size: 3rem;
+}
+button, button:hover {
+    transition: color 0.25s ease;
+}
+button:hover {
+    background-color: #3b3a3b!important;
+}
+button a:hover {
+    text-decoration: none!important;
 }

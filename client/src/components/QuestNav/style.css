@@ -3,6 +3,9 @@
     line-height: 2rem;
     font-size: 2rem;
 }
+.navbar-brand h2, .navbar-brand h2:hover {
+    transition: color 0.25s ease;
+}
 .navbar-brand a:hover, .navbar-brand h2:hover {
     text-decoration: none;
     color: #3b3a3b!important;

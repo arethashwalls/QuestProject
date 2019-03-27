@@ -12,16 +12,15 @@ import './App.css';
 
 class App extends Component {
   state = {
-    signedIn: false,
-    theme: themes.red
+    signedIn: true,
+    theme: themes('redGreen')
   };
 
   render() {
     document.getElementById('root').style.backgroundColor = this.state.theme.lightBg.backgroundColor;
-
     return <Router>
       <Switch>
-        <Route exact path="/" render={() => this.state.signedIn ?  Quest  : <Welcome theme={this.state.theme}/>} />
+        <Route exact path="/" render={() => this.state.signedIn ?  <Quest /> : <Welcome theme={this.state.theme}/>} />
         <Route exact path="/signup" render={() => <Signup theme={this.state.theme} />} />
         <Route exact path="/signin" render={() => <Signin theme={this.state.theme} />} />
         <Route component={NoMatch} />

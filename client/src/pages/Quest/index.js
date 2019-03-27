@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Quest = () => {
-    return <div>Quest</div>
+    return <div>
+        
+    </div>
 }
 
 export default Quest;
