@@ -5,7 +5,7 @@ import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
-import PrivateRoute from "./components/private-route/PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute";
 import Quest from './pages/Quest';
 import Welcome from './pages/Welcome';
 import Signup from './pages/Signup';

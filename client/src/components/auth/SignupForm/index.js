@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { registerUser } from "../../actions/authActions";
-import classnames from "classnames";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { registerUser } from '../../../actions/authActions';
+import classnames from 'classnames';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -14,17 +14,17 @@ class Register extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      email: "",
-      password: "",
-      password2: "",
+      name: '',
+      email: '',
+      password: '',
+      password2: '',
       errors: {}
     };
   }
   componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/myquest");
+      this.props.history.push('/myquest');
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -52,15 +52,16 @@ class Register extends Component {
     const { errors } = this.state;
     return (
       <Container fluid>
-        <Row className='mt-4'>
-          <Col xs={12} md={4}>
+        <Row className='my-4'>
+          <Col xs={12} md={4} className='mb-4'>
             <h4>Sign Up</h4>
-            <p>Already have an account?</p>
-            <Link to='/signin' style={this.props.theme.lightText}>
-              <Button style={this.props.theme.buttons}>
-                Sign In
-              </Button>
-            </Link>
+            <p>Already have an account?
+              <Link to='/signin' style={this.props.theme.lightText} className='ml-2 d-md-block ml-md-0 mt-md-2'>
+                <Button style={this.props.theme.buttons}>
+                  Sign In
+                </Button>
+              </Link>
+            </p>
           </Col>
           <Col xs={12} md={8}>
             <Form noValidate onSubmit={this.onSubmit}>
@@ -72,11 +73,11 @@ class Register extends Component {
                   error={errors.name}
                   id='name'
                   type='text'
-                  className={classnames("", {
+                  className={classnames('', {
                     invalid: errors.name
                   })}
                 />
-                <span className="red-text">
+                <span className='red-text'>
                   {errors.name}
                 </span>
               </Form.Group>
@@ -88,11 +89,11 @@ class Register extends Component {
                   error={errors.email}
                   id='email'
                   type='email'
-                  className={classnames("", {
+                  className={classnames('', {
                     invalid: errors.email
                   })}
                 />
-                <span className="red-text">
+                <span className='red-text'>
                   {errors.email}
                 </span>
               </Form.Group>
@@ -104,11 +105,11 @@ class Register extends Component {
                   error={errors.password}
                   id='password'
                   type='password'
-                  className={classnames("", {
+                  className={classnames('', {
                     invalid: errors.password
                   })}
                 />
-                <span className="red-text">
+                <span className='red-text'>
                   {errors.password}
                 </span>
               </Form.Group>
@@ -120,11 +121,11 @@ class Register extends Component {
                   error={errors.password2}
                   id='password2'
                   type='password'
-                  className={classnames("", {
+                  className={classnames('', {
                     invalid: errors.password
                   })}
                 />
-                <span className="red-text">
+                <span className='red-text'>
                   {errors.password2}
                 </span>
               </Form.Group>

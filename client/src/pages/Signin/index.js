@@ -20,13 +20,13 @@ const Signin = props => {
             </Row>
             <Row className='mb-3'>
                 <Col className='d-none d-lg-block mr-3' >
-                    <Image src='https://via.placeholder.com/300x500' fluid />
+                    <Image src='https://via.placeholder.com/300x400' fluid />
                 </Col>
                 <Col xs={12} lg={9}>
                     <SigninForm theme={props.theme}/>
                 </Col>
                 <Col className='d-block d-lg-none' >
-                    <Image src='https://via.placeholder.com/500x300' className='center-block' fluid />
+                    <Image src='https://via.placeholder.com/600x300' className='center-block' fluid />
                 </Col>
             </Row>
         </Container>

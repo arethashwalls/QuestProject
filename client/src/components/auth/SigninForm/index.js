@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActions";
-import classnames from "classnames";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loginUser } from '../../../actions/authActions';
+import classnames from 'classnames';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -14,20 +14,20 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       errors: {}
     };
   }
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/");
+      this.props.history.push('/');
     }
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/"); // push user to dashboard when they login
+      this.props.history.push('/'); // push user to dashboard when they login
     }
     if (nextProps.errors) {
       this.setState({
@@ -49,16 +49,18 @@ class Login extends Component {
   render() {
     const { errors } = this.state;
     return (
+      <div>
       <Container fluid>
-        <Row className='mt-4'>
+        <Row className='my-4'>
           <Col xs={12} md={4}>
             <h4>Sign In</h4>
-            <p>Don't have an account?</p>
-            <Link to='/signup' style={this.props.theme.lightText}>
-              <Button style={this.props.theme.buttons}>
-                Sign Up
-              </Button>
-            </Link>
+            <p>Don't have an account?
+              <Link to='/signup' style={this.props.theme.lightText} className='ml-2 d-md-block ml-md-0 mt-md-2'>
+                <Button style={this.props.theme.buttons}>
+                  Sign Up
+                </Button>
+              </Link>
+            </p>
           </Col>
           <Col xs={12} md={8}>
             <Form noValidate onSubmit={this.onSubmit}>
@@ -70,11 +72,11 @@ class Login extends Component {
                   error={errors.email}
                   id='email'
                   type='email'
-                  className={classnames("", {
+                  className={classnames('', {
                     invalid: errors.email || errors.emailnotfound
                   })}
                 />
-                <span className="red-text">
+                <span className='red-text'>
                   {errors.email}
                   {errors.emailnotfound}
                 </span>
@@ -87,7 +89,7 @@ class Login extends Component {
                   error={errors.password}
                   id='password'
                   type='password'
-                  className={classnames("", {
+                  className={classnames('', {
                     invalid: errors.password || errors.passwordincorrect
                   })}
                 />
@@ -97,6 +99,7 @@ class Login extends Component {
           </Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }
