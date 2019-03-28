@@ -7,30 +7,21 @@ class Landing extends Component {
         <div className="row">
           <div className="col s12 center-align">
             <br />
-            <Link to="/register">
-              <a
-                style={{
-                  width: "150px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px"
-                }}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-              >
-                Register
-              </a>
+            <Link to="/register" style={{
+              width: "150px",
+              borderRadius: "3px",
+              letterSpacing: "1.5px"
+            }} className="btn btn-large waves-effect waves-light hoverable blue accent-3">
+              Register
             </Link>
-            <Link to="/login">
-              <a
-                style={{
-                  marginLeft: "2rem",
-                  width: "150px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px"
-                }}
-                className="btn btn-large waves-effect white hoverable black-text"
-              >
+            <Link to="/login"
+              style={{
+                marginLeft: "2rem",
+                width: "150px",
+                borderRadius: "3px",
+                letterSpacing: "1.5px"
+              }} className="btn btn-large waves-effect white hoverable black-text">
                 Log In
-              </a>
             </Link>
           </div>
         </div>

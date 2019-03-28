@@ -134,7 +134,7 @@ class Chart extends Component {
                     <Row>
                         <Col xs={12} lg={6}>
                             <Form>
-                                <Form.Group controlId='NewQuestItemForm'>
+                                <Form.Group>
                                     <Form.Label>Quest name: </Form.Label>
                                     <Form.Control id="add-quest" type='text' />
                                     <Form.Label className='mt-1'>Quest description: </Form.Label>

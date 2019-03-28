@@ -70,7 +70,6 @@ router.post("/users/login", (req, res) => {
   });
 });
 
-<<<<<<< HEAD
 router.route("/users/register").post((req, res) => {
   // Form validation
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -101,19 +100,18 @@ router.route("/users/register").post((req, res) => {
   });
 });
 
-router
-  .route("/quests/:userid/head")
-  .get(questControllers.getQuestHead)
-  .post(questControllers.createQuestHead);
-
-router.route("/quests/:userid/child").post(questControllers.createQuestChild);
-=======
 router.route('/quests')
-      .post(questControllers.saveQuest)
       .get(questControllers.getQuest)
->>>>>>> master
+      .post(questControllers.saveQuest)
 
-router.route("/quests/:userid/full").get(questControllers.getFullQuest);
+// router
+//   .route("/quests/:userid/head")
+//   .get(questControllers.getQuestHead)
+//   .post(questControllers.createQuestHead);
+
+// router.route("/quests/:userid/child").post(questControllers.createQuestChild);
+
+// router.route("/quests/:userid/full").get(questControllers.getFullQuest);
 
 // Exports:
 module.exports = router;

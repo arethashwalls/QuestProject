@@ -6,7 +6,6 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
-<<<<<<< HEAD
     "jwt-decode": "^2.2.0",
     "react": "^16.8.4",
     "react-bootstrap": "^1.0.0-beta.6",
@@ -15,15 +14,8 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
-=======
-    "jointjs": "^2.2.1",
-    "react": "^16.8.4",
-    "react-bootstrap": "^1.0.0-beta.6",
-    "react-dom": "^16.8.4",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
->>>>>>> master
+    "redux-thunk": "^2.3.0",
+    "jointjs": "^2.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

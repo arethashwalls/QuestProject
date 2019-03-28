@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
@@ -12,6 +11,13 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
+import Quest from './pages/Quest';
+import Welcome from './pages/Welcome';
+import Signup from './pages/Signup';
+import Signin from './pages/Signin';
+import NoMatch from './pages/NoMatch';
+import themes from './utils/themes'
+import './App.css';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -31,44 +37,32 @@ if (localStorage.jwtToken) {
     window.location.href = "./login";
   }
 }
-=======
 // Imports:
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Quest from './pages/Quest';
-import Welcome from './pages/Welcome';
-import Signup from './pages/Signup';
-import Signin from './pages/Signin';
-import NoMatch from './pages/NoMatch';
-import themes from './utils/themes'
-import './App.css';
+
 
 class App extends Component {
   state = {
     signedIn: true,
     theme: themes('redGreen')
   };
->>>>>>> master
 
-class App extends Component {
+// class App extends Component {
   render() {
-<<<<<<< HEAD
-    return (
-      <Provider store={store}>
-        <Router>
-          <div className="App">
-            <Navbar />
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            </Switch>
-          </div>
-        </Router>
-      </Provider>
-    );
-=======
+    // return (
+    //   <Provider store={store}>
+    //     <Router>
+    //       <div className="App">
+    //         <Navbar />
+    //         <Route exact path="/" component={Landing} />
+    //         <Route exact path="/register" component={Register} />
+    //         <Route exact path="/login" component={Login} />
+    //         <Switch>
+    //           <PrivateRoute exact path="/dashboard" component={Dashboard} />
+    //         </Switch>
+    //       </div>
+    //     </Router>
+    //   </Provider>
+    // );
     document.getElementById('root').style.backgroundColor = this.state.theme.lightBg.backgroundColor;
     return <Router>
       <Switch>
@@ -80,7 +74,6 @@ class App extends Component {
         <Route component={NoMatch} />
       </Switch>
     </Router>
->>>>>>> master
   }
 }
 export default App;
