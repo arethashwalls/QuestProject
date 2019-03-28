@@ -19,20 +19,14 @@ require("./config/passport")(passport);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-const apiRouter = require('./routes/apiRoutes');
-app.use('/api', apiRouter);
 
 // Database setup:
 const mongoURI = process.env.MONGODB_URI || "mongodb://localhost/questapp";
 mongoose.connect(mongoURI, { useNewUrlParser: true });
 
 // Define API routes:
-<<<<<<< HEAD
 const apiRouter = require("./routes/apiRoutes");
 app.use("/api", apiRouter);
-=======
-
->>>>>>> master
 
 // Send every other request to the React app:
 // app.get('*', (req, res) => {

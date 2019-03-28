@@ -1,5 +1,6 @@
 import React from 'react';
-import SigninForm from '../../components/SigninForm';
+// import SigninForm from '../../components/SigninForm';
+import SigninForm from '../../components/auth/SigninForm';
 import QuestNav from '../../components/QuestNav';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -22,10 +23,10 @@ const Signin = props => {
                     <Image src='https://via.placeholder.com/300x500' fluid />
                 </Col>
                 <Col xs={12} lg={9}>
-                    <SigninForm />
+                    <SigninForm theme={props.theme}/>
                 </Col>
                 <Col className='d-block d-lg-none' >
-                    <Image src='https://via.placeholder.com/500x300' className='center-block' fluid />
+                    <Image src='https://via.placeholder.com/600x300' className='center-block' fluid />
                 </Col>
             </Row>
         </Container>
