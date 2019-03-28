@@ -3,10 +3,11 @@ import joint from 'jointjs/index';
 import ReactDOM from 'react-dom';
 import $ from "jquery";
 import API from "../../utils/api";
-import Container from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Row';
-import Form from 'react-bootstrap/Form'
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import "./style.css";
 
 let uml = joint.shapes.uml;
@@ -144,18 +145,28 @@ class Chart extends Component {
             //         <button id="retrieve-btn" onClick={this.getQuest}>Retrieve Quest</button>
             //     </div>
             // </section>
-            <Container fluid as='section'>
-                    <Row className='scroller'>
+            <Container as='section'>
+                    <Row>
                         <Col>
-                            <div id="paper" ref="placeholder" className="scroller container"></div>                        
+                            <div id="paper" ref="placeholder" className="scroller"></div>                        
                         </Col>
                     </Row>
                     <Row>
-                        <Col>
-
+                        <Col xs={12} lg={6}>
+                            <Form>
+                                <Form.Group controlId='NewQuestItemForm'>
+                                    <Form.Label>Quest Name: </Form.Label>
+                                    <Form.Control type='text' />
+                                    <Button id='add-quest' type="submit" onClick={this.addQuest} >Submit</Button>
+                                </Form.Group>
+                            </Form>
+                        </Col>
+                        <Col xs={12} lg={6}>
+                            <Button id='add-link' onClick={this.addLink}>Add Link</Button>
+                            <Button id='save-btn' onClick={this.saveQuest}>Save</Button>
+                            <Button id='retrieve-btn' onClick={this.getQuest}>Retrieve Quest</Button>
                         </Col>
                     </Row>
-
             </Container>
 
         );
