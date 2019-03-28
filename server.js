@@ -13,14 +13,15 @@ app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
+const apiRouter = require('./routes/apiRoutes');
+app.use('/api', apiRouter);
 
 // Database setup:
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/questapp';
 mongoose.connect( mongoURI,  { useNewUrlParser: true });
 
 // Define API routes:
-const apiRouter = require('./routes/apiRoutes');
-app.use('/api', apiRouter);
+
 
 // Send every other request to the React app:
 // app.get('*', (req, res) => {
