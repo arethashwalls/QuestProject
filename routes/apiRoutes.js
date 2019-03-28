@@ -70,6 +70,7 @@ router.post("/users/login", (req, res) => {
   });
 });
 
+<<<<<<< HEAD
 router.route("/users/register").post((req, res) => {
   // Form validation
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -106,6 +107,11 @@ router
   .post(questControllers.createQuestHead);
 
 router.route("/quests/:userid/child").post(questControllers.createQuestChild);
+=======
+router.route('/quests')
+      .post(questControllers.saveQuest)
+      .get(questControllers.getQuest)
+>>>>>>> master
 
 router.route("/quests/:userid/full").get(questControllers.getFullQuest);
 
