@@ -54,7 +54,7 @@ class Login extends Component {
       <div>
       <Container fluid>
         <Row className='my-4'>
-          <Col xs={12} md={4}>
+          <Col xs={12} lg={4}>
             <h4>Sign In</h4>
             <p>Don't have an account?
               <Link to='/signup' style={this.props.theme.lightText} className='ml-2 d-md-block ml-md-0 mt-md-2'>
@@ -64,7 +64,7 @@ class Login extends Component {
               </Link>
             </p>
           </Col>
-          <Col xs={12} md={8}>
+          <Col xs={12} lg={8}>
             <Form noValidate onSubmit={this.onSubmit}>
               <Form.Group >
                 <Form.Label>Email:</Form.Label>
