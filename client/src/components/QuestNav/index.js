@@ -24,9 +24,10 @@ const QuestNav = props => {
                     Sign Off
                 </Button>
                 : <Button style={props.theme.buttons}>
-                    <Link to='/signin'>
-                        Sign In
-                    </Link>
+                    {window.location.pathname === '/signin' ? 
+                        <Link to='/signup' style={props.theme.lightText}>Sign Up</Link>
+                        : <Link to='/signin' style={props.theme.lightText}>Sign In</Link>
+                    }
                 </Button>
             }
         </Container>

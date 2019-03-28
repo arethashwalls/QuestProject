@@ -23,7 +23,7 @@ const Signin = props => {
                     <Image src='https://via.placeholder.com/300x500' fluid />
                 </Col>
                 <Col xs={12} lg={9}>
-                    <SigninForm/>
+                    <SigninForm theme={props.theme}/>
                 </Col>
                 <Col className='d-block d-lg-none' >
                     <Image src='https://via.placeholder.com/500x300' className='center-block' fluid />
