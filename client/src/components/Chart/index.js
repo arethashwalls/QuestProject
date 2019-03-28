@@ -156,7 +156,8 @@ class Chart extends Component {
                             <Form>
                                 <Form.Group controlId='NewQuestItemForm'>
                                     <Form.Label>Quest Name: </Form.Label>
-                                    <Form.Control type='text' />
+                                    <Form.Control id="add-quest" type='text' />
+                                    <Form.Control id="quest-description" type='text' />
                                     <Button id='add-quest' type="submit" onClick={this.addQuest} >Submit</Button>
                                 </Form.Group>
                             </Form>
