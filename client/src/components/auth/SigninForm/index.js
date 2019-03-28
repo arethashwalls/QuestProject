@@ -9,6 +9,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
+import './style.css';
 
 class Login extends Component {
   constructor() {
@@ -76,10 +78,13 @@ class Login extends Component {
                     invalid: errors.email || errors.emailnotfound
                   })}
                 />
-                <span className='red-text'>
-                  {errors.email}
-                  {errors.emailnotfound}
-                </span>
+                { errors.email || errors.emailnotfound ?
+                  <Alert variant='danger'>
+                    {errors.email}
+                    {errors.emailnotfound}
+                  </Alert>
+                  : ''
+                }
               </Form.Group>
               <Form.Group >
                 <Form.Label>Password:</Form.Label>
@@ -93,6 +98,13 @@ class Login extends Component {
                     invalid: errors.password || errors.passwordincorrect
                   })}
                 />
+                { errors.password || errors.passwordincorrect ?
+                  <Alert variant='danger'>
+                    {errors.password}
+                    {errors.passwordincorrect}
+                  </Alert>
+                  : ''
+                }
               </Form.Group>
               <Button type='submit' className='float-right' style={this.props.theme.buttons}>Sign In</Button>
             </Form>
