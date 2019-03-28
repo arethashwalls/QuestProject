@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import SignupForm from '../../components/SignupForm'
+import SignupForm from '../../components/auth/SignupForm'
 
 const Signup = props => {
     return <div>

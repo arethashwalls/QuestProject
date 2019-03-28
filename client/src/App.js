@@ -7,8 +7,8 @@ import { Provider } from "react-redux";
 import store from "./store";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
-import Register from "./components/auth/Register";
-import Login from "./components/auth/Login";
+// import Register from "./components/auth/Register";
+// import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import Quest from './pages/Quest';
@@ -64,16 +64,19 @@ class App extends Component {
     //   </Provider>
     // );
     document.getElementById('root').style.backgroundColor = this.state.theme.lightBg.backgroundColor;
-    return <Router>
-      <Switch>
-        <Route exact path="/" render={() => this.state.signedIn 
-          ?  <Quest theme={this.state.theme}  signedIn={this.state.signedIn} /> 
-          : <Welcome theme={this.state.theme} signedIn={this.state.signedIn} />} />
-        <Route exact path="/signup" render={() => <Signup theme={this.state.theme} signedIn={this.state.signedIn} />} />
-        <Route exact path="/signin" render={() => <Signin theme={this.state.theme} signedIn={this.state.signedIn} />} />
-        <Route component={NoMatch} />
-      </Switch>
-    </Router>
+    return <Provider store={store}>
+      <Router>
+        <Switch>
+          {/* <Route exact path="/" render={() => this.state.signedIn 
+            ?  <Quest theme={this.state.theme}  signedIn={this.state.signedIn} /> 
+            : <Welcome theme={this.state.theme} signedIn={this.state.signedIn} />} /> */}
+          <Route exact path="/signup" render={() => <Signup theme={this.state.theme} signedIn={this.state.signedIn} />} />
+          <Route exact path="/signin" render={() => <Signin theme={this.state.theme} signedIn={this.state.signedIn} />} />
+          <PrivateRoute exact path='/myquest' render={() => <Quest theme={this.state.theme}  signedIn={this.state.signedIn} />} />
+          <Route component={NoMatch} />
+        </Switch>
+      </Router>
+    </Provider>
   }
 }
 export default App;
