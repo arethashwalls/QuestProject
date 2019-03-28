@@ -6,10 +6,7 @@ import Button from 'react-bootstrap/Button';
 class Signup extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {
-        isGoing: true,
-        username: 1
-      };
+      this.state = {value: ''};
   
     }
   
