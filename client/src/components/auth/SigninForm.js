@@ -54,9 +54,11 @@ class Login extends Component {
           <Col xs={12} md={4}>
             <h4>Sign In</h4>
             <p>Don't have an account?</p>
-            <Button style={this.props.theme.buttons}>
-              <Link to='/signup' style={this.props.theme.lightText}>Sign Up</Link>
-            </Button>
+            <Link to='/signup' style={this.props.theme.lightText}>
+              <Button style={this.props.theme.buttons}>
+                Sign Up
+              </Button>
+            </Link>
           </Col>
           <Col xs={12} md={8}>
             <Form noValidate onSubmit={this.onSubmit}>
