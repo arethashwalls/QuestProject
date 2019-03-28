@@ -6,10 +6,9 @@ import Button from 'react-bootstrap/Button';
 class newQuest extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {
-        isGoing: true,
-        username: 1
-      };
+      super(props);
+    this.state = {value: ''};
+  
   
       this.handleInputChange = this.handleInputChange.bind(this);
     }
