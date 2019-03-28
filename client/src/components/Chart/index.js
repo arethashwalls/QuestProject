@@ -113,6 +113,8 @@ class Chart extends Component {
     saveQuest = () => {
         let graphJSON = this.graph.toJSON();
         API.saveQuest(graphJSON)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
     }
 
     //Grabs the quest from the database. Eventually we will try to pull up specific versions
