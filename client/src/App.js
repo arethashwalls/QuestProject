@@ -12,7 +12,7 @@ import './App.css';
 
 class App extends Component {
   state = {
-    signedIn: false,
+    signedIn: true,
     theme: themes('redGreen')
   };
 

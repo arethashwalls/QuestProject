@@ -3,6 +3,10 @@ import joint from 'jointjs/index';
 import ReactDOM from 'react-dom';
 import $ from "jquery";
 import API from "../../utils/api";
+import Container from 'react-bootstrap/Row';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Row';
+import Form from 'react-bootstrap/Form'
 import "./style.css";
 
 let uml = joint.shapes.uml;
@@ -123,30 +127,38 @@ class Chart extends Component {
     //Make it WORK!
     render() {
         return (
-            <section id="app" className="container-fluid">
-                <div className="container scroller">
-                    <div id="paper" ref="placeholder" className="scroller container"></div>
-                </div>
+            // <section id="app" className="container-fluid">
+            //     <div className="container scroller">
+            //         <div id="paper" ref="placeholder" className="scroller container"></div>
+            //     </div>
+            //     <div id="form">
+            //         <form>
+            //             Quest Name: <input type="text" name="add-quest" id="add-quest" className="mr-3" />
+            //             Quest Description: <input type="text" name="quest-description" id="quest-description" />
+            //             <input type="submit" value="Submit" id="add-quest" onClick={this.addQuest} className="ml-3" />
+            //         </form>
+            //     </div>
+            //     <div id="buttons" className="mt-3">
+            //         <button id="add-link" onClick={this.addLink}>Add Link</button>
+            //         <button id="save-btn" onClick={this.saveQuest}>Save</button>
+            //         <button id="retrieve-btn" onClick={this.getQuest}>Retrieve Quest</button>
+            //     </div>
+            // </section>
+            <Container fluid as='section'>
+                    <Row className='scroller'>
+                        <Col>
+                            <div id="paper" ref="placeholder" className="scroller container"></div>                        
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
 
-                <div id="form">
-                    <form>
-                        Quest Name: <input type="text" name="add-quest" id="add-quest" className="mr-3" />
-                        Quest Description: <input type="text" name="quest-description" id="quest-description" />
-                        <input type="submit" value="Submit" id="add-quest" onClick={this.addQuest} className="ml-3" />
-                    </form>
-                </div>
-                <div id="buttons" className="mt-3">
-                    <button id="add-link" onClick={this.addLink}>Add Link</button>
-                    <button id="save-btn" onClick={this.saveQuest}>Save</button>
-                    <button id="retrieve-btn" onClick={this.getQuest}>Retrieve Quest</button>
-                </div>
+                        </Col>
+                    </Row>
 
-
-
-            </section>
+            </Container>
 
         );
-
     };
 };
 
