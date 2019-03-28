@@ -15,10 +15,20 @@ const QuestNav = props => {
                     <h2 style={props.theme.titleText}>A Quest!</h2>
                 </Link>
                 </Navbar.Brand>
-            <Button  style={props.theme.buttons} className='btn-nav'>{props.signedIn ? 
-                <Link style={props.theme.lightText}>Sign Off</Link> 
-                : <Link style={props.theme.lightText} to='/signin'>Sign In</Link>}
-            </Button>
+            {props.username ? <p>Happy questing, {props.username}!</p> : ''}
+            {props.username ? 
+                <Button  
+                    style={props.theme.buttons}
+                    onClick={props.signout}
+                >
+                    Sign Off
+                </Button>
+                : <Button style={props.theme.buttons}>
+                    <Link to='/signin'>
+                        Sign In
+                    </Link>
+                </Button>
+            }
         </Container>
     </Navbar>
 }

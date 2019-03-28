@@ -12,7 +12,7 @@ import store from "./store";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 // import Dashboard from "./components/dashboard/Dashboard";
 import Quest from './pages/Quest';
-// import Welcome from './pages/Welcome';
+import Welcome from './pages/Welcome';
 import Signup from './pages/Signup';
 import Signin from './pages/Signin';
 import NoMatch from './pages/NoMatch';
@@ -34,7 +34,7 @@ if (localStorage.jwtToken) {
     // Logout user
     store.dispatch(logoutUser());
     // Redirect to login
-    window.location.href = "./login";
+    window.location.href = "./signin";
   }
 }
 // Imports:
@@ -42,7 +42,6 @@ if (localStorage.jwtToken) {
 
 class App extends Component {
   state = {
-    signedIn: true,
     theme: themes('redGreen')
   };
 
@@ -67,13 +66,10 @@ class App extends Component {
     return <Provider store={store}>
       <Router>
         <Switch>
-          {/* <Route exact path="/" render={() => this.state.signedIn 
-            ?  <Quest theme={this.state.theme}  signedIn={this.state.signedIn} /> 
-            : <Welcome theme={this.state.theme} signedIn={this.state.signedIn} />} /> */}
-          <Route exact path="/signup" render={() => <Signup theme={this.state.theme} signedIn={this.state.signedIn} />} />
-          <Route exact path="/signin" render={() => <Signin theme={this.state.theme} signedIn={this.state.signedIn} />} />
-          {/* <PrivateRoute exact path='/myquest' render={() => <Quest theme={this.state.theme}  signedIn={this.state.signedIn} />} /> */}
-          <PrivateRoute exact path='/myquest' theme={this.state.theme} component={Quest} />
+          <Route exact path='/' render={() => <Welcome theme={this.state.theme} />} />
+          <Route exact path="/signup" render={() => <Signup theme={this.state.theme} />} />
+          <Route exact path="/signin" render={() => <Signin theme={this.state.theme} />} />
+          <PrivateRoute exact path='/myquest'component={Quest} theme={this.state.theme}  />
           <Route component={NoMatch} />
         </Switch>
       </Router>
