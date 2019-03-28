@@ -113,13 +113,10 @@ class Chart extends Component {
     saveQuest = () => {
         let graphJSON = this.graph.toJSON();
         API.saveQuest(graphJSON)
-            .then(res => res.json("success"))
-            .catch(err => console.log(err));
     }
 
     //Grabs the quest from the database. Eventually we will try to pull up specific versions
     getQuest = () => {
-        
         API.getQuest()
         .then(res =>console.log(this.graph.fromJSON(JSON.parse(res.data[0].chart))))
         .catch(err => console.log(err))
@@ -149,14 +146,14 @@ class Chart extends Component {
                             </Form>
                         </Col>
                         <Col xs={12} lg={6} className='text-lg-right'>
-                            <Button id='add-link' onClick={this.addLink} className='mb-1' style={this.props.theme.buttons}>
+                            <Button id='add-link' onClick={this.addLink} className='mb-1 mr-1' style={this.props.theme.buttons}>
                                 Add Link
                             </Button>
-                            <br />
-                            <Button id='save-btn' onClick={this.saveQuest} className='mb-1'  style={this.props.theme.buttons}>
+                            <br className='d-none d-lg-block' />
+                            <Button id='save-btn' onClick={this.saveQuest} className='mb-1 mr-1'  style={this.props.theme.buttons}>
                                 Save
                             </Button>
-                            <br />
+                            <br className='d-none d-lg-block' />
                             <Button id='retrieve-btn' onClick={this.getQuest} style={this.props.theme.buttons}>
                                 Retrieve Quest
                             </Button>
