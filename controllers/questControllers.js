@@ -15,7 +15,7 @@ module.exports = {
         .catch(err => res.status(422).json(err))
     },
     
-    // This method gets a full quest:
+    // This method gets a full quest
     getQuest: (req, res) => {
         
         db.Quest.find({})

@@ -13,8 +13,10 @@ class Chart extends Component {
         this.graph = new joint.dia.Graph();
     }
 
+    //When the page loads
     componentDidMount() {
 
+        //Creates the paper our quests will be contained in
         this.paper = new joint.dia.Paper({
             el: ReactDOM.findDOMNode(this.refs.placeholder),
             width: 930,
@@ -27,6 +29,7 @@ class Chart extends Component {
             }
         });
 
+        //Our initial Quest Tree Starting point. 
         let start = new joint.shapes.basic.Rect({
             position: { x: 398, y: 83 },
             size: { width: 150, height: 90 },
@@ -37,6 +40,7 @@ class Chart extends Component {
         this.graph.addCell(start);
     };
 
+    //Wraps the text so that it can stay contained in the cell. Otherwise, it just goes out without abandon
     sentenceWrapped = (sentence, lineSize, maxSize) => {
         var descriptionTrim = "";
         if (sentence.length + 3 > maxSize) {
@@ -55,6 +59,7 @@ class Chart extends Component {
         return sentenceWrapped;
     }
 
+    //Adds the link between quest elements. User will currently have to manually link the cells after adding it
     addLink = () => {
         let link = new joint.dia.Link({
             source: { x: 75, y: 175 },
@@ -63,6 +68,7 @@ class Chart extends Component {
         this.graph.addCell(link);
     };
 
+    //Create a quest with a title and text. Once it's formed, the user can position it anywhere on the graph
     addQuest = (event) => {
         event.preventDefault();
 
@@ -91,12 +97,14 @@ class Chart extends Component {
             }
         });
 
+        //Translate it so the quest element isn't on top of the starter element
         rectangle.translate(100);
         this.graph.addCell(rectangle);
         $("#add-quest").val("");
         $("#quest-description").val("")
     }
 
+    //Saves the current incarnation of a quest in our database
     saveQuest = () => {
         let graphJSON = this.graph.toJSON();
         API.saveQuest(graphJSON)
@@ -104,6 +112,7 @@ class Chart extends Component {
             .catch(err => console.log(err));
     }
 
+    //Grabs the quest from the database. Eventually we will try to pull up specific versions
     getQuest = () => {
         
         API.getQuest()
@@ -111,6 +120,7 @@ class Chart extends Component {
         .catch(err => console.log(err))
     }
 
+    //Make it WORK!
     render() {
         return (
             <section id="app" className="container-fluid">

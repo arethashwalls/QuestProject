@@ -16,10 +16,6 @@ router.route('/users')
       .get(userControllers.getAllUsers)
       .post(userControllers.createUser)
 
-
-//router.route('/quests/:userid/full')
-      //.get(questControllers.getFullQuest)
-
 router.route('/quests')
       .post(questControllers.saveQuest)
       .get(questControllers.getQuest)
