@@ -3,6 +3,11 @@ import joint from 'jointjs/index';
 import ReactDOM from 'react-dom';
 import $ from "jquery";
 import API from "../../utils/api";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import "./style.css";
 
 let uml = joint.shapes.uml;
@@ -123,30 +128,43 @@ class Chart extends Component {
     //Make it WORK!
     render() {
         return (
-            <section id="app" className="container-fluid">
-                <div className="container scroller">
-                    <div id="paper" ref="placeholder" className="scroller container"></div>
-                </div>
-
-                <div id="form">
-                    <form>
-                        Quest Name: <input type="text" name="add-quest" id="add-quest" className="mr-3" />
-                        Quest Description: <input type="text" name="quest-description" id="quest-description" />
-                        <input type="submit" value="Submit" id="add-quest" onClick={this.addQuest} className="ml-3" />
-                    </form>
-                </div>
-                <div id="buttons" className="mt-3">
-                    <button id="add-link" onClick={this.addLink}>Add Link</button>
-                    <button id="save-btn" onClick={this.saveQuest}>Save</button>
-                    <button id="retrieve-btn" onClick={this.getQuest}>Retrieve Quest</button>
-                </div>
-
-
-
-            </section>
+            <Container as='section'>
+                    <Row className='mt-3 mb-4'>
+                        <Col>
+                            <div id="paper" ref="placeholder" className="scroller"></div>                        
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={12} lg={6}>
+                            <Form>
+                                <Form.Group controlId='NewQuestItemForm'>
+                                    <Form.Label>Quest name: </Form.Label>
+                                    <Form.Control id="add-quest" type='text' />
+                                    <Form.Label className='mt-1'>Quest description: </Form.Label>
+                                    <Form.Control id="quest-description" type='text' />
+                                    <Button id='add-quest' type="submit" onClick={this.addQuest} className='mt-2' style={this.props.theme.buttons}>
+                                        Submit
+                                    </Button>
+                                </Form.Group>
+                            </Form>
+                        </Col>
+                        <Col xs={12} lg={6} className='text-lg-right'>
+                            <Button id='add-link' onClick={this.addLink} className='mb-1' style={this.props.theme.buttons}>
+                                Add Link
+                            </Button>
+                            <br />
+                            <Button id='save-btn' onClick={this.saveQuest} className='mb-1'  style={this.props.theme.buttons}>
+                                Save
+                            </Button>
+                            <br />
+                            <Button id='retrieve-btn' onClick={this.getQuest} style={this.props.theme.buttons}>
+                                Retrieve Quest
+                            </Button>
+                        </Col>
+                    </Row>
+            </Container>
 
         );
-
     };
 };
 
