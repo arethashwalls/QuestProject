@@ -1,33 +1,33 @@
 // Imports:
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import QuestNav from './components/QuestNav';
 import Quest from './pages/Quest';
 import Welcome from './pages/Welcome';
 import Signup from './pages/Signup';
 import Signin from './pages/Signin';
 import Chart from "./pages/Chart";
 import NoMatch from './pages/NoMatch';
+import themes from './utils/themes'
 import './App.css';
 
 class App extends Component {
   state = {
-    signedIn: false
+    signedIn: false,
+    theme: themes('redGreen')
   };
 
   render() {
-    return <div>
-    <QuestNav signedIn={this.state.signedIn} />
-      <Router>
-          <Switch>
-            <Route exact path="/" component={this.state.signedIn ? Quest : Welcome} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/signin" component={Signin} />
-            <Route exact path="/chart" component={Chart} />
-            <Route component={NoMatch} />
-          </Switch>
-      </Router>
-    </div>
+    document.getElementById('root').style.backgroundColor = this.state.theme.lightBg.backgroundColor;
+    return <Router>
+      <Switch>
+        <Route exact path="/" render={() => this.state.signedIn 
+          ?  <Quest theme={this.state.theme}  signedIn={this.state.signedIn} /> 
+          : <Welcome theme={this.state.theme} signedIn={this.state.signedIn} />} />
+        <Route exact path="/signup" render={() => <Signup theme={this.state.theme} signedIn={this.state.signedIn} />} />
+        <Route exact path="/signin" render={() => <Signin theme={this.state.theme} signedIn={this.state.signedIn} />} />
+        <Route component={NoMatch} />
+      </Switch>
+    </Router>
   }
 }
 
