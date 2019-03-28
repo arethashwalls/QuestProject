@@ -66,10 +66,10 @@ class App extends Component {
     return <Provider store={store}>
       <Router>
         <Switch>
-          <Route exact path='/' render={() => <Welcome theme={this.state.theme} />} />
+          <Route exact path='/welcome' render={() => <Welcome theme={this.state.theme} />} />
           <Route exact path="/signup" render={() => <Signup theme={this.state.theme} />} />
           <Route exact path="/signin" render={() => <Signin theme={this.state.theme} />} />
-          <PrivateRoute exact path='/myquest'component={Quest} theme={this.state.theme}  />
+          <PrivateRoute exact path='/' component={Quest} theme={this.state.theme}  />
           <Route component={NoMatch} />
         </Switch>
       </Router>
