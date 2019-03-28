@@ -39,14 +39,13 @@ import Quest from './pages/Quest';
 import Welcome from './pages/Welcome';
 import Signup from './pages/Signup';
 import Signin from './pages/Signin';
-import Chart from "./pages/Chart";
 import NoMatch from './pages/NoMatch';
 import themes from './utils/themes'
 import './App.css';
 
 class App extends Component {
   state = {
-    signedIn: false,
+    signedIn: true,
     theme: themes('redGreen')
   };
 >>>>>>> master
