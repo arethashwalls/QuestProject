@@ -5,7 +5,7 @@ import Chart from '../../components/Chart';
 const Quest = props => {
     return <div>
         <QuestNav theme={props.theme} signedIn={props.signedIn} />
-        <Chart />
+        <Chart theme={props.theme}/>
     </div>
 }
 
