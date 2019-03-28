@@ -3,5 +3,7 @@ import axios from 'axios';
 
 // Export all helper functions as a property of the export object:
 export default {
-    getAllUsers: id => axios.get('api/users')
+    getAllUsers: id => axios.get('api/users'),
+    saveQuest: (quest) => axios.post('api/quests', quest),
+    getQuest: () => axios.get('api/quests')
 }
