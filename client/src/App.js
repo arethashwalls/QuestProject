@@ -5,14 +5,14 @@ import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
-import Navbar from "./components/layout/Navbar";
-import Landing from "./components/layout/Landing";
+// import Navbar from "./components/layout/Navbar";
+// import Landing from "./components/layout/Landing";
 // import Register from "./components/auth/Register";
 // import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Dashboard from "./components/dashboard/Dashboard";
+// import Dashboard from "./components/dashboard/Dashboard";
 import Quest from './pages/Quest';
-import Welcome from './pages/Welcome';
+// import Welcome from './pages/Welcome';
 import Signup from './pages/Signup';
 import Signin from './pages/Signin';
 import NoMatch from './pages/NoMatch';
@@ -72,7 +72,8 @@ class App extends Component {
             : <Welcome theme={this.state.theme} signedIn={this.state.signedIn} />} /> */}
           <Route exact path="/signup" render={() => <Signup theme={this.state.theme} signedIn={this.state.signedIn} />} />
           <Route exact path="/signin" render={() => <Signin theme={this.state.theme} signedIn={this.state.signedIn} />} />
-          <PrivateRoute exact path='/myquest' render={() => <Quest theme={this.state.theme}  signedIn={this.state.signedIn} />} />
+          {/* <PrivateRoute exact path='/myquest' render={() => <Quest theme={this.state.theme}  signedIn={this.state.signedIn} />} /> */}
+          <PrivateRoute exact path='/myquest' theme={this.state.theme} component={Quest} />
           <Route component={NoMatch} />
         </Switch>
       </Router>
