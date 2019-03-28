@@ -9,6 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 import './style.css';
 
 class Register extends Component {
@@ -78,9 +79,12 @@ class Register extends Component {
                     invalid: errors.name
                   })}
                 />
-                <span className='red-text'>
-                  {errors.name}
-                </span>
+                { errors.name ?
+                  <Alert variant='danger'>
+                    {errors.name}
+                  </Alert>
+                  : ''
+                }
               </Form.Group>
               <Form.Group >
                 <Form.Label>Email:</Form.Label>
@@ -94,9 +98,12 @@ class Register extends Component {
                     invalid: errors.email
                   })}
                 />
-                <span className='red-text'>
-                  {errors.email}
-                </span>
+                { errors.email ?
+                  <Alert variant='danger'>
+                    {errors.email}
+                  </Alert>
+                  : ''
+                }
               </Form.Group>
               <Form.Group >
                 <Form.Label>Password:</Form.Label>
@@ -110,9 +117,12 @@ class Register extends Component {
                     invalid: errors.password
                   })}
                 />
-                <span className='red-text'>
-                  {errors.password}
-                </span>
+                { errors.password ?
+                  <Alert variant='danger'>
+                    {errors.password}
+                  </Alert>
+                  : ''
+                }
               </Form.Group>
               <Form.Group >
                 <Form.Label>Confirm password:</Form.Label>
@@ -123,12 +133,15 @@ class Register extends Component {
                   id='password2'
                   type='password'
                   className={classnames('', {
-                    invalid: errors.password
+                    invalid: errors.password2
                   })}
                 />
-                <span className='red-text'>
-                  {errors.password2}
-                </span>
+                { errors.password2 ?
+                  <Alert variant='danger'>
+                    {errors.password2}
+                  </Alert>
+                  : ''
+                }
               </Form.Group>
               <Button type='submit' className='float-right' style={this.props.theme.buttons}>Sign Up</Button>
             </Form>
