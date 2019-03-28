@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
@@ -16,12 +17,12 @@ class Login extends Component {
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.context.history.push("/myquest");
+      this.props.history.push("/myquest");
     }
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.context.history.push("/myquest"); // push user to dashboard when they login
+      this.props.history.push("/myquest"); // push user to dashboard when they login
     }
     if (nextProps.errors) {
       this.setState({
@@ -113,13 +114,14 @@ class Login extends Component {
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
 });
-export default connect(
+export default withRouter( connect(
   mapStateToProps,
   { loginUser }
-)(Login);
+)(Login));
