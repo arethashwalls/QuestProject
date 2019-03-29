@@ -15,18 +15,21 @@ const QuestNav = props => {
                 </Navbar.Brand>
             {props.username ? <p style={props.theme.lightText}>Happy questing, {props.username}!</p> : ''}
             {props.username ? 
-                <Button  
-                    style={props.theme.buttons}
-                    onClick={props.signout}
-                >
+                <Button style={props.theme.buttons}onClick={props.signout}>
                     Sign Off
                 </Button>
-                : <Button style={props.theme.buttons}>
-                    {window.location.pathname === '/signin' ? 
-                        <Link to='/signup' style={props.theme.lightText}>Sign Up</Link>
-                        : <Link to='/signin' style={props.theme.lightText}>Sign In</Link>
-                    }
-                </Button>
+                : <div>{window.location.pathname === '/signin' ? 
+                    <Link to='/signup' style={props.theme.lightText}>
+                        <Button style={props.theme.buttons}>
+                            Sign Up
+                        </Button>
+                    </Link>
+                    : <Link to='/signin' style={props.theme.lightText}>
+                        <Button style={props.theme.buttons}>
+                            Sign In
+                        </Button>
+                    </Link>
+                }</div>
             }
         </Container>
     </Navbar>
