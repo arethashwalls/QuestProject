@@ -1,7 +1,4 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 
 class Signup extends React.Component {
     constructor(props) {
