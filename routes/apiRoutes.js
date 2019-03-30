@@ -104,6 +104,9 @@ router.route('/quests')
       .get(questControllers.getQuest)
       .post(questControllers.saveQuest)
 
+router.route('/quests/:id/:user')
+      .put(questControllers.updateQuest)
+
 
 // router
 //   .route("/quests/:userid/head")

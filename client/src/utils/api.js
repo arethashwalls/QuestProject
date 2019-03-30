@@ -5,5 +5,6 @@ import axios from 'axios';
 export default {
     getAllUsers: id => axios.get('api/users'),
     saveQuest: (quest) => axios.post('api/quests', quest),
-    getQuest: () => axios.get('api/quests')
+    getQuest: id => axios.get('api/quests/' + id),
+    updateQuest: (user, quest,id) => axios.put('api/quests/' + id + "/" + user, quest)
 }
