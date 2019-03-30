@@ -4,6 +4,8 @@ const { Schema } = mongoose;
 
 const questSchema = new Schema({
 
+    user: String,
+
     chart: {
         type: String,
         get: function (data) {

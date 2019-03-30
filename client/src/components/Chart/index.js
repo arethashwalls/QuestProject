@@ -18,9 +18,15 @@ class Chart extends Component {
         this.graph = new joint.dia.Graph();
     }
 
+    state = {
+        user: //who the current user is
+        questID: ""
+    }
+
     //When the page loads
     componentDidMount() {
 
+        //this.setState(user: user)
         //Creates the paper our quests will be contained in
         this.paper = new joint.dia.Paper({
             el: ReactDOM.findDOMNode(this.refs.placeholder),
@@ -112,55 +118,62 @@ class Chart extends Component {
     //Saves the current incarnation of a quest in our database
     saveQuest = () => {
         let graphJSON = this.graph.toJSON();
-        API.saveQuest(graphJSON)
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err));
+        console.log(this.state.questID);
+        if (this.state.questID === "") {
+            API.saveQuest(user, graphJSON)
+                .then(res => this.setState({ questID: res.data._id }))
+                .catch(err => console.log(err))
+        }
+        else{
+            API.updateQuest(user, graphJSON, this.state.questID)
+        }
     }
 
     //Grabs the quest from the database. Eventually we will try to pull up specific versions
     getQuest = () => {
-        API.getQuest()
-        .then(res =>console.log(this.graph.fromJSON(JSON.parse(res.data[0].chart))))
-        .catch(err => console.log(err))
+        let id = this.state.questID;
+        API.getQuest(id)
+            .then(res => console.log(this.graph.fromJSON(JSON.parse(res.data[0].chart))))
+            .catch(err => console.log(err))
     }
 
     //Make it WORK!
     render() {
         return (
             <Container as='section'>
-                    <Row className='mt-3 mb-4'>
-                        <Col>
-                            <div id="paper" ref="placeholder" className="scroller"></div>                        
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={12} lg={6}>
-                            <Form>
-                                <Form.Group>
-                                    <Form.Label>Quest name: </Form.Label>
-                                    <Form.Control id="add-quest" type='text' />
-                                    <Form.Label className='mt-1'>Quest description: </Form.Label>
-                                    <Form.Control id="quest-description" type='text' />
-                                    <Button id='add-quest' type="submit" onClick={this.addQuest} className='mt-2' style={this.props.theme.buttons}>
-                                        Submit
+                <Row className='mt-3 mb-4'>
+                    <Col>
+                        <div id="paper" ref="placeholder" className="scroller"></div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12} lg={6}>
+                        <Form>
+                            <Form.Group>
+                                <Form.Label>Quest name: </Form.Label>
+                                <Form.Control id="add-quest" type='text' />
+                                <Form.Label className='mt-1'>Quest description: </Form.Label>
+                                <Form.Control id="quest-description" type='text' />
+                                <Button id='add-quest' type="submit" onClick={this.addQuest} className='mt-2' style={this.props.theme.buttons}>
+                                    Submit
                                     </Button>
-                                </Form.Group>
-                            </Form>
-                        </Col>
-                        <Col xs={12} lg={6} className='text-lg-right'>
-                            <Button id='add-link' onClick={this.addLink} className='mb-1 mr-1' style={this.props.theme.buttons}>
-                                Add Link
+                            </Form.Group>
+                        </Form>
+                    </Col>
+                    <Col xs={12} lg={6} className='text-lg-right'>
+                        <Button id='add-link' onClick={this.addLink} className='mb-1 mr-1' style={this.props.theme.buttons}>
+                            Add Link
                             </Button>
-                            <br className='d-none d-lg-block' />
-                            <Button id='save-btn' onClick={this.saveQuest} className='mb-1 mr-1'  style={this.props.theme.buttons}>
-                                Save
+                        <br className='d-none d-lg-block' />
+                        <Button id='save-btn' onClick={this.saveQuest} className='mb-1 mr-1' style={this.props.theme.buttons}>
+                            Save
                             </Button>
-                            <br className='d-none d-lg-block' />
-                            <Button id='retrieve-btn' onClick={this.getQuest} style={this.props.theme.buttons}>
-                                Retrieve Quest
+                        <br className='d-none d-lg-block' />
+                        <Button id='retrieve-btn' onClick={this.getQuest} style={this.props.theme.buttons}>
+                            Retrieve Quest
                             </Button>
-                        </Col>
-                    </Row>
+                    </Col>
+                </Row>
             </Container>
 
         );
