@@ -4,6 +4,7 @@ const express = require("express"),
   { userControllers, questControllers } = require("../controllers");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const passport = require("passport");
 
 // Load input validation
 const validateRegisterInput = require("../validation/register");
@@ -23,7 +24,8 @@ const User = require("../models/User.js");
 router.route("/users").get(userControllers.getAllUsers);
 
 router.post("/users/login", (req, res) => {
-  console.log("hello");
+  // console.log("hello");
+  // console.log(req.body);
   // Form validation
   const { errors, isValid } = validateLoginInput(req.body);
   // Check validation
@@ -100,13 +102,11 @@ router.route("/users/register").post((req, res) => {
   });
 });
 
-router.route('/quests')
-      .get(questControllers.getQuest)
-      .post(questControllers.saveQuest)
+router.route("/quest/user").post(questControllers.saveQuest);
 
-router.route('/quests/:id/:user')
-      .put(questControllers.updateQuest)
+router.route("/quest/user/:id").get(questControllers.getQuest);
 
+router.route("/quests/:id/:user").put(questControllers.updateQuest);
 
 // router
 //   .route("/quests/:userid/head")
