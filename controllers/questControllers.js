@@ -1,5 +1,5 @@
 // Imports:
-const db = require("../models");
+const db = require('../models');
 
 // Controller methods:
 module.exports = {

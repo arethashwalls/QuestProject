@@ -1,7 +1,7 @@
 // Imports:
-const mongoose = require("mongoose");
-User = require("./User.js");
-UserSchema = mongoose.model("users").schema;
+const mongoose = require('mongoose');
+User = require('./User.js');
+UserSchema = mongoose.model('users').schema;
 const { Schema } = mongoose;
 
 const questSchema = new Schema({
@@ -18,9 +18,9 @@ const questSchema = new Schema({
       return JSON.stringify(data);
     }
   },
-  user: { type: Schema.Types.ObjectId, ref: "User" }
+  user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
-const Quest = mongoose.model("QuestItem", questSchema);
+const Quest = mongoose.model('QuestItem', questSchema);
 
 module.exports = Quest;

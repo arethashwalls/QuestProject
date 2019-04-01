@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logoutUser } from '../../actions/authActions';
 import QuestNav from '../../components/QuestNav';
 import Chart from '../../components/Chart';
-// import Dashboard from '../../components/dashboard/Dashboard';
-
 
 class Quest extends Component {
     onSignoutClick = e => {
