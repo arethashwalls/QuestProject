@@ -14,5 +14,5 @@ fs.readdirSync(__dirname).forEach(file => {
 });
 
 module.exports = {
-    Quest: require("./Quest")
+    Quest: require('./Quest')
 };
