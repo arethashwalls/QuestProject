@@ -21,5 +21,8 @@ module.exports = {
         db.User.create(req.body)
         .then(data => res.json(data))
         .catch(err => console.log(err))
-    }
+    },
+    // getClass: (req, res) => {
+    //     db.User.find({})
+    // }
 }

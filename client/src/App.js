@@ -37,10 +37,15 @@ if (localStorage.jwtToken) {
 
 class App extends Component {
   state = {
-    theme: themes('redGreen')
+    theme: themes('redGreen'),
   };
 
+  // setThemeOnSignIn() {
+  //   this.setState({name: })
+  // }
+
   render() {
+    console.log(store.getState().auth.user);
     document.getElementById('root').style.backgroundColor = this.state.theme.lightBg.backgroundColor;
     return <Provider store={store}>
       <Router>
@@ -55,4 +60,5 @@ class App extends Component {
     </Provider>
   }
 }
+
 export default App;

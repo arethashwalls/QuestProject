@@ -17,6 +17,7 @@ class Register extends Component {
     super();
     this.state = {
       name: '',
+      class: '',
       email: '',
       password: '',
       password2: '',
@@ -43,6 +44,7 @@ class Register extends Component {
     e.preventDefault();
     const newUser = {
       name: this.state.name,
+      class: this.state.class,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2
@@ -85,6 +87,20 @@ class Register extends Component {
                   </Alert>
                   : ''
                 }
+              </Form.Group>
+              <Form.Group >
+                <Form.Label>Character Class:</Form.Label>
+                <Form.Control
+                  as='select'
+                  onChange={this.onChange}
+                  value={this.state.class}
+                  id='class'
+                >
+                  <option>Warrior</option>
+                  <option>Mage</option>
+                  <option>Cleric</option>
+                  <option>Bard</option>
+                </Form.Control>
               </Form.Group>
               <Form.Group >
                 <Form.Label>Email:</Form.Label>

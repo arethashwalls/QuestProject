@@ -27,17 +27,6 @@ class Chart extends Component {
 
   //When the page loads
   componentDidMount() {
-    // axios
-    //   .get('/users/login')
-    //   .then(function(response) {
-    //     console.log('hit');
-    //     console.log(response);
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
-
-    //this.setState(user: user)
     //Creates the paper our quests will be contained in
     this.paper = new joint.dia.Paper({
       el: ReactDOM.findDOMNode(this.refs.placeholder),
@@ -228,7 +217,6 @@ class Chart extends Component {
   }
 }
 const mapStateToProps = state => {
-  console.log(state);
 
   return {
     loggedInUserId: state.auth.user.id
