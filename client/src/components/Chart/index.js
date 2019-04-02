@@ -27,7 +27,7 @@ class Chart extends Component {
 
   //When the page loads
   componentDidMount() {
-    this.props.onSignIn(this.props.loggedInUserClass);
+    this.props.setTheme(this.props.loggedInUserClass);
     //Creates the paper our quests will be contained in
     this.paper = new joint.dia.Paper({
       el: ReactDOM.findDOMNode(this.refs.placeholder),

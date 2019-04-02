@@ -40,7 +40,7 @@ class App extends Component {
     theme: themes('Warrior'),
   };
 
-  setThemeOnSignIn = charclass => {
+  setThemeByClass = charclass => {
     this.setState({theme: themes(charclass)});
   }
 
@@ -52,7 +52,7 @@ class App extends Component {
           <Route exact path='/welcome' render={() => <Welcome theme={this.state.theme} />} />
           <Route exact path='/signup' render={() => <Signup theme={this.state.theme} />} />
           <Route exact path='/signin' render={() => <Signin theme={this.state.theme} />} />
-          <PrivateRoute exact path='/' component={Quest} theme={this.state.theme} onSignIn={this.setThemeOnSignIn}  />
+          <PrivateRoute exact path='/' component={Quest} theme={this.state.theme} setTheme={this.setThemeByClass}  />
           <Route component={NoMatch} />
         </Switch>
       </Router>
