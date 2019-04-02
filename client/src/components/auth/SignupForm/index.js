@@ -38,7 +38,9 @@ class Register extends Component {
     }
   }
   onChange = e => {
-    this.setState({ [e.target.id]: e.target.value });
+    this.setState({ [e.target.id]: e.target.value }, () => {
+      this.props.setTheme(this.state.class)
+    })
   };
   onSubmit = e => {
     e.preventDefault();
@@ -92,13 +94,12 @@ class Register extends Component {
                 <Form.Control
                   as='select'
                   onChange={this.onChange}
-                  value={this.state.class}
                   id='class'
                 >
-                  <option>Warrior</option>
-                  <option>Mage</option>
-                  <option>Cleric</option>
-                  <option>Bard</option>
+                  <option value='Warrior'>Warrior</option>
+                  <option value='Mage'>Mage</option>
+                  <option value='Cleric'>Cleric</option>
+                  <option value='Bard'>Bard</option>
                 </Form.Control>
               </Form.Group>
               <Form.Group >

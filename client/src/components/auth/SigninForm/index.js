@@ -47,8 +47,6 @@ class Login extends Component {
       password: this.state.password
     };
     this.props.loginUser(userData);
-
-    
   };
   render() {
     const { errors } = this.state;
