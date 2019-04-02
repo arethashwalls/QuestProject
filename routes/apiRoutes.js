@@ -109,14 +109,5 @@ router.route("/quest/user/:id").get(questControllers.getQuest);
 
 router.route("/quests/:id/:user").put(questControllers.updateQuest);
 
-// router
-//   .route("/quests/:userid/head")
-//   .get(questControllers.getQuestHead)
-//   .post(questControllers.createQuestHead);
-
-// router.route("/quests/:userid/child").post(questControllers.createQuestChild);
-
-// router.route("/quests/:userid/full").get(questControllers.getFullQuest);
-
 // Exports:
 module.exports = router;
