@@ -45,7 +45,6 @@ class App extends Component {
   // }
 
   render() {
-    console.log(store.getState().auth.user);
     document.getElementById('root').style.backgroundColor = this.state.theme.lightBg.backgroundColor;
     return <Provider store={store}>
       <Router>
