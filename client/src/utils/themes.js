@@ -1,9 +1,27 @@
 const colorSchemes = {
-    redGreen: {
+    'Warrior': {
         dark: '#393F26',
         light: '#818474',
         highlight: '#EDDDD4',
         splash: '#AD0101'
+    },
+    Mage: {
+        dark: 'blue',
+        light: 'yellow',
+        highlight: 'green',
+        splash: 'lightgreen'
+    },
+    Cleric: {
+        dark: 'gray',
+        light: 'red',
+        highlight: 'white',
+        splash: 'black' 
+    },
+    Bard: {
+        dark: 'purple',
+        light: 'pink',
+        highlight: 'orange',
+        splash: 'magenta' 
     }
 }
 

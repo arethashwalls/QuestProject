@@ -14,7 +14,7 @@ class Quest extends Component {
         const { user } = this.props.auth;
         return <div>
             <QuestNav theme={this.props.theme} username={user.name} signout={this.onSignoutClick} />
-            <Chart theme={this.props.theme} />
+            <Chart theme={this.props.theme} onSignIn={this.props.onSignIn} />
         </div>
     }
     

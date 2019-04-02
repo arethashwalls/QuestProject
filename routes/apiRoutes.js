@@ -24,8 +24,6 @@ const User = require("../models/User.js");
 router.route("/users").get(userControllers.getAllUsers);
 
 router.post("/users/login", (req, res) => {
-  // console.log("hello");
-  // console.log(req.body);
   // Form validation
   const { errors, isValid } = validateLoginInput(req.body);
   // Check validation
@@ -47,7 +45,8 @@ router.post("/users/login", (req, res) => {
         // Create JWT Payload
         const payload = {
           id: user.id,
-          name: user.name
+          name: user.name,
+          class: user.class
         };
         // Sign token
         jwt.sign(

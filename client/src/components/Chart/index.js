@@ -27,6 +27,7 @@ class Chart extends Component {
 
   //When the page loads
   componentDidMount() {
+    this.props.onSignIn(this.props.loggedInUserClass);
     //Creates the paper our quests will be contained in
     this.paper = new joint.dia.Paper({
       el: ReactDOM.findDOMNode(this.refs.placeholder),
@@ -133,9 +134,7 @@ class Chart extends Component {
 
   //Saves the current incarnation of a quest in our database
   saveQuest = userId => {
-    console.log(userId);
     let graphJSON = this.graph.toJSON();
-    console.log(this.state.questID);
     if (this.state.questID === '') {
       API.saveQuest(graphJSON, userId)
         .then(res => this.setState({ questID: res.data._id }))
@@ -217,9 +216,9 @@ class Chart extends Component {
   }
 }
 const mapStateToProps = state => {
-
   return {
-    loggedInUserId: state.auth.user.id
+    loggedInUserId: state.auth.user.id,
+    loggedInUserClass: state.auth.user.class
   };
 };
 export default connect(
