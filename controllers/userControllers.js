@@ -19,7 +19,13 @@ module.exports = {
     },
     createUser: (req, res) => {
         db.User.create(req.body)
-        .then(data => res.json(data))
+        .then(data => {
+            console.log(data)
+            res.json(data)
+        })
         .catch(err => console.log(err))
-    }
+    },
+    // getClass: (req, res) => {
+    //     db.User.find({})
+    // }
 }

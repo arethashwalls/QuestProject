@@ -24,8 +24,6 @@ const User = require("../models/User.js");
 router.route("/users").get(userControllers.getAllUsers);
 
 router.post("/users/login", (req, res) => {
-  // console.log("hello");
-  // console.log(req.body);
   // Form validation
   const { errors, isValid } = validateLoginInput(req.body);
   // Check validation
@@ -47,7 +45,8 @@ router.post("/users/login", (req, res) => {
         // Create JWT Payload
         const payload = {
           id: user.id,
-          name: user.name
+          name: user.name,
+          class: user.class
         };
         // Sign token
         jwt.sign(
@@ -85,6 +84,7 @@ router.route("/users/register").post((req, res) => {
     }
     const newUser = new User({
       name: req.body.name,
+      class: req.body.class,
       email: req.body.email,
       password: req.body.password
     });
@@ -107,15 +107,6 @@ router.route("/quest/user").post(questControllers.saveQuest);
 router.route("/quest/user/:id").get(questControllers.getQuest);
 
 router.route("/quests/:id/:user").put(questControllers.updateQuest);
-
-// router
-//   .route("/quests/:userid/head")
-//   .get(questControllers.getQuestHead)
-//   .post(questControllers.createQuestHead);
-
-// router.route("/quests/:userid/child").post(questControllers.createQuestChild);
-
-// router.route("/quests/:userid/full").get(questControllers.getFullQuest);
 
 // Exports:
 module.exports = router;

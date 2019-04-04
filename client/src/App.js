@@ -37,8 +37,12 @@ if (localStorage.jwtToken) {
 
 class App extends Component {
   state = {
-    theme: themes('redGreen')
+    theme: themes('Warrior'),
   };
+
+  setThemeByClass = charclass => {
+    this.setState({theme: themes(charclass)});
+  }
 
   render() {
     document.getElementById('root').style.backgroundColor = this.state.theme.lightBg.backgroundColor;
@@ -46,13 +50,14 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path='/welcome' render={() => <Welcome theme={this.state.theme} />} />
-          <Route exact path='/signup' render={() => <Signup theme={this.state.theme} />} />
+          <Route exact path='/signup' render={() => <Signup theme={this.state.theme} setTheme={this.setThemeByClass} />} />
           <Route exact path='/signin' render={() => <Signin theme={this.state.theme} />} />
-          <PrivateRoute exact path='/' component={Quest} theme={this.state.theme}  />
+          <PrivateRoute exact path='/' component={Quest} theme={this.state.theme} setTheme={this.setThemeByClass}  />
           <Route component={NoMatch} />
         </Switch>
       </Router>
     </Provider>
   }
 }
+
 export default App;
