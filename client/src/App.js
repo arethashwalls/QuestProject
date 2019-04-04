@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import jwt_decode from "jwt-decode";
-import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser, logoutUser } from "./actions/authActions";
-import { Provider } from "react-redux";
-import store from "./store";
-import PrivateRoute from "./components/PrivateRoute";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
+import setAuthToken from './utils/setAuthToken';
+import { setCurrentUser, logoutUser } from './actions/authActions';
+import { Provider } from 'react-redux';
+import store from './store';
+import PrivateRoute from './components/PrivateRoute';
 import Quest from './pages/Quest';
 import Welcome from './pages/Welcome';
 import Signup from './pages/Signup';
@@ -29,7 +29,7 @@ if (localStorage.jwtToken) {
     // Logout user
     store.dispatch(logoutUser());
     // Redirect to login
-    window.location.href = "./signin";
+    window.location.href = './signin';
   }
 }
 // Imports:
@@ -46,8 +46,8 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path='/welcome' render={() => <Welcome theme={this.state.theme} />} />
-          <Route exact path="/signup" render={() => <Signup theme={this.state.theme} />} />
-          <Route exact path="/signin" render={() => <Signin theme={this.state.theme} />} />
+          <Route exact path='/signup' render={() => <Signup theme={this.state.theme} />} />
+          <Route exact path='/signin' render={() => <Signin theme={this.state.theme} />} />
           <PrivateRoute exact path='/' component={Quest} theme={this.state.theme}  />
           <Route component={NoMatch} />
         </Switch>
