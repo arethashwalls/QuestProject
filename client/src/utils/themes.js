@@ -26,7 +26,6 @@ const colorSchemes = {
 }
 
 const getTheme = themeName => {
-    console.log(themeName)
     const {dark, light, highlight, splash} = colorSchemes[themeName];
     return {
         darkBg: {
