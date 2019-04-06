@@ -6,15 +6,27 @@ import QuestNav from '../../components/QuestNav';
 import Chart from '../../components/Chart';
 
 class Quest extends Component {
+    state = {
+        quests: [
+            { title: 'Oh boy!' },
+            { title: 'Slay a dragon I guess' },
+            { title: 'Just stay out of trouble' }
+        ]
+    }
     onSignoutClick = e => {
         e.preventDefault();
         this.props.logoutUser();
-      };
+    };
+
+    componentDidMount() {
+        //Call API to get all quests here
+    }
+
     render() {
         const { user } = this.props.auth;
         return <div>
-            <QuestNav theme={this.props.theme} username={user.name} signout={this.onSignoutClick} />
-            <Chart theme={this.props.theme} />
+            <QuestNav theme={this.props.theme} username={user.name} signout={this.onSignoutClick} allQuests={this.state.quests}/>
+            <Chart theme={this.props.theme} setTheme={this.props.setTheme} />
         </div>
     }
     

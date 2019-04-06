@@ -17,6 +17,7 @@ class Register extends Component {
     super();
     this.state = {
       name: '',
+      class: '',
       email: '',
       password: '',
       password2: '',
@@ -37,17 +38,19 @@ class Register extends Component {
     }
   }
   onChange = e => {
-    this.setState({ [e.target.id]: e.target.value });
+    this.setState({ [e.target.id]: e.target.value }, () => {
+      this.props.setTheme(this.state.class)
+    })
   };
   onSubmit = e => {
     e.preventDefault();
     const newUser = {
       name: this.state.name,
+      class: this.state.class,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2
     };
-    console.log(newUser);
     this.props.registerUser(newUser, this.props.history);
   };
   render() {
@@ -85,6 +88,19 @@ class Register extends Component {
                   </Alert>
                   : ''
                 }
+              </Form.Group>
+              <Form.Group >
+                <Form.Label>Character Class:</Form.Label>
+                <Form.Control
+                  as='select'
+                  onChange={this.onChange}
+                  id='class'
+                >
+                  <option value='Warrior'>Warrior</option>
+                  <option value='Mage'>Mage</option>
+                  <option value='Cleric'>Cleric</option>
+                  <option value='Bard'>Bard</option>
+                </Form.Control>
               </Form.Group>
               <Form.Group >
                 <Form.Label>Email:</Form.Label>
