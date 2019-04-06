@@ -14,7 +14,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './style.css';
 
-let uml = joint.shapes.uml;
+//let uml = joint.shapes.uml;
 
 class Chart extends Component {
   constructor(props) {
@@ -50,22 +50,57 @@ class Chart extends Component {
       model: this.graph,
       background: {
         color: 'rgba(0, 255, 0, 0.3)'
+      },
+      defaultLink: new joint.dia.Link({
+        attrs: { '.marker-target': { d: 'M 10 0 L 0 5 L 10 10 z' } }
+      }),
+
+      validateConnection: function(cellViewS, magnetS, cellViewT, magnetT, end, linkView) {
+        // Prevent linking from input ports.
+        if (magnetS && magnetS.getAttribute('port-group') === 'in') return false;
+        // Prevent linking from output ports to input ports within one element.
+        if (cellViewS === cellViewT) return false;
+        // Prevent linking to input ports.
+        return magnetT && magnetT.getAttribute('port-group') === 'in';
+      },
+
+      validateMagnet: function(cellView, magnet) {
+        // Note that this is the default behaviour. Just showing it here for reference.
+        // Disable linking interaction for magnets marked as passive (see below `.inPorts circle`).
+        return magnet.getAttribute('magnet') !== 'passive';
       }
     });
 
     //Our initial Quest Tree Starting point.
-    let start = new joint.shapes.basic.Rect({
+    let start = new joint.shapes.devs.Model({
       position: { x: 398, y: 83 },
       size: { width: 150, height: 90 },
       attrs: {
         rect: { fill: 'orange' },
         text: { text: 'Start Campaign', fill: 'white' }
+      },
+      outPorts: ['out'],
+      ports: {
+        groups: {
+            'out': {
+                attrs: {
+                  '.port-body': {
+                    fill: '#E74C3C',
+                  },
+                  
+                },
+                position: 'bottom'
+            }
+        }
       }
+    
     });
 
     this.graph.addCell(start);
   }
 
+
+  //Grab the list of adventures the user has saved to their account
   getAdventureList = user => {
 
     API.getAdventures(user)
@@ -96,53 +131,44 @@ class Chart extends Component {
     return sentenceWrapped;
   };
 
-  //Adds the link between quest elements. User will currently have to manually link the cells after adding it
-  addLink = () => {
-    let link = new joint.dia.Link({
-      source: { x: 75, y: 175 },
-      target: { x: 150, y: 200 }
-    });
-    this.graph.addCell(link);
-  };
 
   //Create a quest with a title and text. Once it's formed, the user can position it anywhere on the graph
   addQuest = event => {
     event.preventDefault();
 
-    let rectangle = new uml.Class({
+    let rectangle = new joint.shapes.devs.Model({
       position: { x: 150, y: 300 },
-      name: this.sentenceWrapped(
-        $('#add-quest')
-          .val()
-          .trim(),
-        20,
-        30
-      ),
-      attributes: [
-        this.sentenceWrapped(
-          $('#quest-description')
-            .val()
-            .trim(),
-          40,
-          500
-        )
-      ],
       size: { width: 250, height: 200 },
       attrs: {
-        '.uml-class-name-rect': {
-          fill: '#feb662',
-          stroke: '#ffffff',
-          'stroke-width': 0.5
-        },
-        '.uml-class-attrs-rect': {
-          fill: '#fdc886',
-          stroke: '#fff',
-          'stroke-width': 0.5
-        },
-        '.uml-class-methods-rect': {
-          fill: '#fdc886',
-          stroke: '#fff',
-          'stroke-width': 0.5
+        '.label':{
+          text: 
+            this.sentenceWrapped($('#add-quest').val().trim(), 20, 30) + "\n" + this.sentenceWrapped($('#quest-description').val()
+            .trim(),30,200)
+          
+        }
+      },
+      inPorts: [''],
+      outPorts: ['out'],
+      ports: {
+        groups: {
+          'in':{
+            attrs:{
+              '.port-body':{
+                fill: '#E74C3C',
+                magnet: 'passive'
+              }
+            },
+            position: 'top'
+          },
+            'out': {
+                attrs: {
+                  '.port-body': {
+                    fill: '#E74C3C'
+                  },
+                  
+                },
+                position: 'bottom'
+            }
         }
       }
     });
@@ -219,14 +245,6 @@ class Chart extends Component {
             </Form>
           </Col>
           <Col xs={12} lg={6} className='text-lg-right'>
-            <Button
-              id='add-link'
-              onClick={this.addLink}
-              className='mb-1 mr-1'
-              style={this.props.theme.buttons}
-            >
-              Add Link
-            </Button>
             <br className='d-none d-lg-block' />
             <Button
               id='save-btn'
@@ -245,13 +263,7 @@ class Chart extends Component {
               </NavDropdown>
               : ''
             }
-            <Button
-              id='retrieve-btn'
-              onClick={() => this.getQuest(this.props.loggedInUserId, parseInt(this.state.questIndex)) }
-              style={this.props.theme.buttons}
-            >
-              Retrieve Quest
-            </Button>
+  
             <SaveModal
               className="modal"
               show={this.state.isOpen}
