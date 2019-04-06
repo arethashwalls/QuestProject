@@ -41,10 +41,10 @@ class App extends Component {
   };
 
   setThemeByClass = charclass => {
+    console.log(charclass);
     this.setState({theme: themes(charclass)});
   }
-
-  render() {
+    render() {
     document.getElementById('root').style.backgroundColor = this.state.theme.lightBg.backgroundColor;
     return <Provider store={store}>
       <Router>

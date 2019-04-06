@@ -18,7 +18,10 @@ const questSchema = new Schema({
       return JSON.stringify(data);
     }
   },
-  user: { type: Schema.Types.ObjectId, ref: 'User' }
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
+  title: {
+    type: String
+  }
 });
 
 const Quest = mongoose.model('QuestItem', questSchema);
