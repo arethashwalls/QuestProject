@@ -14,7 +14,7 @@ class Quest extends Component {
     render() {
         const { user } = this.props.auth;
         return <div>
-            <QuestNav theme={this.props.theme} username={user.name} signout={this.onSignoutClick} allQuests={this.state.quests}/>
+            <QuestNav theme={this.props.theme} username={user.name} signout={this.onSignoutClick} />
             <Chart theme={this.props.theme} setTheme={this.props.setTheme} />
         </div>
     }
