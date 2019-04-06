@@ -7,7 +7,6 @@ import $ from 'jquery';
 import API from '../../utils/api';
 import Container from 'react-bootstrap/Container';
 import SaveModal from '../SaveModal';
-import NavDropdown from 'react-bootstrap/NavDropdown'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -66,15 +65,15 @@ class Chart extends Component {
     this.graph.addCell(start);
   }
 
-  getAdventureList = user => {
+  // getAdventureList = user => {
 
-    API.getAdventures(user)
-      .then(res => {
-        this.setState({ adventures: res.data });
-        console.log(res.data);
-      })
-      .catch(err => console.log(err))
-  }
+  //   API.getAdventures(user)
+  //     .then(res => {
+  //       this.setState({ adventures: res.data });
+  //       console.log(res.data);
+  //     })
+  //     .catch(err => console.log(err))
+  // }
 
   //Wraps the text so that it can stay contained in the cell. Otherwise, it just goes out without abandon
   sentenceWrapped = (sentence, lineSize, maxSize) => {
@@ -237,14 +236,14 @@ class Chart extends Component {
               Save New
             </Button>
             <br className='d-none d-lg-block' />
-            {(this.state.adventures)
+            {/* {(this.state.adventures)
               ? <NavDropdown title="My Quests" id="collasible-nav-dropdown" style={this.props.theme.lightText} onClick = {() => this.getAdventureList(this.props.loggedInUserId)}>
                 {this.state.adventures.map((quest,index) => {
                   return <NavDropdown.Item href="" key = {index} value = {index} onClick = {() => this.getQuest(this.props.loggedInUserId, index) }>{quest.title}</NavDropdown.Item>;
                 })}
               </NavDropdown>
               : ''
-            }
+            } */}
             <Button
               id='retrieve-btn'
               onClick={() => this.getQuest(this.props.loggedInUserId, parseInt(this.state.questIndex)) }
