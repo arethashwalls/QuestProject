@@ -37,7 +37,7 @@ class QuestNav extends Component {
                 </Navbar.Brand>
                 {this.props.username ? <p style={this.props.theme.lightText}>Happy questing, {this.props.username}!</p> : ''}
                 {(this.state.adventures.length > 0) 
-                    ? <NavDropdown title="My Quests" id="collasible-nav-dropdown" style={this.props.theme.lightText}>
+                    ? <NavDropdown title="My Adventures" id="collasible-nav-dropdown" style={this.props.theme.lightText}>
                         {this.state.adventures.map(adventure => <NavDropdown.Item href="">{adventure.title}</NavDropdown.Item>)}
                     </NavDropdown>
                     : ''
