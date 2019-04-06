@@ -7,11 +7,11 @@ import $ from 'jquery';
 import API from '../../utils/api';
 import Container from 'react-bootstrap/Container';
 import SaveModal from '../SaveModal';
-import NavDropdown from 'react-bootstrap/NavDropdown'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import './style.css';
 
 let uml = joint.shapes.uml;
@@ -31,7 +31,6 @@ class Chart extends Component {
   };
 
   toggleModal = () => {
-    console.log("")
     this.setState({
       isOpen: !this.state.isOpen
     });
