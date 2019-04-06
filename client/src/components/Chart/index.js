@@ -7,6 +7,7 @@ import $ from 'jquery';
 import API from '../../utils/api';
 import Container from 'react-bootstrap/Container';
 import SaveModal from '../SaveModal';
+import NavDropdown from 'react-bootstrap/NavDropdown'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -25,7 +26,8 @@ class Chart extends Component {
     questID: '',
     title: '',
     adventures: [],
-    isOpen: false
+    isOpen: false,
+    questIndex:''
   };
 
   toggleModal = () => {
@@ -73,8 +75,6 @@ class Chart extends Component {
       })
       .catch(err => console.log(err))
   }
-
-
 
   //Wraps the text so that it can stay contained in the cell. Otherwise, it just goes out without abandon
   sentenceWrapped = (sentence, lineSize, maxSize) => {
@@ -157,7 +157,7 @@ class Chart extends Component {
   //Saves the current incarnation of a quest in our database
   saveQuest = (title, userId) => {
     let graphJSON = this.graph.toJSON();
-    this.setState({title: title})
+    this.setState({ title: title })
     if (this.state.questID === '') {
       API.saveQuest(this.state.title, graphJSON, userId)
         .then(res => {
@@ -170,21 +170,23 @@ class Chart extends Component {
   };
 
   //Grabs the quest from the database. Eventually we will try to pull up specific versions
-  getQuest = userId => {
-    API.getQuest(userId)
+  getQuest = (userId, index) => {
+    API.getAdventures(userId)
       .then(res => {
-        debugger;
-        console.log(res.data);
-        console.log(this.graph.fromJSON(JSON.parse(res.data[0].chart)));
+        this.graph.fromJSON(JSON.parse(res.data[index].chart));
       })
       .catch(err => console.log(err));
   };
 
-  handleOnChange = event =>{
+  handleOnChangeTitle = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
+  };
+
+  handleOnChangeDropdown = event => {
+    console.log(event.target.value)
   }
 
   //Make it WORK!
@@ -228,16 +230,24 @@ class Chart extends Component {
             <br className='d-none d-lg-block' />
             <Button
               id='save-btn'
-              onClick={() => { this.toggleModal(); this.getAdventureList(this.props.loggedInUserId); }}
+              onClick={() => { this.toggleModal()}}
               className='mb-1 mr-1'
               style={this.props.theme.buttons}
             >
               Save New
             </Button>
             <br className='d-none d-lg-block' />
+            {(this.state.adventures)
+              ? <NavDropdown title="My Quests" id="collasible-nav-dropdown" style={this.props.theme.lightText} onClick = {() => this.getAdventureList(this.props.loggedInUserId)}>
+                {this.state.adventures.map((quest,index) => {
+                  return <NavDropdown.Item href="" key = {index} value = {index} onClick = {() => this.getQuest(this.props.loggedInUserId, index) }>{quest.title}</NavDropdown.Item>;
+                })}
+              </NavDropdown>
+              : ''
+            }
             <Button
               id='retrieve-btn'
-              onClick={() => this.getQuest(this.props.loggedInUserId)}
+              onClick={() => this.getQuest(this.props.loggedInUserId, parseInt(this.state.questIndex)) }
               style={this.props.theme.buttons}
             >
               Retrieve Quest
@@ -246,9 +256,9 @@ class Chart extends Component {
               className="modal"
               show={this.state.isOpen}
               close={this.toggleModal}
-              saveQuest={()=>this.saveQuest(this.state.title, this.props.loggedInUserId)}>
+              saveQuest={() => this.saveQuest(this.state.title, this.props.loggedInUserId)}>
               <Form.Label>Name Your Adventure: </Form.Label>
-              <Form.Control id='add-title' type='text' name='title' value={this.state.title} onChange ={this.handleOnChange}/>
+              <Form.Control id='add-title' type='text' name='title' value={this.state.title} onChange={this.handleOnChangeTitle} />
             </SaveModal>
           </Col>
         </Row>

@@ -104,7 +104,7 @@ router.route("/users/register").post((req, res) => {
 
 router.route("/quest/user").post(questControllers.saveQuest);
 
-router.route("/quest/user/:id").get(questControllers.getQuest);
+//router.route("/quest/user/:id").get(questControllers.getQuest);
 
 router.route("/quests/:id/:user").put(questControllers.updateQuest);
 
