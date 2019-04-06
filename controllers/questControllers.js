@@ -7,7 +7,8 @@ module.exports = {
   saveQuest: (req, res) => {
     db.Quest.create({
       chart: req.body.quest,
-      user: req.body.userId
+      user: req.body.userId,
+      title: req.body.title
     })
       .then(dbQuest => res.json(dbQuest))
       .catch(err => res.status(422).json(err));
@@ -23,7 +24,6 @@ module.exports = {
   },
 
   updateQuest: (req, res) => {
-    console.log(req.body);
     db.Quest.findByIdAndUpdate(
       { _id: req.params.id },
       { chart: req.body },
@@ -31,5 +31,13 @@ module.exports = {
     )
       .then(dbQuest => res.json(dbQuest))
       .catch(err => res.status(422).json(err));
+  },
+
+  getAllQuests: (req, res) =>{
+    db.Quest.find({
+        user: req.params.user     
+    })
+    .then(dbQuests => res.json(dbQuests))
+    .catch(err => res.status(422).json(err));
   }
 };

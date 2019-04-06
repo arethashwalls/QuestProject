@@ -6,10 +6,12 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import API from '../../utils/api';
 import Container from 'react-bootstrap/Container';
+import SaveModal from '../SaveModal';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import './style.css';
 
 let uml = joint.shapes.uml;
@@ -21,9 +23,18 @@ class Chart extends Component {
   }
 
   state = {
-    user: null,
-    questID: ''
+    questID: '',
+    title: '',
+    adventures: [],
+    isOpen: false,
+    questIndex:''
   };
+
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
 
   //When the page loads
   componentDidMount() {
@@ -52,6 +63,16 @@ class Chart extends Component {
     });
 
     this.graph.addCell(start);
+  }
+
+  getAdventureList = user => {
+
+    API.getAdventures(user)
+      .then(res => {
+        this.setState({ adventures: res.data });
+        console.log(res.data);
+      })
+      .catch(err => console.log(err))
   }
 
   //Wraps the text so that it can stay contained in the cell. Otherwise, it just goes out without abandon
@@ -93,8 +114,8 @@ class Chart extends Component {
         $('#add-quest')
           .val()
           .trim(),
-        10,
-        1000
+        20,
+        30
       ),
       attributes: [
         this.sentenceWrapped(
@@ -102,7 +123,7 @@ class Chart extends Component {
             .val()
             .trim(),
           40,
-          200
+          500
         )
       ],
       size: { width: 250, height: 200 },
@@ -133,26 +154,39 @@ class Chart extends Component {
   };
 
   //Saves the current incarnation of a quest in our database
-  saveQuest = userId => {
+  saveQuest = (title, userId) => {
     let graphJSON = this.graph.toJSON();
+    this.setState({ title: title })
     if (this.state.questID === '') {
-      API.saveQuest(graphJSON, userId)
-        .then(res => this.setState({ questID: res.data._id }))
+      API.saveQuest(this.state.title, graphJSON, userId)
+        .then(res => {
+          this.setState({ questID: res.data._id });
+        })
         .catch(err => console.log(err));
-    } else {
+    } /*else {
       API.updateQuest(graphJSON, this.state.questID);
-    }
+    }*/
   };
 
   //Grabs the quest from the database. Eventually we will try to pull up specific versions
-  getQuest = userId => {
-    API.getQuest(userId)
+  getQuest = (userId, index) => {
+    API.getAdventures(userId)
       .then(res => {
-        debugger;
-        console.log(this.graph.fromJSON(JSON.parse(res.data[0].chart)));
+        this.graph.fromJSON(JSON.parse(res.data[index].chart));
       })
       .catch(err => console.log(err));
   };
+
+  handleOnChangeTitle = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleOnChangeDropdown = event => {
+    console.log(event.target.value)
+  }
 
   //Make it WORK!
   render() {
@@ -195,20 +229,36 @@ class Chart extends Component {
             <br className='d-none d-lg-block' />
             <Button
               id='save-btn'
-              onClick={() => this.saveQuest(this.props.loggedInUserId)}
+              onClick={() => { this.toggleModal()}}
               className='mb-1 mr-1'
               style={this.props.theme.buttons}
             >
-              Save
+              Save New
             </Button>
             <br className='d-none d-lg-block' />
+            {(this.state.adventures)
+              ? <NavDropdown title="My Quests" id="collasible-nav-dropdown" style={this.props.theme.lightText} onClick = {() => this.getAdventureList(this.props.loggedInUserId)}>
+                {this.state.adventures.map((quest,index) => {
+                  return <NavDropdown.Item href="" key = {index} value = {index} onClick = {() => this.getQuest(this.props.loggedInUserId, index) }>{quest.title}</NavDropdown.Item>;
+                })}
+              </NavDropdown>
+              : ''
+            }
             <Button
               id='retrieve-btn'
-              onClick={() => this.getQuest(this.props.loggedInUserId)}
+              onClick={() => this.getQuest(this.props.loggedInUserId, parseInt(this.state.questIndex)) }
               style={this.props.theme.buttons}
             >
               Retrieve Quest
             </Button>
+            <SaveModal
+              className="modal"
+              show={this.state.isOpen}
+              close={this.toggleModal}
+              saveQuest={() => this.saveQuest(this.state.title, this.props.loggedInUserId)}>
+              <Form.Label>Name Your Adventure: </Form.Label>
+              <Form.Control id='add-title' type='text' name='title' value={this.state.title} onChange={this.handleOnChangeTitle} />
+            </SaveModal>
           </Col>
         </Row>
       </Container>

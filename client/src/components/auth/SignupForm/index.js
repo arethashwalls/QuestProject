@@ -17,7 +17,7 @@ class Register extends Component {
     super();
     this.state = {
       name: '',
-      class: '',
+      class: 'Warrior',
       email: '',
       password: '',
       password2: '',
@@ -39,6 +39,7 @@ class Register extends Component {
   }
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value }, () => {
+      console.log(this.state)
       this.props.setTheme(this.state.class)
     })
   };
@@ -95,6 +96,7 @@ class Register extends Component {
                   as='select'
                   onChange={this.onChange}
                   id='class'
+            
                 >
                   <option value='Warrior'>Warrior</option>
                   <option value='Mage'>Mage</option>
