@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import './style.css'
 
 const QuestNav = props => {
-    console.log(props)
     return <Navbar sticky='top' className='justify-content-between' style={props.theme.darkBg}>
         <Container>
             <Navbar.Brand>
