@@ -13,7 +13,7 @@ const Signin = props => {
   return (
     <div>
       {/* <QuestNav theme={props.theme} signedIn={props.signedIn} /> */}
-      <Container style={props.theme.loginText}>
+      <Container style={props.theme.lightText}>
         <Row className="my-3">
           <Col className="mx-5">
             <img src={process.env.PUBLIC_URL + "/images/quest.png"} />

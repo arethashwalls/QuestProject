@@ -1,6 +1,5 @@
 const colorSchemes = {
-<<<<<<< HEAD
-  login: {
+  Login: {
     light: "#fefdd7"
   },
   Warrior: {
@@ -34,13 +33,15 @@ const getTheme = themeName => {
   return {
     backgrdPic: {
       imgFile: "images/background.jpg"
-=======
+    },
     Warrior: {
-        dark: '#393F26',
-        light: '#818474',
-        highlight: '#EDDDD4',
-        splash: '#AD0101'
->>>>>>> 81d3f8d58ed4cbda79a529ce9e17193e529eaf12
+      dark: "#393F26",
+      light: "#818474",
+      highlight: "#EDDDD4",
+      splash: "#AD0101"
+    },
+    Login: {
+      light: "#fefdd7"
     },
     darkBg: {
       backgroundColor: dark

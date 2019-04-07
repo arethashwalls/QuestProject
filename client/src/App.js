@@ -39,7 +39,6 @@ class App extends Component {
     theme: themes("Warrior")
   };
 
-<<<<<<< HEAD
   setThemeByClass = charclass => {
     this.setState({ theme: themes(charclass) });
   };
@@ -84,23 +83,6 @@ class App extends Component {
         </Router>
       </Provider>
     );
-=======
-  setThemeByClass = charclass => this.setState({ theme: themes(charclass) });
-
-  render() {
-    document.getElementById('root').style.backgroundColor = this.state.theme.lightBg.backgroundColor;
-    return <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route exact path='/welcome' render={() => <Welcome theme={this.state.theme} />} />
-          <Route exact path='/signup' render={() => <Signup theme={this.state.theme} setTheme={this.setThemeByClass} />} />
-          <Route exact path='/signin' render={() => <Signin theme={this.state.theme} />} />
-          <PrivateRoute exact path='/' component={Quest} theme={this.state.theme} setTheme={this.setThemeByClass} />
-          <Route component={NoMatch} />
-        </Switch>
-      </Router>
-    </Provider>
->>>>>>> 81d3f8d58ed4cbda79a529ce9e17193e529eaf12
   }
 }
 

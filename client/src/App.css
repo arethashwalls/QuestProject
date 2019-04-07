@@ -1,33 +1,36 @@
 @font-face {
-    font-family: 'Baskervville';
-    src: url('./fonts/Baskervville.otf');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Baskervville";
+  src: url("./fonts/Baskervville.otf");
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Landliebe';
-    src: url('./fonts/Landliebe.eot');
-    src: url('./fonts/Landliebe.eot?#iefix') format('embedded-opentype'),
-         url('./fonts/Landliebe.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Landliebe";
+  src: url("./fonts/Landliebe.eot");
+  src: url("./fonts/Landliebe.eot?#iefix") format("embedded-opentype"),
+    url("./fonts/Landliebe.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
-    font-family: 'Baskervville', Baskerville, serif
+  /* font-family: 'Baskervville', Baskerville, serif */
+  font-family: "Baskervville", Baskerville, serif;
 }
-h2, strong {
-    font-family: Landliebe;
+h2,
+strong {
+  font-family: Landliebe;
 }
 strong {
-    font-size: 3rem;
+  font-size: 3rem;
 }
-button, button:hover {
-    transition: color 0.25s ease;
+button,
+button:hover {
+  transition: color 0.25s ease;
 }
 button:hover {
-    background-color: #3b3a3b!important;
+  background-color: #3b3a3b !important;
 }
 button a:hover {
-    text-decoration: none!important;
+  text-decoration: none !important;
 }
