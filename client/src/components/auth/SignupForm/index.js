@@ -17,7 +17,7 @@ class Register extends Component {
     super();
     this.state = {
       name: "",
-      class: "Login",
+      class: "Warrior",
       email: "",
       password: "",
       password2: "",
