@@ -23,5 +23,7 @@ router.route("/quests/:id/:user").put(questControllers.updateQuest);
 
 router.route("/quest/:user").get(questControllers.getAllQuests);
 
+router.route("/quest/:id").delete(questControllers.deleteQuest);
+
 // Exports:
 module.exports = router;
