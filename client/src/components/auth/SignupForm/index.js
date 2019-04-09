@@ -58,21 +58,9 @@ class Register extends Component {
     const { errors } = this.state;
     return (
       <Container fluid>
-        <Row className="my-4">
-          <Col xs={12} lg={4} className="mb-4">
-            <h4>Sign Up</h4>
-            <p>
-              Already have an account?
-              <Link
-                to="/signin"
-                style={this.props.theme.loginText}
-                className="ml-2 d-md-block ml-md-0 mt-md-2"
-              >
-                <Button style={this.props.theme.buttons}>Sign In</Button>
-              </Link>
-            </p>
-          </Col>
-          <Col xs={12} lg={8}>
+        <Row className='my-4'>
+
+          <Col xs={12} lg={8} className = "form">
             <Form noValidate onSubmit={this.onSubmit}>
               <Form.Group>
                 <Form.Label>Name:</Form.Label>
@@ -155,13 +143,8 @@ class Register extends Component {
                   ""
                 )}
               </Form.Group>
-              <Button
-                type="submit"
-                className="float-right"
-                style={this.props.theme.buttons}
-              >
-                Sign Up
-              </Button>
+              <Button type='submit' className='float-left' style={this.props.theme.buttons}>Your Quest Awaits...</Button>
+
             </Form>
           </Col>
         </Row>

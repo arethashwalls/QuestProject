@@ -52,76 +52,58 @@ class Login extends Component {
     const { errors } = this.state;
     return (
       <div>
-        <Container fluid>
-          <Row className="my-4">
-            <Col xs={12} lg={4}>
-              <h4>Sign In</h4>
-              <p>
-                Don't have an account?
-                <Link
-                  to="/signup"
-                  style={this.props.theme.loginText}
-                  className="ml-2 d-md-block ml-md-0 mt-md-2"
-                >
-                  <Button style={this.props.theme.buttons}>Sign Up</Button>
-                </Link>
-              </p>
-            </Col>
-            <Col xs={12} lg={8}>
-              <Form noValidate onSubmit={this.onSubmit}>
-                <Form.Group>
-                  <Form.Label>Email:</Form.Label>
-                  <Form.Control
-                    onChange={this.onChange}
-                    value={this.state.email}
-                    error={errors.email}
-                    id="email"
-                    type="email"
-                    className={classnames("", {
-                      invalid: errors.email || errors.emailnotfound
-                    })}
-                  />
-                  {errors.email || errors.emailnotfound ? (
-                    <Alert variant="danger">
-                      {errors.email}
-                      {errors.emailnotfound}
-                    </Alert>
-                  ) : (
-                    ""
-                  )}
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label>Password:</Form.Label>
-                  <Form.Control
-                    onChange={this.onChange}
-                    value={this.state.password}
-                    error={errors.password}
-                    id="password"
-                    type="password"
-                    className={classnames("", {
-                      invalid: errors.password || errors.passwordincorrect
-                    })}
-                  />
-                  {errors.password || errors.passwordincorrect ? (
-                    <Alert variant="danger">
-                      {errors.password}
-                      {errors.passwordincorrect}
-                    </Alert>
-                  ) : (
-                    ""
-                  )}
-                </Form.Group>
-                <Button
-                  type="submit"
-                  className="float-right"
-                  style={this.props.theme.buttons}
-                >
-                  Sign In
-                </Button>
-              </Form>
-            </Col>
-          </Row>
-        </Container>
+
+      <Container fluid>
+        <Row className='my-1'>
+ 
+          <Col xs={9} lg={8}>
+            <Form noValidate onSubmit={this.onSubmit}>
+              <Form.Group >
+                <Form.Label>Email:</Form.Label>
+                <Form.Control
+                  onChange={this.onChange}
+                  value={this.state.email}
+                  error={errors.email}
+                  id='email'
+                  type='email'
+                  className={classnames('', {
+                    invalid: errors.email || errors.emailnotfound
+                  })}
+                />
+                { errors.email || errors.emailnotfound ?
+                  <Alert variant='danger'>
+                    {errors.email}
+                    {errors.emailnotfound}
+                  </Alert>
+                  : ''
+                }
+              </Form.Group>
+              <Form.Group >
+                <Form.Label>Password:</Form.Label>
+                <Form.Control
+                  onChange={this.onChange}
+                  value={this.state.password}
+                  error={errors.password}
+                  id='password'
+                  type='password'
+                  className={classnames('', {
+                    invalid: errors.password || errors.passwordincorrect
+                  })}
+                />
+                { errors.password || errors.passwordincorrect ?
+                  <Alert variant='danger'>
+                    {errors.password}
+                    {errors.passwordincorrect}
+                  </Alert>
+                  : ''
+                }
+              </Form.Group>
+              <Button type='submit' className='float-left' style={this.props.theme.buttons}>Your Quest Awaits...</Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+
       </div>
     );
   }
