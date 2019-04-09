@@ -1,10 +1,10 @@
-import React from 'react';
-import QuestNav from '../../components/QuestNav';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
-import SignupForm from '../../components/auth/SignupForm'
+import React from "react";
+import QuestNav from "../../components/QuestNav";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
+import SignupForm from "../../components/auth/SignupForm";
 
 const Signup = props => {
     return <div>
@@ -26,7 +26,9 @@ const Signup = props => {
                 </Col>
             </Row>
         </Container>
+
     </div>
-}
+  );
+};
 
 export default Signup;

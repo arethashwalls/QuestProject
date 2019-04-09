@@ -1,35 +1,35 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { loginUser } from '../../../actions/authActions';
-import classnames from 'classnames';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
-import './style.css';
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { loginUser } from "../../../actions/authActions";
+import classnames from "classnames";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
+import "./style.css";
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       errors: {}
     };
   }
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/');
+      this.props.history.push("/");
     }
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/'); // push user to dashboard when they login
+      this.props.history.push("/"); // push user to dashboard when they login
     }
     if (nextProps.errors) {
       this.setState({
@@ -52,6 +52,7 @@ class Login extends Component {
     const { errors } = this.state;
     return (
       <div>
+
       <Container fluid>
         <Row className='my-1'>
  
@@ -102,6 +103,7 @@ class Login extends Component {
           </Col>
         </Row>
       </Container>
+
       </div>
     );
   }
@@ -116,7 +118,9 @@ const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
 });
-export default withRouter(connect(
-  mapStateToProps,
-  { loginUser }
-)(Login));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { loginUser }
+  )(Login)
+);
