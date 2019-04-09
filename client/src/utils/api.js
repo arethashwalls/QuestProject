@@ -8,6 +8,7 @@ export default {
   getQuest: id => axios.get(`api/quest/user/${id}`),
   updateQuest: (user, quest, id) =>
     axios.put('api/quests/' + id + '/' + user, quest),
-  getAdventures: user => axios.get(`api/quest/${user}`)
+  getAdventures: user => axios.get(`api/quest/${user}`),
+  deleteQuest: id => axios.delete(`api/quest/${id}`)
   
 };
