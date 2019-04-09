@@ -17,9 +17,7 @@ const Signup = props => {
                 </Col>
             </Row>
             <Row className='mb-3'>
-                <Col className='d-none d-lg-block mr-3' >
-                    <Image src='https://via.placeholder.com/300x600' fluid />
-                </Col>
+            
                 <Col xs={12} lg={9} >
                     <SignupForm theme={props.theme} setTheme={props.setTheme} />
                 </Col>

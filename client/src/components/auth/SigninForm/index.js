@@ -53,18 +53,9 @@ class Login extends Component {
     return (
       <div>
       <Container fluid>
-        <Row className='my-4'>
-          <Col xs={12} lg={4}>
-            <h4>Sign In</h4>
-            <p>Don't have an account?
-              <Link to='/signup' style={this.props.theme.lightText} className='ml-2 d-md-block ml-md-0 mt-md-2'>
-                <Button style={this.props.theme.buttons}>
-                  Sign Up
-                </Button>
-              </Link>
-            </p>
-          </Col>
-          <Col xs={12} lg={8}>
+        <Row className='my-1'>
+ 
+          <Col xs={9} lg={8}>
             <Form noValidate onSubmit={this.onSubmit}>
               <Form.Group >
                 <Form.Label>Email:</Form.Label>
@@ -106,7 +97,7 @@ class Login extends Component {
                   : ''
                 }
               </Form.Group>
-              <Button type='submit' className='float-right' style={this.props.theme.buttons}>Sign In</Button>
+              <Button type='submit' className='float-left' style={this.props.theme.buttons}>Your Quest Awaits...</Button>
             </Form>
           </Col>
         </Row>
