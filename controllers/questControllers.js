@@ -39,5 +39,16 @@ module.exports = {
     })
     .then(dbQuests => res.json(dbQuests))
     .catch(err => res.status(422).json(err));
+  },
+
+  deleteQuest: (req, res) => {
+    console.log(req.params.id);
+    db.Quest.findByIdAndDelete(
+      {
+        _id: req.params.id
+      }
+    )
+    .then(dbQuest => res.json(dbQuest))
+    .catch(err => res.status(422).json(err))
   }
 };

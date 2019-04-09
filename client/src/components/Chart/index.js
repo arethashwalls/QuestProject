@@ -7,14 +7,40 @@ import $ from 'jquery';
 import API from '../../utils/api';
 import Container from 'react-bootstrap/Container';
 import SaveModal from '../SaveModal';
+import DeleteModal from '../DeleteModal';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './style.css';
+import './joint.css';
 
-//let uml = joint.shapes.uml;
+let questLink = new joint.dia.Link({
+  
+  attrs: {
+    
+    '.marker-source': {
+      fill: 'none',
+      stroke: 'none'
+    },
+    '.connection-wrap': {
+      fill: 'none'
+    },
+    '.connection' : {
+      stroke: '#0000ff',
+      strokeWidth: 4,
+      strokeDasharray: '0',
+      fill: 'none'
+    },
+    '.marker-target': {
+      fill: '#0000ff',
+      stroke: '#0000ff',
+      d: 'M 10 0 L 0 5 L 10 10 z'
+    },
+  }
+});
+
 
 class Chart extends Component {
   constructor(props) {
@@ -26,13 +52,20 @@ class Chart extends Component {
     questID: '',
     title: '',
     adventures: [],
-    isOpen: false,
-    questIndex:''
+    isOpenSave: false,
+    isOpenDelete: false,
+    questIndex: ''
   };
 
-  toggleModal = () => {
+  toggleSaveModal = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpenSave: !this.state.isOpenSave
+    });
+  }
+
+  toggleDeleteModal = () => {
+    this.setState({
+      isOpenDelete: !this.state.isOpenDelete
     });
   }
 
@@ -50,11 +83,21 @@ class Chart extends Component {
       background: {
         color: 'rgba(0, 255, 0, 0.3)'
       },
-      defaultLink: new joint.dia.Link({
-        attrs: { '.marker-target': { d: 'M 10 0 L 0 5 L 10 10 z' } }
-      }),
+      defaultLink: questLink
+      /*new joint.dia.Link({
 
-      validateConnection: function(cellViewS, magnetS, cellViewT, magnetT, end, linkView) {
+        attrs: {
+          '.marker-target': {
+            d: 'M 10 0 L 0 5 L 10 10 z'
+          },
+          '.line': {
+            stroke: 'blue',
+            strokeWidth: 4
+          }
+        }
+      })*/,
+
+      validateConnection: function (cellViewS, magnetS, cellViewT, magnetT, end, linkView) {
         // Prevent linking from input ports.
         if (magnetS && magnetS.getAttribute('port-group') === 'in') return false;
         // Prevent linking from output ports to input ports within one element.
@@ -63,7 +106,7 @@ class Chart extends Component {
         return magnetT && magnetT.getAttribute('port-group') === 'in';
       },
 
-      validateMagnet: function(cellView, magnet) {
+      validateMagnet: function (cellView, magnet) {
         // Note that this is the default behaviour. Just showing it here for reference.
         // Disable linking interaction for magnets marked as passive (see below `.inPorts circle`).
         return magnet.getAttribute('magnet') !== 'passive';
@@ -81,23 +124,28 @@ class Chart extends Component {
       outPorts: ['out'],
       ports: {
         groups: {
-            'out': {
-                attrs: {
-                  '.port-body': {
-                    fill: '#E74C3C',
-                  },
-                  
-                },
-                position: 'bottom'
-            }
+          'out': {
+            attrs: {
+              '.port-body': {
+                fill: '#E74C3C',
+              },
+
+            },
+            position: 'bottom'
+          }
         }
       }
-    
+
     });
 
     this.graph.addCell(start);
   }
 
+  deleteQuest = () => {
+    API.deleteQuest(this.state.questID)
+      .then(window.location.reload())
+      .catch(err => console.log(err))
+  }
 
   //Grab the list of adventures the user has saved to their account
   getAdventureList = user => {
@@ -139,35 +187,35 @@ class Chart extends Component {
       position: { x: 150, y: 300 },
       size: { width: 250, height: 200 },
       attrs: {
-        '.label':{
-          text: 
+        '.label': {
+          text:
             this.sentenceWrapped($('#add-quest').val().trim(), 20, 30) + "\n" + this.sentenceWrapped($('#quest-description').val()
-            .trim(),30,200)
-          
+              .trim(), 30, 200)
+
         }
       },
       inPorts: [''],
-      outPorts: ['out'],
+      outPorts: ['success', 'failure'],
       ports: {
         groups: {
-          'in':{
-            attrs:{
-              '.port-body':{
-                fill: '#E74C3C',
+          'in': {
+            attrs: {
+              '.port-body': {
+                fill: '#0000FF',
                 magnet: 'passive'
               }
             },
             position: 'top'
           },
-            'out': {
-                attrs: {
-                  '.port-body': {
-                    fill: '#E74C3C'
-                  },
-                  
-                },
-                position: 'bottom'
-            }
+          'out': {
+            attrs: {
+              '.port-body': {
+                fill: '#E74C3C'
+              },
+
+            },
+            position: 'bottom'
+          }
         }
       }
     });
@@ -199,6 +247,7 @@ class Chart extends Component {
     API.getAdventures(userId)
       .then(res => {
         this.graph.fromJSON(JSON.parse(res.data[index].chart));
+        this.setState({ questID: res.data[index]._id })
       })
       .catch(err => console.log(err));
   };
@@ -247,30 +296,46 @@ class Chart extends Component {
             <br className='d-none d-lg-block' />
             <Button
               id='save-btn'
-              onClick={() => { this.toggleModal()}}
+              onClick={() => { this.toggleSaveModal() }}
               className='mb-1 mr-1'
               style={this.props.theme.buttons}
             >
               Save New
             </Button>
+            <Button
+              id='delete-btn'
+              onClick={() => { this.toggleDeleteModal() }}
+              className='mb-1 mr-1'
+              style={this.props.theme.buttons}
+            >
+              Delete Adventure
+            </Button>
             <br className='d-none d-lg-block' />
+
             {(this.state.adventures)
-              ? <NavDropdown title="My Quests" id="collasible-nav-dropdown" style={this.props.theme.lightText} onClick = {() => this.getAdventureList(this.props.loggedInUserId)}>
-                {this.state.adventures.map((quest,index) => {
-                  return <NavDropdown.Item href="" key = {index} value = {index} onClick = {() => this.getQuest(this.props.loggedInUserId, index) }>{quest.title}</NavDropdown.Item>;
+              ? <NavDropdown title="My Quests" id="collasible-nav-dropdown" style={this.props.theme.lightText} onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
+                {this.state.adventures.map((quest, index) => {
+                  return <NavDropdown.Item href="" key={index} value={index} onClick={() => this.getQuest(this.props.loggedInUserId, index)}>{quest.title}</NavDropdown.Item>;
                 })}
               </NavDropdown>
               : ''
             }
-  
+
             <SaveModal
               className="modal"
-              show={this.state.isOpen}
-              close={this.toggleModal}
+              show={this.state.isOpenSave}
+              close={this.toggleSaveModal}
               saveQuest={() => this.saveQuest(this.state.title, this.props.loggedInUserId)}>
               <Form.Label>Name Your Adventure: </Form.Label>
               <Form.Control id='add-title' type='text' name='title' value={this.state.title} onChange={this.handleOnChangeTitle} />
             </SaveModal>
+
+            <DeleteModal
+              className="modal"
+              show={this.state.isOpenDelete}
+              close={this.toggleDeleteModal}
+              deleteQuest={() => this.deleteQuest()}>
+            </DeleteModal>
           </Col>
         </Row>
       </Container>
