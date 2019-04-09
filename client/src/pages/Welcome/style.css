@@ -1,6 +1,39 @@
 .homepage-title strong {
-    font-size: 4rem;
+  font-size: 4rem;
 }
 .img-col {
-    line-height:100px;
+  line-height: 100px;
+}
+
+/* holds the portfolio picture */
+.fix {
+  width: 100%;
+  height: auto;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  margin-bottom: 10px;
+}
+/* image of the project photo size */
+.fix img {
+  width: 100%;
+  height: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.fix #content {
+  padding: 20px;
+  text-align: center;
+  background: red;
+}
+.title {
+  font-weight: 500px;
+  font-size: 18px;
+  background: white;
+  width: 100%;
+  padding-top: 15px;
+  text-align: center;
+  position: relative;
+  /* bottom: -60px; */
 }
