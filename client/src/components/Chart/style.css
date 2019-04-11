@@ -1,13 +1,6 @@
 #paper {
-    border: 2px solid black;
+    border: 2px solid black;   
     
-    
-}
-
-.scroller{
-    overflow: scroll;
-    width: 960px;
-    height: 720px;
 }
 
 ::-webkit-scrollbar {
