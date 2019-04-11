@@ -8,6 +8,7 @@ import Chart from "../../components/Chart";
 class Quest extends Component {
   onSignoutClick = e => {
     e.preventDefault();
+    document.documentElement.setAttribute("data-theme", 'Warrior');
     this.props.logoutUser();
   };
 
