@@ -361,7 +361,7 @@ class Chart extends Component {
                   );
                 })}
               </NavDropdown>
-            ) : (
+            : (
               ""
             )}
 
