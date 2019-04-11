@@ -34,9 +34,9 @@ if (localStorage.jwtToken) {
 // Imports:
 
 class App extends Component {
-  
 
   render() {
+    document.documentElement.setAttribute('data-theme', store.getState().theme.theme);
     return (
       <Provider store={store}>
         <Router>

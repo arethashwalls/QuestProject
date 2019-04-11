@@ -28,7 +28,6 @@ class Quest extends Component {
 Quest.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
   auth: state.auth

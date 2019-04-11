@@ -50,8 +50,6 @@ class Login extends Component {
     this.props.loginUser(userData);
   };
   render() {
-    console.log('State:')
-    console.log(this.state);
     console.log('Props:')
     console.log(this.props)
     const { errors } = this.state;
@@ -122,12 +120,12 @@ Login.propTypes = {
 };
 const mapStateToProps = state => ({
   auth: state.auth,
+  setTheme: state.setTheme,
   errors: state.errors
 });
 export default withRouter(
   connect(
     mapStateToProps,
-    { loginUser },
-   setTheme 
+    { loginUser, setTheme }
   )(Login)
 );
