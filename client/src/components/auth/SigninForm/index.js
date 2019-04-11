@@ -50,8 +50,6 @@ class Login extends Component {
     this.props.loginUser(userData);
   };
   render() {
-    console.log('Props:')
-    console.log(this.props)
     const { errors } = this.state;
     return (
       <div>
