@@ -42,11 +42,12 @@ let questLink = new joint.dia.Link({
   }
 });
 
+//Sets the container for the paper to allow for a large, contained, scrollable workspace.
 let paperStyle = {
-  width: "90%",
-  height: "90%",
-  overflow: "scroll"
-};
+  width: '90%',
+  height: '90%',
+  overflow: 'scroll'
+}
 
 class Chart extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ class Chart extends Component {
     this.graph = new joint.dia.Graph();
   }
 
+  //Chart component state
   state = {
     questID: "",
     title: "",
@@ -63,20 +65,34 @@ class Chart extends Component {
     questIndex: ""
   };
 
+  //To help trigger the Save modal
   toggleSaveModal = () => {
     this.setState({
       isOpenSave: !this.state.isOpenSave
     });
   };
 
+  //To help trigger the delete modal
   toggleDeleteModal = () => {
     this.setState({
       isOpenDelete: !this.state.isOpenDelete
     });
   };
 
+  getAdventureList = user => {
+
+    API.getAdventures(user)
+      .then(res => {
+        this.setState({ adventures: res.data });
+        console.log(res.data);
+      })
+      .catch(err => console.log(err))
+  }
+
   //When the page loads
   componentDidMount() {
+    //Bring in the color/style themes based on what the user selected on Sign up
+    this.props.setTheme(this.props.loggedInUserClass);
     //Creates the paper our quests will be contained in
     this.paper = new joint.dia.Paper({
       el: ReactDOM.findDOMNode(this.refs.placeholder),
@@ -107,16 +123,19 @@ class Chart extends Component {
         return magnetT && magnetT.getAttribute("port-group") === "in";
       },
 
-      validateMagnet: function(cellView, magnet) {
-        // Note that this is the default behaviour. Just showing it here for reference.
-        // Disable linking interaction for magnets marked as passive (see below `.inPorts circle`).
-        return magnet.getAttribute("magnet") !== "passive";
+
+      validateMagnet: function (cellView, magnet) {
+        // Disable linking interaction for magnets marked as passive.
+        // We don't want in ports to try and link towards other elements.
+        return magnet.getAttribute('magnet') !== 'passive';
+
       }
     });
 
     //If you want to remove an element from the paper, simply double click.
-    this.paper.on("element:pointerdblclick", function(elementView) {
-      var currentElement = elementView.model;
+
+    this.paper.on('element:pointerdblclick', function (elementView) {
+      let currentElement = elementView.model;
       currentElement.remove();
     });
 
@@ -148,6 +167,7 @@ class Chart extends Component {
     this.graph.addCell(start);
   }
 
+  //If the user wants to start a fresh chart, simply reload the page
   createNew = () => {
     window.location.reload();
   };
@@ -160,11 +180,14 @@ class Chart extends Component {
   };
 
   //Grab the list of adventures the user has saved to their account
+
   getAdventureList = user => {
+
     API.getAdventures(user)
       .then(res => {
         this.setState({ adventures: res.data });
       })
+
       .catch(err => console.log(err));
   };
 
@@ -245,7 +268,8 @@ class Chart extends Component {
     $("#quest-description").val("");
   };
 
-  //Saves the current incarnation of a quest in our database
+  //Saves the current incarnation of a quest in our database. If there is no quest with a "quest ID", we insert a whole new document,
+  //otherwise, we update the designated document
   saveQuest = (title, userId) => {
     let graphJSON = this.graph.toJSON();
     this.setState({ title: title });
@@ -270,12 +294,19 @@ class Chart extends Component {
       .catch(err => console.log(err));
   };
 
+  //Grabs the user input for creating a title
   handleOnChangeTitle = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
   };
+
+  //Grabs the quest the user wants to bring up
+  handleOnChangeDropdown = event => {
+    this.setState({title: event.target.value});
+  }
+
 
   //Make it WORK!
   render() {
@@ -299,9 +330,9 @@ class Chart extends Component {
               <Form.Group>
                 <Form.Label>Quest name: </Form.Label>
 
-                <Form.Control id="add-quest" type="text" required />
-                <Form.Label className="mt-1">Quest description: </Form.Label>
-                <Form.Control id="quest-description" type="text" required />
+                <Form.Control id='add-quest' type='text' />
+                <Form.Label className='mt-1'>Quest description: </Form.Label>
+                <Form.Control id='quest-description' type='text' />
 
                 <Button
                   id="add-quest"
@@ -349,12 +380,10 @@ class Chart extends Component {
 
             <br className="d-none d-lg-block" />
 
-            {this.state.adventures ? (
-              <NavDropdown
-                title="My Quests"
-                id="collasible-nav-dropdown"
-                onClick={() => this.getAdventureList(this.props.loggedInUserId)}
-              >
+
+            {(this.state.adventures)
+              && <NavDropdown title="My Quests" id="collapsible-nav-dropdown" style={this.props.theme.lightText} onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
+
                 {this.state.adventures.map((quest, index) => {
                   return (
                     <NavDropdown.Item
@@ -370,9 +399,9 @@ class Chart extends Component {
                   );
                 })}
               </NavDropdown>
-            ) : (
-              ""
-            )}
+
+            }
+
 
             <SaveModal
               className="modal"
@@ -390,6 +419,7 @@ class Chart extends Component {
                 value={this.state.title}
                 onChange={this.handleOnChangeTitle}
               />
+
             </SaveModal>
 
             <DeleteModal
