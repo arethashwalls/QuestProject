@@ -4,12 +4,23 @@
   font-weight: normal;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Archivo Black";
   src: url("./fonts/ArchivoBlack-Regular.ttf");
   font-weight: normal;
   font-style: normal;
+}
+
+/* Default theme/Login theme: */
+html, body {
+  --background: url("./images/background.jpg");
+  --darkColor: #393F26;
+  --lightColor: #EDDDD4;
+  --hoverLightColor: #A89D97;
+  --splashColor: #AD0101;
+  --hoverSplashColor: #6d0000;
+  background-image: var(--background);
+  color: var(--lightColor);
 }
 
 body {
@@ -23,6 +34,9 @@ strong {
   font-size: 3rem;
 }
 button.btn {
+  background-color: var(--splashColor);
+  color: var(--lightColor);
+  border: 2px solid var(--lightColor);
   border-radius: 2rem;
 }
 button,
@@ -30,7 +44,8 @@ button:hover {
   transition: color 0.25s ease;
 }
 button:hover {
-  background-color: #3b3a3b !important;
+  border: 2px solid var(--lightColor) !important;
+  background-color: var(--hoverSplashColor) !important;
 }
 button a:hover {
   text-decoration: none !important;

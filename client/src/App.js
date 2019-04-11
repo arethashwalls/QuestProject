@@ -44,9 +44,9 @@ class App extends Component {
   };
 
   render() {
-    document.getElementById("root").style.backgroundImage = `url('${
-      this.state.theme.backgrdPic.imgFile
-    }')`;
+    // document.getElementById("root").style.backgroundImage = `url('${
+    //   this.state.theme.backgrdPic.imgFile
+    // }')`;
     return (
       <Provider store={store}>
         <Router>
