@@ -279,24 +279,19 @@ class Chart extends Component {
 
   //Make it WORK!
   render() {
-    document.documentElement.setAttribute("data-theme", this.props.loggedInUserClass);
+    document.documentElement.setAttribute(
+      "data-theme",
+      this.props.loggedInUserClass
+    );
     return (
       <Container as="section">
         <Row className="mt-3 mb-4">
-          <Col>
-            <div id="divPaperWrapper" style={paperStyle}>
-              <div id="paper" ref="placeholder" className="scroller" />
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12} lg={6}>
+          <Col md={3}>
             <Button
               id="create-new-quest"
               type="button"
               onClick={this.createNew}
               className="mt-2"
-              style={this.props.theme.buttons}
             >
               Create New Adventure
             </Button>
@@ -312,16 +307,12 @@ class Chart extends Component {
                   id="add-quest"
                   type="submit"
                   onClick={this.addQuest}
-                  className='mt-2'
+                  className="mt-2"
                 >
                   Submit
                 </Button>
               </Form.Group>
             </Form>
-          </Col>
-
-          <Col xs={12} lg={6} className="text-lg-right">
-            <br className="d-none d-lg-block" />
             {this.state.questID !== "" ? (
               <Button
                 id="save-btn"
@@ -379,7 +370,7 @@ class Chart extends Component {
                   );
                 })}
               </NavDropdown>
-            : (
+            ) : (
               ""
             )}
 
@@ -408,6 +399,16 @@ class Chart extends Component {
               deleteQuest={() => this.deleteQuest()}
             />
           </Col>
+
+          <Col md={9}>
+            <div id="divPaperWrapper" style={paperStyle}>
+              <div id="paper" ref="placeholder" className="scroller" />
+            </div>
+          </Col>
+          {/* <Col xs={2} lg={6} className="text-lg-right">
+            <br className="d-none d-lg-block" /> */}
+
+          {/* </Col> */}
         </Row>
       </Container>
     );
