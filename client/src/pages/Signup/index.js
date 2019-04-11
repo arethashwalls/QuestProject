@@ -27,7 +27,6 @@ const Signup = props => {
                 </Col>
             </Row>
         </Container>
-
     </div>
 };
 

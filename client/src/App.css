@@ -1,10 +1,4 @@
 @font-face {
-  font-family: "Fredoka One";
-  src: url("./fonts/FredokaOne-Regular.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
   font-family: "Archivo Black";
   src: url("./fonts/ArchivoBlack-Regular.ttf");
   font-weight: normal;
@@ -52,14 +46,16 @@ body {
   background-image: var(--background);
   color: var(--lightColor);
   font-family: "Fredoka One";
+  font-family: "Archivo Black", sans-serif;
 }
 h2,
 strong {
-  font-family: Fredoka One;
+  font-family: "Archivo Black", sans-serif;
 }
 strong {
   font-size: 3rem;
 }
+
 button.btn {
   background-color: var(--splashColor);
   color: var(--lightColor);
@@ -76,4 +72,7 @@ button:hover {
 }
 button a:hover {
   text-decoration: none !important;
+} */
+
+input {
 }

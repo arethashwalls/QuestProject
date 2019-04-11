@@ -17,19 +17,20 @@ const Signin = props => {
           <Col className="mx-5">
             <img alt="A Quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
             <img alt="..." src={process.env.PUBLIC_URL + "/images/dot.png"} />
+
           </Col>
         </Row>
         <Row className="mb-3">
           <Col xs={12} lg={9}>
           <SigninForm />
           </Col>
-          <Col className="d-block d-lg-none">
-            <Image
+          {/* <Col className="d-block d-lg-none"> */}
+          {/* <Image
               src="https://via.placeholder.com/600x300"
               className="center-block"
               fluid
-            />
-          </Col>
+            /> */}
+          {/* </Col> */}
         </Row>
       </Container>
     </div>
