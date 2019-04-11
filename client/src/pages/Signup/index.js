@@ -9,18 +9,18 @@ import './style.css';
 
 const Signup = props => {
     return <div>
-        <QuestNav theme={props.theme} signedIn={props.signedIn} />
-        <Container style={props.theme.mainText}>
+        <QuestNav signedIn={props.signedIn} />
+        <Container>
             <Row className='my-3 text-center' >
                 <Col>
-                    <h1>Welcome to <strong style={props.theme.titleText}>A Quest!</strong></h1>
+                    <h1>Welcome to <strong>A Quest!</strong></h1>
                     <hr />
                 </Col>
             </Row>
             <Row className='mb-3'>
             
                 <Col xs={12} lg={9} >
-                    <SignupForm theme={props.theme} setTheme={props.setTheme} />
+                    <SignupForm />
                 </Col>
                 <Col className='d-block d-lg-none' >
                     <Image src='https://via.placeholder.com/600x300' className='center-block' fluid />

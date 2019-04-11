@@ -54,29 +54,24 @@ class App extends Component {
             <Route
               exact
               path="/welcome"
-              render={() => <Welcome theme={this.state.theme} />}
+              render={() => <Welcome />}
             />
             <Route
               exact
               path="/signup"
               render={() => (
-                <Signup
-                  theme={this.state.theme}
-                  setTheme={this.setThemeByClass}
-                />
+                <Signup />
               )}
             />
             <Route
               exact
               path="/signin"
-              render={() => <Signin theme={this.state.theme} />}
+              render={() => <Signin />}
             />
             <PrivateRoute
               exact
               path="/"
               component={Quest}
-              theme={this.state.theme}
-              setTheme={this.setThemeByClass}
             />
             <Route component={NoMatch} />
           </Switch>

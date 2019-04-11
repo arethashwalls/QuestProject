@@ -71,7 +71,6 @@ class Chart extends Component {
 
   //When the page loads
   componentDidMount() {
-    this.props.setTheme(this.props.loggedInUserClass);
     //Creates the paper our quests will be contained in
     this.paper = new joint.dia.Paper({
       el: ReactDOM.findDOMNode(this.refs.placeholder),
@@ -285,7 +284,6 @@ class Chart extends Component {
                   type='submit'
                   onClick={this.addQuest}
                   className='mt-2'
-                  style={this.props.theme.buttons}
                 >
                   Submit
                 </Button>
@@ -298,7 +296,6 @@ class Chart extends Component {
               id='save-btn'
               onClick={() => { this.toggleSaveModal() }}
               className='mb-1 mr-1'
-              style={this.props.theme.buttons}
             >
               Save New
             </Button>
@@ -306,14 +303,13 @@ class Chart extends Component {
               id='delete-btn'
               onClick={() => { this.toggleDeleteModal() }}
               className='mb-1 mr-1'
-              style={this.props.theme.buttons}
             >
               Delete Adventure
             </Button>
             <br className='d-none d-lg-block' />
 
             {(this.state.adventures)
-              ? <NavDropdown title="My Quests" id="collasible-nav-dropdown" style={this.props.theme.lightText} onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
+              ? <NavDropdown title="My Quests" id="collasible-nav-dropdown" onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
                 {this.state.adventures.map((quest, index) => {
                   return <NavDropdown.Item href="" key={index} value={index} onClick={() => this.getQuest(this.props.loggedInUserId, index)}>{quest.title}</NavDropdown.Item>;
                 })}

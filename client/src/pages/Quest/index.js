@@ -16,11 +16,10 @@ class Quest extends Component {
     return (
       <div>
         <QuestNav
-          theme={this.props.theme}
           username={user.name}
           signout={this.onSignoutClick}
         />
-        <Chart theme={this.props.theme} setTheme={this.props.setTheme} />
+        <Chart />
       </div>
     );
   }
