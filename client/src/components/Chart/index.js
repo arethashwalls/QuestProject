@@ -1,46 +1,43 @@
 // import axios from 'axios';
-import { connect } from 'react-redux';
-import React, { Component } from 'react';
-import joint from 'jointjs/index';
-import ReactDOM from 'react-dom';
-import $ from 'jquery';
-import API from '../../utils/api';
-import Container from 'react-bootstrap/Container';
-import SaveModal from '../SaveModal';
-import DeleteModal from '../DeleteModal';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import './style.css';
-import './joint.css';
+import { connect } from "react-redux";
+import React, { Component } from "react";
+import joint from "jointjs/index";
+import ReactDOM from "react-dom";
+import $ from "jquery";
+import API from "../../utils/api";
+import Container from "react-bootstrap/Container";
+import SaveModal from "../SaveModal";
+import DeleteModal from "../DeleteModal";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import "./style.css";
+import "./joint.css";
 
 let questLink = new joint.dia.Link({
-  
   attrs: {
-    
-    '.marker-source': {
-      fill: 'none',
-      stroke: 'none'
+    ".marker-source": {
+      fill: "none",
+      stroke: "none"
     },
-    '.connection-wrap': {
-      fill: 'none'
+    ".connection-wrap": {
+      fill: "none"
     },
-    '.connection' : {
-      stroke: '#0000ff',
+    ".connection": {
+      stroke: "#0000ff",
       strokeWidth: 4,
-      strokeDasharray: '0',
-      fill: 'none'
+      strokeDasharray: "0",
+      fill: "none"
     },
-    '.marker-target': {
-      fill: '#0000ff',
-      stroke: '#0000ff',
-      d: 'M 10 0 L 0 5 L 10 10 z'
-    },
+    ".marker-target": {
+      fill: "#0000ff",
+      stroke: "#0000ff",
+      d: "M 10 0 L 0 5 L 10 10 z"
+    }
   }
 });
-
 
 class Chart extends Component {
   constructor(props) {
@@ -49,25 +46,25 @@ class Chart extends Component {
   }
 
   state = {
-    questID: '',
-    title: '',
+    questID: "",
+    title: "",
     adventures: [],
     isOpenSave: false,
     isOpenDelete: false,
-    questIndex: ''
+    questIndex: ""
   };
 
   toggleSaveModal = () => {
     this.setState({
       isOpenSave: !this.state.isOpenSave
     });
-  }
+  };
 
   toggleDeleteModal = () => {
     this.setState({
       isOpenDelete: !this.state.isOpenDelete
     });
-  }
+  };
 
   //When the page loads
   componentDidMount() {
@@ -81,9 +78,10 @@ class Chart extends Component {
       drawGrid: true,
       model: this.graph,
       background: {
-        color: 'rgba(0, 255, 0, 0.3)'
+        color: "#efd5bd"
       },
-      defaultLink: questLink
+
+      defaultLink: questLink,
       /*new joint.dia.Link({
 
         attrs: {
@@ -95,21 +93,27 @@ class Chart extends Component {
             strokeWidth: 4
           }
         }
-      })*/,
-
-      validateConnection: function (cellViewS, magnetS, cellViewT, magnetT, end, linkView) {
+      })*/ validateConnection: function(
+        cellViewS,
+        magnetS,
+        cellViewT,
+        magnetT,
+        end,
+        linkView
+      ) {
         // Prevent linking from input ports.
-        if (magnetS && magnetS.getAttribute('port-group') === 'in') return false;
+        if (magnetS && magnetS.getAttribute("port-group") === "in")
+          return false;
         // Prevent linking from output ports to input ports within one element.
         if (cellViewS === cellViewT) return false;
         // Prevent linking to input ports.
-        return magnetT && magnetT.getAttribute('port-group') === 'in';
+        return magnetT && magnetT.getAttribute("port-group") === "in";
       },
 
-      validateMagnet: function (cellView, magnet) {
+      validateMagnet: function(cellView, magnet) {
         // Note that this is the default behaviour. Just showing it here for reference.
         // Disable linking interaction for magnets marked as passive (see below `.inPorts circle`).
-        return magnet.getAttribute('magnet') !== 'passive';
+        return magnet.getAttribute("magnet") !== "passive";
       }
     });
 
@@ -118,24 +122,22 @@ class Chart extends Component {
       position: { x: 398, y: 83 },
       size: { width: 150, height: 90 },
       attrs: {
-        rect: { fill: 'orange' },
-        text: { text: 'Start Campaign', fill: 'white' }
+        rect: { fill: "orange", rx: "10px", ry: "10px" },
+        text: { text: "Start Campaign", fill: "black" }
       },
-      outPorts: ['out'],
+      outPorts: ["out"],
       ports: {
         groups: {
-          'out': {
+          out: {
             attrs: {
-              '.port-body': {
-                fill: '#E74C3C',
-              },
-
+              ".port-body": {
+                fill: "#E74C3C"
+              }
             },
-            position: 'bottom'
+            position: "bottom"
           }
         }
       }
-
     });
 
     this.graph.addCell(start);
@@ -144,40 +146,38 @@ class Chart extends Component {
   deleteQuest = () => {
     API.deleteQuest(this.state.questID)
       .then(window.location.reload())
-      .catch(err => console.log(err))
-  }
+      .catch(err => console.log(err));
+  };
 
   //Grab the list of adventures the user has saved to their account
   getAdventureList = user => {
-
     API.getAdventures(user)
       .then(res => {
         this.setState({ adventures: res.data });
         console.log(res.data);
       })
-      .catch(err => console.log(err))
-  }
+      .catch(err => console.log(err));
+  };
 
   //Wraps the text so that it can stay contained in the cell. Otherwise, it just goes out without abandon
   sentenceWrapped = (sentence, lineSize, maxSize) => {
-    var descriptionTrim = '';
+    var descriptionTrim = "";
     if (sentence.length + 3 > maxSize) {
       descriptionTrim = sentence.substring(0, maxSize - 3);
-      descriptionTrim = descriptionTrim + '...';
+      descriptionTrim = descriptionTrim + "...";
     } else {
       descriptionTrim = sentence;
     }
 
     var splitSentence = descriptionTrim.match(
-      new RegExp('.{1,' + lineSize + '}', 'g')
+      new RegExp(".{1," + lineSize + "}", "g")
     );
-    var sentenceWrapped = '';
+    var sentenceWrapped = "";
     for (let i = 0; i < splitSentence.length; i++) {
-      sentenceWrapped = sentenceWrapped + splitSentence[i] + '\n';
+      sentenceWrapped = sentenceWrapped + splitSentence[i] + "\n";
     }
     return sentenceWrapped;
   };
-
 
   //Create a quest with a title and text. Once it's formed, the user can position it anywhere on the graph
   addQuest = event => {
@@ -187,34 +187,46 @@ class Chart extends Component {
       position: { x: 150, y: 300 },
       size: { width: 250, height: 200 },
       attrs: {
-        '.label': {
+        ".label": {
           text:
-            this.sentenceWrapped($('#add-quest').val().trim(), 20, 30) + "\n" + this.sentenceWrapped($('#quest-description').val()
-              .trim(), 30, 200)
-
-        }
+            this.sentenceWrapped(
+              $("#add-quest")
+                .val()
+                .trim(),
+              20,
+              30
+            ) +
+            "\n" +
+            this.sentenceWrapped(
+              $("#quest-description")
+                .val()
+                .trim(),
+              30,
+              200
+            )
+        },
+        rect: { fill: "orange", rx: "10px", ry: "10px" }
       },
-      inPorts: [''],
-      outPorts: ['success', 'failure'],
+      inPorts: [""],
+      outPorts: ["success", "failure"],
       ports: {
         groups: {
-          'in': {
+          in: {
             attrs: {
-              '.port-body': {
-                fill: '#0000FF',
-                magnet: 'passive'
+              ".port-body": {
+                fill: "#0000FF",
+                magnet: "passive"
               }
             },
-            position: 'top'
+            position: "top"
           },
-          'out': {
+          out: {
             attrs: {
-              '.port-body': {
-                fill: '#E74C3C'
-              },
-
+              ".port-body": {
+                fill: "#E74C3C"
+              }
             },
-            position: 'bottom'
+            position: "bottom"
           }
         }
       }
@@ -223,15 +235,15 @@ class Chart extends Component {
     //Translate it so the quest element isn't on top of the starter element
     rectangle.translate(100);
     this.graph.addCell(rectangle);
-    $('#add-quest').val('');
-    $('#quest-description').val('');
+    $("#add-quest").val("");
+    $("#quest-description").val("");
   };
 
   //Saves the current incarnation of a quest in our database
   saveQuest = (title, userId) => {
     let graphJSON = this.graph.toJSON();
-    this.setState({ title: title })
-    if (this.state.questID === '') {
+    this.setState({ title: title });
+    if (this.state.questID === "") {
       API.saveQuest(this.state.title, graphJSON, userId)
         .then(res => {
           this.setState({ questID: res.data._id });
@@ -247,7 +259,7 @@ class Chart extends Component {
     API.getAdventures(userId)
       .then(res => {
         this.graph.fromJSON(JSON.parse(res.data[index].chart));
-        this.setState({ questID: res.data[index]._id })
+        this.setState({ questID: res.data[index]._id });
       })
       .catch(err => console.log(err));
   };
@@ -260,16 +272,16 @@ class Chart extends Component {
   };
 
   handleOnChangeDropdown = event => {
-    console.log(event.target.value)
-  }
+    console.log(event.target.value);
+  };
 
   //Make it WORK!
   render() {
     return (
-      <Container as='section'>
-        <Row className='mt-3 mb-4'>
+      <Container as="section">
+        <Row className="mt-3 mb-4">
           <Col>
-            <div id='paper' ref='placeholder' className='scroller' />
+            <div id="paper" ref="placeholder" className="scroller" />
           </Col>
         </Row>
         <Row>
@@ -277,14 +289,14 @@ class Chart extends Component {
             <Form>
               <Form.Group>
                 <Form.Label>Quest name: </Form.Label>
-                <Form.Control id='add-quest' type='text' />
-                <Form.Label className='mt-1'>Quest description: </Form.Label>
-                <Form.Control id='quest-description' type='text' />
+                <Form.Control id="add-quest" type="text" />
+                <Form.Label className="mt-1">Quest description: </Form.Label>
+                <Form.Control id="quest-description" type="text" />
                 <Button
-                  id='add-quest'
-                  type='submit'
+                  id="add-quest"
+                  type="submit"
                   onClick={this.addQuest}
-                  className='mt-2'
+                  className="mt-2"
                   style={this.props.theme.buttons}
                 >
                   Submit
@@ -292,50 +304,80 @@ class Chart extends Component {
               </Form.Group>
             </Form>
           </Col>
-          <Col xs={12} lg={6} className='text-lg-right'>
-            <br className='d-none d-lg-block' />
+          <Col xs={12} lg={6} className="text-lg-right">
+            <br className="d-none d-lg-block" />
             <Button
-              id='save-btn'
-              onClick={() => { this.toggleSaveModal() }}
-              className='mb-1 mr-1'
+              id="save-btn"
+              onClick={() => {
+                this.toggleSaveModal();
+              }}
+              className="mb-1 mr-1"
               style={this.props.theme.buttons}
             >
               Save New
             </Button>
             <Button
-              id='delete-btn'
-              onClick={() => { this.toggleDeleteModal() }}
-              className='mb-1 mr-1'
+              id="delete-btn"
+              onClick={() => {
+                this.toggleDeleteModal();
+              }}
+              className="mb-1 mr-1"
               style={this.props.theme.buttons}
             >
               Delete Adventure
             </Button>
-            <br className='d-none d-lg-block' />
+            <br className="d-none d-lg-block" />
 
-            {(this.state.adventures)
-              ? <NavDropdown title="My Quests" id="collasible-nav-dropdown" style={this.props.theme.lightText} onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
+            {this.state.adventures ? (
+              <NavDropdown
+                title="My Quests"
+                id="collasible-nav-dropdown"
+                style={this.props.theme.lightText}
+                onClick={() => this.getAdventureList(this.props.loggedInUserId)}
+              >
                 {this.state.adventures.map((quest, index) => {
-                  return <NavDropdown.Item href="" key={index} value={index} onClick={() => this.getQuest(this.props.loggedInUserId, index)}>{quest.title}</NavDropdown.Item>;
+                  return (
+                    <NavDropdown.Item
+                      href=""
+                      key={index}
+                      value={index}
+                      onClick={() =>
+                        this.getQuest(this.props.loggedInUserId, index)
+                      }
+                    >
+                      {quest.title}
+                    </NavDropdown.Item>
+                  );
                 })}
               </NavDropdown>
-              : ''
-            }
+            ) : (
+              ""
+            )}
 
             <SaveModal
               className="modal"
               show={this.state.isOpenSave}
               close={this.toggleSaveModal}
-              saveQuest={() => this.saveQuest(this.state.title, this.props.loggedInUserId)}>
+              saveQuest={() =>
+                this.saveQuest(this.state.title, this.props.loggedInUserId)
+              }
+            >
               <Form.Label>Name Your Adventure: </Form.Label>
-              <Form.Control id='add-title' type='text' name='title' value={this.state.title} onChange={this.handleOnChangeTitle} />
+              <Form.Control
+                id="add-title"
+                type="text"
+                name="title"
+                value={this.state.title}
+                onChange={this.handleOnChangeTitle}
+              />
             </SaveModal>
 
             <DeleteModal
               className="modal"
               show={this.state.isOpenDelete}
               close={this.toggleDeleteModal}
-              deleteQuest={() => this.deleteQuest()}>
-            </DeleteModal>
+              deleteQuest={() => this.deleteQuest()}
+            />
           </Col>
         </Row>
       </Container>
