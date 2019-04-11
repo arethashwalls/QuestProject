@@ -63,7 +63,6 @@ Important note: Presentation attributes have a lower precedence over CSS style r
 }
 
 .joint-element * {
-  border-radius: 50px;
   user-drag: none;
 }
 
@@ -90,6 +89,7 @@ Important note: Presentation attributes have a lower precedence over CSS style r
 /* Paper */
 .joint-paper {
   position: relative;
+  /* url("../") */
 }
 /* Paper */
 
