@@ -6,9 +6,7 @@ export default {
   getAllUsers: id => axios.get('api/users'),
   saveQuest: (title, quest, userId) => axios.post('api/quest/user', { title, quest, userId }),
   getQuest: id => axios.get(`api/quest/user/${id}`),
-  updateQuest: (quest, questId, userId) =>
-    axios.put('api/quests/' + questId + '/' + userId, quest),
+  updateQuest: (user, quest, id) => axios.put('api/quests/' + id + '/' + user, quest),
   getAdventures: user => axios.get(`api/quest/${user}`),
   deleteQuest: id => axios.delete(`api/quest/${id}`)
-  
 };

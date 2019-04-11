@@ -8,28 +8,25 @@ import SignupForm from "../../components/auth/SignupForm";
 import './style.css';
 
 const Signup = props => {
-  return (
-    <div>
-      <Container style={props.theme.mainText}>
-        <Row className="my-3">
-          <Col className="mx-5">
-            <img src={process.env.PUBLIC_URL + "/images/quest.png"} />
-            <img src={process.env.PUBLIC_URL + "/images/dot.png"} />
-          </Col>
-        </Row>
-        <Row className="mb-3">
-          <Col xs={12} lg={9}>
-            <SignupForm theme={props.theme} setTheme={props.setTheme} />
-          </Col>
-          {/* <Col className="d-block d-lg-none">
-            <Image
-              src="https://via.placeholder.com/600x300"
-              className="center-block"
-              fluid
-            />
-          </Col> */}
-        </Row>
-      </Container>
+    return <div>
+        <QuestNav signedIn={props.signedIn} />
+        <Container>
+            <Row className='my-3 text-center' >
+                <Col>
+                    <h1>Welcome to <strong>A Quest!</strong></h1>
+                    <hr />
+                </Col>
+            </Row>
+            <Row className='mb-3'>
+            
+                <Col xs={12} lg={9} >
+                    <SignupForm />
+                </Col>
+                <Col className='d-block d-lg-none' >
+                    <Image src='https://via.placeholder.com/600x300' className='center-block' fluid />
+                </Col>
+            </Row>
+        </Container>
     </div>
 };
 

@@ -84,7 +84,6 @@ class Chart extends Component {
 
   //When the page loads
   componentDidMount() {
-    this.props.setTheme(this.props.loggedInUserClass);
     //Creates the paper our quests will be contained in
     this.paper = new joint.dia.Paper({
       el: ReactDOM.findDOMNode(this.refs.placeholder),
@@ -175,7 +174,6 @@ class Chart extends Component {
     API.getAdventures(user)
       .then(res => {
         this.setState({ adventures: res.data });
-        console.log(res.data);
       })
       .catch(err => console.log(err));
   };
@@ -203,7 +201,6 @@ class Chart extends Component {
   //Create a quest with a title and text. Once it's formed, the user can position it anywhere on the graph
   addQuest = event => {
     event.preventDefault();
-
     let rectangle = new joint.shapes.devs.Model({
       position: { x: 20, y: 20 },
       size: { width: 230, height: 200 },
@@ -283,12 +280,9 @@ class Chart extends Component {
     });
   };
 
-  handleOnChangeDropdown = event => {
-    console.log(event.target.value);
-  };
-
   //Make it WORK!
   render() {
+    document.documentElement.setAttribute("data-theme", this.props.loggedInUserClass);
     return (
       <Container as="section">
         <Row className="mt-3 mb-4">
@@ -323,8 +317,7 @@ class Chart extends Component {
                   id="add-quest"
                   type="submit"
                   onClick={this.addQuest}
-                  className="mt-2"
-                  style={this.props.theme.buttons}
+                  className='mt-2'
                 >
                   Submit
                 </Button>
@@ -334,40 +327,24 @@ class Chart extends Component {
 
           <Col xs={12} lg={6} className='text-lg-right'>
             <br className='d-none d-lg-block' />
-            {(this.state.questID !== '') ?
-              <Button
-                id='save-btn'
-                onClick={() => { this.saveQuest(this.state.title, this.props.loggedInUserId) }}
-                className='mb-1 mr-1'
-                style={this.props.theme.buttons}
-              >
-                Save Adventure
-              </Button> :
-              <Button
-                id='save-btn'
-                onClick={() => { this.toggleSaveModal() }}
-                className='mb-1 mr-1'
-                style={this.props.theme.buttons}
-              >
-                Save Adventure
-              </Button>
-            }
-
-            {this.state.questID &&
-              <Button
-                id='delete-btn'
-                onClick={() => { this.toggleDeleteModal() }}
-                className='mb-1 mr-1'
-                style={this.props.theme.buttons}
-              >
-                Delete Adventure
-              </Button>
-            }
-
+            <Button
+              id='save-btn'
+              onClick={() => { this.toggleSaveModal() }}
+              className='mb-1 mr-1'
+            >
+              Save New
+            </Button>
+            <Button
+              id='delete-btn'
+              onClick={() => { this.toggleDeleteModal() }}
+              className='mb-1 mr-1'
+            >
+              Delete Adventure
+            </Button>
             <br className='d-none d-lg-block' />
 
             {(this.state.adventures)
-              ? <NavDropdown title="My Quests" id="collasible-nav-dropdown" style={this.props.theme.lightText} onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
+              ? <NavDropdown title="My Quests" id="collasible-nav-dropdown" onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
 
                 {this.state.adventures.map((quest, index) => {
                   return (
@@ -414,6 +391,7 @@ class Chart extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     loggedInUserId: state.auth.user.id,

@@ -19,7 +19,6 @@ const Welcome = props => {
           /> */}
         </Col>
         <Col>
-          {/* <h1 className='text-center homepage-title' style={props.theme.titleText}><strong>A Quest!</strong></h1> */}
           <img alt="A quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
           <img alt="..." src={process.env.PUBLIC_URL + "/images/dot.png"} />
         </Col>
@@ -67,14 +66,14 @@ const Welcome = props => {
       </Row>
       <Row className="mt-4 mb-3">
         <Col className="text-right">
-          <Link style={props.theme.lightText} to="/signup">
-            <Button style={props.theme.buttons}>Sign Up</Button>
+          <Link to="/signup">
+            <Button>Sign Up</Button>
           </Link>
         </Col>
         <Col>{/* <Image src="./images/flourish.png" fluid /> */}</Col>
         <Col className="text-left">
-          <Link style={props.theme.lightText} to="/signin">
-            <Button style={props.theme.buttons}>Sign In</Button>
+          <Link to="/signin">
+            <Button>Sign In</Button>
           </Link>
         </Col>
       </Row>
