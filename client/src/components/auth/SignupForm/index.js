@@ -37,12 +37,12 @@ class Register extends Component {
       });
     }
   }
-  onChange = e => {
+  onChange = e => { 
     this.setState({ [e.target.id]: e.target.value }, () => {
-      console.log(this.state);
-      this.props.setTheme(this.state.class);
+      document.documentElement.setAttribute("data-theme", this.state.class);
     });
-  };
+  }
+
   onSubmit = e => {
     e.preventDefault();
     const newUser = {
@@ -143,7 +143,7 @@ class Register extends Component {
                   ""
                 )}
               </Form.Group>
-              <Button type='submit' className='float-left' style={this.props.theme.buttons}>Your Quest Awaits...</Button>
+              <Button type='submit' className='float-left'>Your Quest Awaits...</Button>
 
             </Form>
           </Col>

@@ -11,20 +11,32 @@ const Welcome = props => {
   return (
     <Container>
       <Row className="mt-4 mb-2 w-md-75 mx-auto">
-        <Col md={3} className="img-col">
-          {/* <Image
+        <Col md={3} xs={0} className="img-col">
+          <Image
             src="./images/flourish-left.png"
             className=" d-none d-md-inline-block"
             fluid
-          /> */}
+          />
         </Col>
         <Col>
+<<<<<<< HEAD
           {/* <h1 className='text-center homepage-title' style={props.theme.titleText}><strong>A Quest!</strong></h1> */}
           <img
             alt="A quest"
             src={process.env.PUBLIC_URL + "/images/quest.png"}
           />
           <img alt="..." src={process.env.PUBLIC_URL + "/images/dot.png"} />
+=======
+          <Image alt="A quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
+          <Image alt="..." src={process.env.PUBLIC_URL + "/images/dot.png"} />
+        </Col>
+        <Col md={3} xs={0} className="img-col">
+          <Image
+            src="./images/flourish-right.png"
+            className=" d-none d-md-inline-block"
+            fluid
+          />
+>>>>>>> f4a8d53f25729be01aa7ae15ae8b0de70715ddf1
         </Col>
       </Row>
       <Row>
@@ -70,14 +82,14 @@ const Welcome = props => {
       </Row>
       <Row className="mt-4 mb-3">
         <Col className="text-right">
-          <Link style={props.theme.lightText} to="/signup">
-            <Button style={props.theme.buttons}>Sign Up</Button>
+          <Link to="/signup">
+            <Button>Sign Up</Button>
           </Link>
         </Col>
         <Col>{/* <Image src="./images/flourish.png" fluid /> */}</Col>
         <Col className="text-left">
-          <Link style={props.theme.lightText} to="/signin">
-            <Button style={props.theme.buttons}>Sign In</Button>
+          <Link to="/signin">
+            <Button>Sign In</Button>
           </Link>
         </Col>
       </Row>
