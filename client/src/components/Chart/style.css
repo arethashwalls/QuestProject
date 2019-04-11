@@ -1,27 +1,33 @@
 #paper {
-    border: 2px solid black;   
-    
+  border: 2px solid black;
+  background-image: url("/images/quest.png") "";
+}
+
+.scroller {
+  overflow: scroll;
+  width: 960px;
+  height: 720px;
 }
 
 ::-webkit-scrollbar {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 ::-webkit-scrollbar:vertical {
-    width: 12px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar:horizontal {
-    height: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, .5);
-    border-radius: 10px;
-    border: 2px solid #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: 2px solid #ffffff;
 }
 
 ::-webkit-scrollbar-track {
-    border-radius: 10px;  
-    background-color: #ffffff; 
+  border-radius: 10px;
+  background-color: #ffffff;
 }
