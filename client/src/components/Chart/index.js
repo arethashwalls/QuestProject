@@ -16,17 +16,37 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import "./style.css";
 import "./joint.css";
 
+<<<<<<< HEAD
 let questLink = new joint.dia.Link({
   attrs: {
     ".marker-source": {
       fill: "none",
       stroke: "none"
+=======
+//Link attributes
+let questLink = new joint.dia.Link({
+
+
+  attrs: {
+
+    '.marker-source': {
+      fill: 'none',
+      stroke: 'none'
+
+>>>>>>> 1ef7f288ba51678697006e77072d3105a4953e43
     },
     ".connection-wrap": {
       fill: "none"
     },
+<<<<<<< HEAD
     ".connection": {
       stroke: "#0000ff",
+=======
+
+    '.connection': {
+      stroke: '#0000ff',
+
+>>>>>>> 1ef7f288ba51678697006e77072d3105a4953e43
       strokeWidth: 4,
       strokeDasharray: "0",
       fill: "none"
@@ -39,6 +59,18 @@ let questLink = new joint.dia.Link({
   }
 });
 
+<<<<<<< HEAD
+=======
+
+let paperStyle = {
+  width: '90%',
+  height: '90%',
+  overflow: 'scroll'
+}
+
+
+
+>>>>>>> 1ef7f288ba51678697006e77072d3105a4953e43
 class Chart extends Component {
   constructor(props) {
     super(props);
@@ -72,12 +104,13 @@ class Chart extends Component {
     //Creates the paper our quests will be contained in
     this.paper = new joint.dia.Paper({
       el: ReactDOM.findDOMNode(this.refs.placeholder),
-      width: 930,
-      height: 1500,
+      width: 1200,
+      height: 1200,
       gridSize: 1,
       drawGrid: true,
       model: this.graph,
       background: {
+<<<<<<< HEAD
         color: "#efd5bd"
       },
 
@@ -101,6 +134,17 @@ class Chart extends Component {
         end,
         linkView
       ) {
+=======
+        color: "#fefdd7"
+      },
+      defaultLink: questLink,
+
+      
+
+
+      validateConnection: function (cellViewS, magnetS, cellViewT, magnetT, end, linkView) {
+
+>>>>>>> 1ef7f288ba51678697006e77072d3105a4953e43
         // Prevent linking from input ports.
         if (magnetS && magnetS.getAttribute("port-group") === "in")
           return false;
@@ -117,15 +161,34 @@ class Chart extends Component {
       }
     });
 
+
+    //If you want to remove an element from the paper, simply double click.
+    this.paper.on('element:pointerdblclick', function (elementView) {
+
+      var currentElement = elementView.model;
+      currentElement.remove();
+    });
+
     //Our initial Quest Tree Starting point.
     let start = new joint.shapes.devs.Model({
       position: { x: 398, y: 83 },
       size: { width: 150, height: 90 },
       attrs: {
+<<<<<<< HEAD
         rect: { fill: "orange", rx: "10px", ry: "10px" },
         text: { text: "Start Campaign", fill: "black" }
       },
       outPorts: ["out"],
+=======
+        rect: { fill: "orange", stroke: "none" },
+        text: { text: "Start Campaign", fill: "white", "font-size": 15 }
+      },
+
+  
+
+      outPorts: [''],
+
+>>>>>>> 1ef7f288ba51678697006e77072d3105a4953e43
       ports: {
         groups: {
           out: {
@@ -143,6 +206,13 @@ class Chart extends Component {
     this.graph.addCell(start);
   }
 
+
+
+  createNew = () => {
+    window.location.reload();
+  }
+
+  //User no want the quest? They get rid of da quest
   deleteQuest = () => {
     API.deleteQuest(this.state.questID)
       .then(window.location.reload())
@@ -184,11 +254,12 @@ class Chart extends Component {
     event.preventDefault();
 
     let rectangle = new joint.shapes.devs.Model({
-      position: { x: 150, y: 300 },
-      size: { width: 250, height: 200 },
+      position: { x: 20, y: 20 },
+      size: { width: 230, height: 200 },
       attrs: {
         ".label": {
           text:
+<<<<<<< HEAD
             this.sentenceWrapped(
               $("#add-quest")
                 .val()
@@ -206,6 +277,16 @@ class Chart extends Component {
             )
         },
         rect: { fill: "orange", rx: "10px", ry: "10px" }
+=======
+
+            this.sentenceWrapped($('#add-quest').val().trim(), 20, 30) + "\n" + this.sentenceWrapped($('#quest-description').val()
+              .trim(), 30, 200),
+
+          fontWeight: 'bold',
+          fontSize: ''
+
+        }
+>>>>>>> 1ef7f288ba51678697006e77072d3105a4953e43
       },
       inPorts: [""],
       outPorts: ["success", "failure"],
@@ -232,8 +313,8 @@ class Chart extends Component {
       }
     });
 
-    //Translate it so the quest element isn't on top of the starter element
-    rectangle.translate(100);
+
+
     this.graph.addCell(rectangle);
     $("#add-quest").val("");
     $("#quest-description").val("");
@@ -249,9 +330,9 @@ class Chart extends Component {
           this.setState({ questID: res.data._id });
         })
         .catch(err => console.log(err));
-    } /*else {
-      API.updateQuest(graphJSON, this.state.questID);
-    }*/
+    } else {
+      API.updateQuest(graphJSON, this.state.questID, userId);
+    }
   };
 
   //Grabs the quest from the database. Eventually we will try to pull up specific versions
@@ -281,17 +362,42 @@ class Chart extends Component {
       <Container as="section">
         <Row className="mt-3 mb-4">
           <Col>
+<<<<<<< HEAD
             <div id="paper" ref="placeholder" className="scroller" />
+=======
+
+            <div id="divPaperWrapper" style={paperStyle}>
+              <div id='paper' ref='placeholder' className='scroller' />
+            </div>
+
+>>>>>>> 1ef7f288ba51678697006e77072d3105a4953e43
           </Col>
         </Row>
         <Row>
           <Col xs={12} lg={6}>
+            <Button
+              id='create-new-quest'
+              type='button'
+              onClick={this.createNew}
+              className='mt-2'
+              style={this.props.theme.buttons}
+            >
+              Create New Adventure
+                </Button>
             <Form>
               <Form.Group>
                 <Form.Label>Quest name: </Form.Label>
+<<<<<<< HEAD
                 <Form.Control id="add-quest" type="text" />
                 <Form.Label className="mt-1">Quest description: </Form.Label>
                 <Form.Control id="quest-description" type="text" />
+=======
+
+                <Form.Control id='add-quest' type='text' required />
+                <Form.Label className='mt-1'>Quest description: </Form.Label>
+                <Form.Control id='quest-description' type='text' required />
+
+>>>>>>> 1ef7f288ba51678697006e77072d3105a4953e43
                 <Button
                   id="add-quest"
                   type="submit"
@@ -304,6 +410,7 @@ class Chart extends Component {
               </Form.Group>
             </Form>
           </Col>
+<<<<<<< HEAD
           <Col xs={12} lg={6} className="text-lg-right">
             <br className="d-none d-lg-block" />
             <Button
@@ -335,6 +442,46 @@ class Chart extends Component {
                 style={this.props.theme.lightText}
                 onClick={() => this.getAdventureList(this.props.loggedInUserId)}
               >
+=======
+
+          <Col xs={12} lg={6} className='text-lg-right'>
+            <br className='d-none d-lg-block' />
+            {(this.state.questID !== '') ?
+              <Button
+                id='save-btn'
+                onClick={() => { this.saveQuest(this.state.title, this.props.loggedInUserId) }}
+                className='mb-1 mr-1'
+                style={this.props.theme.buttons}
+              >
+                Save Adventure
+              </Button> :
+              <Button
+                id='save-btn'
+                onClick={() => { this.toggleSaveModal() }}
+                className='mb-1 mr-1'
+                style={this.props.theme.buttons}
+              >
+                Save Adventure
+              </Button>
+            }
+
+            {this.state.questID &&
+              <Button
+                id='delete-btn'
+                onClick={() => { this.toggleDeleteModal() }}
+                className='mb-1 mr-1'
+                style={this.props.theme.buttons}
+              >
+                Delete Adventure
+              </Button>
+            }
+
+            <br className='d-none d-lg-block' />
+
+            {(this.state.adventures)
+              ? <NavDropdown title="My Quests" id="collasible-nav-dropdown" style={this.props.theme.lightText} onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
+
+>>>>>>> 1ef7f288ba51678697006e77072d3105a4953e43
                 {this.state.adventures.map((quest, index) => {
                   return (
                     <NavDropdown.Item
@@ -363,6 +510,7 @@ class Chart extends Component {
               }
             >
               <Form.Label>Name Your Adventure: </Form.Label>
+<<<<<<< HEAD
               <Form.Control
                 id="add-title"
                 type="text"
@@ -370,6 +518,11 @@ class Chart extends Component {
                 value={this.state.title}
                 onChange={this.handleOnChangeTitle}
               />
+=======
+
+              <Form.Control id='add-title' type='text' name='title' value={this.state.title} onChange={this.handleOnChangeTitle} required />
+
+>>>>>>> 1ef7f288ba51678697006e77072d3105a4953e43
             </SaveModal>
 
             <DeleteModal

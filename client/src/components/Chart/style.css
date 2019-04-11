@@ -1,4 +1,5 @@
 #paper {
+<<<<<<< HEAD
   border: 2px solid black;
   /* background-image: url(process.env.PUBLIC_URL + "/images/quest.png"); */
 }
@@ -7,6 +8,10 @@
   overflow: scroll;
   width: 960px;
   height: 720px;
+=======
+    border: 2px solid black;   
+    
+>>>>>>> 1ef7f288ba51678697006e77072d3105a4953e43
 }
 
 ::-webkit-scrollbar {
