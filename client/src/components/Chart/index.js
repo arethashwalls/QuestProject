@@ -358,7 +358,7 @@ class Chart extends Component {
 
             <br className="d-none d-lg-block" />
 
-            {this.state.adventures ? (
+            {this.state.adventures ? 
               <NavDropdown
                 title="My Quests"
                 id="collasible-nav-dropdown"
