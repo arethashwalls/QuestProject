@@ -28,7 +28,7 @@ const Signup = props => {
         </Container>
 
     </div>
-  );
+  
 };
 
 export default Signup;
