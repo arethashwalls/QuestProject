@@ -42,12 +42,12 @@ let questLink = new joint.dia.Link({
   }
 });
 
+//Sets the container for the paper to allow for a large, contained, scrollable workspace.
 let paperStyle = {
   width: '90%',
   height: '90%',
   overflow: 'scroll'
 }
-
 
 class Chart extends Component {
   constructor(props) {
@@ -55,6 +55,7 @@ class Chart extends Component {
     this.graph = new joint.dia.Graph();
   }
 
+  //Chart component state
   state = {
     questID: '',
     title: '',
@@ -64,12 +65,14 @@ class Chart extends Component {
     questIndex: ''
   };
 
+  //To help trigger the Save modal
   toggleSaveModal = () => {
     this.setState({
       isOpenSave: !this.state.isOpenSave
     });
   }
 
+  //To help trigger the delete modal
   toggleDeleteModal = () => {
     this.setState({
       isOpenDelete: !this.state.isOpenDelete
@@ -78,6 +81,7 @@ class Chart extends Component {
 
   //When the page loads
   componentDidMount() {
+    //Bring in the color/style themes based on what the user selected on Sign up
     this.props.setTheme(this.props.loggedInUserClass);
     //Creates the paper our quests will be contained in
     this.paper = new joint.dia.Paper({
@@ -102,8 +106,8 @@ class Chart extends Component {
       },
 
       validateMagnet: function (cellView, magnet) {
-        // Note that this is the default behaviour. Just showing it here for reference.
-        // Disable linking interaction for magnets marked as passive (see below `.inPorts circle`).
+        // Disable linking interaction for magnets marked as passive.
+        // We don't want in ports to try and link towards other elements.
         return magnet.getAttribute('magnet') !== 'passive';
       }
     });
@@ -145,7 +149,7 @@ class Chart extends Component {
   }
 
 
-
+  //If the user wants to start a fresh chart, simply reload the page
   createNew = () => {
     window.location.reload();
   }
@@ -232,14 +236,13 @@ class Chart extends Component {
       }
     });
 
-
-
     this.graph.addCell(rectangle);
     $('#add-quest').val('');
     $('#quest-description').val('');
   };
 
-  //Saves the current incarnation of a quest in our database
+  //Saves the current incarnation of a quest in our database. If there is no quest with a "quest ID", we insert a whole new document,
+  //otherwise, we update the designated document
   saveQuest = (title, userId) => {
     let graphJSON = this.graph.toJSON();
     this.setState({ title: title })
@@ -264,6 +267,7 @@ class Chart extends Component {
       .catch(err => console.log(err));
   };
 
+  //Grabs the user input for creating a title
   handleOnChangeTitle = event => {
     const { name, value } = event.target;
     this.setState({
@@ -271,6 +275,7 @@ class Chart extends Component {
     });
   };
 
+  //Grabs the quest the user wants to bring up
   handleOnChangeDropdown = event => {
     console.log(event.target.value)
   }
@@ -300,9 +305,9 @@ class Chart extends Component {
             <Form>
               <Form.Group>
                 <Form.Label>Quest name: </Form.Label>
-                <Form.Control id='add-quest' type='text' required />
+                <Form.Control id='add-quest' type='text' defaultValue='No Mission Name' />
                 <Form.Label className='mt-1'>Quest description: </Form.Label>
-                <Form.Control id='quest-description' type='text' required />
+                <Form.Control id='quest-description' type='text' defaultValue='No Mission' />
                 <Button
                   id='add-quest'
                   type='submit'
@@ -349,13 +354,15 @@ class Chart extends Component {
 
             <br className='d-none d-lg-block' />
 
-            {(this.state.adventures)
-              ? <NavDropdown title="My Quests" id="collasible-nav-dropdown" style={this.props.theme.lightText} onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
+            {(this.state.adventures.length > 0)
+              ? <NavDropdown title="My Quests" id="collapsible-nav-dropdown" style={this.props.theme.lightText} onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
                 {this.state.adventures.map((quest, index) => {
                   return <NavDropdown.Item href="" key={index} value={index} onClick={() => this.getQuest(this.props.loggedInUserId, index)}>{quest.title}</NavDropdown.Item>;
                 })}
               </NavDropdown>
-              : ''
+              : <NavDropdown title="No Quests" id="collapsible-nav-dropdown" style={this.props.theme.lightText}>
+                <NavDropdown.Item href = "">No Saved Quest</NavDropdown.Item>
+              </NavDropdown>
             }
 
             <SaveModal
@@ -364,7 +371,7 @@ class Chart extends Component {
               close={this.toggleSaveModal}
               saveQuest={() => this.saveQuest(this.state.title, this.props.loggedInUserId)}>
               <Form.Label>Name Your Adventure: </Form.Label>
-              <Form.Control id='add-title' type='text' name='title' value={this.state.title} onChange={this.handleOnChangeTitle} required />
+              <Form.Control id='add-title' type='text' name='title' value={this.state.title} onChange={this.handleOnChangeTitle} defaultValue='Untitled' />
             </SaveModal>
 
             <DeleteModal
