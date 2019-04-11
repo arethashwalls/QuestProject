@@ -16,7 +16,7 @@ const Signin = props => {
       <Container style={props.theme.lightText}>
         <Row className="my-3">
           <Col className="mx-5">
-          <img src={process.env.PUBLIC_URL + "/images/quest.png"} />
+            <img src={process.env.PUBLIC_URL + "/images/quest.png"} />
             <img src={process.env.PUBLIC_URL + "/images/dot.png"} />
           </Col>
         </Row>
@@ -24,16 +24,15 @@ const Signin = props => {
           {/* <Col className="d-none d-lg-block mr-3">
           </Col> */}
           <Col xs={12} lg={9}>
-          <SigninForm theme={props.theme} />
-            
+            <SigninForm theme={props.theme} />
           </Col>
-          <Col className="d-block d-lg-none">
-            <Image
+          {/* <Col className="d-block d-lg-none"> */}
+          {/* <Image
               src="https://via.placeholder.com/600x300"
               className="center-block"
               fluid
-            />
-          </Col>
+            /> */}
+          {/* </Col> */}
         </Row>
       </Container>
     </div>
