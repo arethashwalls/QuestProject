@@ -24,17 +24,15 @@ strong {
   font-size: 3rem;
 }
 
-button {
-  /* transition: color 0.25s ease; */
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 20px;
+button.btn {
+  border-radius: 2rem;
 }
-/* button:hover {
+button,
+button:hover {
+  transition: color 0.25s ease;
+}
+button:hover {
+
   background-color: #3b3a3b !important;
 }
 button a:hover {

@@ -20,8 +20,8 @@ const Welcome = props => {
         </Col>
         <Col>
           {/* <h1 className='text-center homepage-title' style={props.theme.titleText}><strong>A Quest!</strong></h1> */}
-          <img src={process.env.PUBLIC_URL + "/images/quest.png"} />
-          <img src={process.env.PUBLIC_URL + "/images/dot.png"} />
+          <img alt="A quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
+          <img alt="..." src={process.env.PUBLIC_URL + "/images/dot.png"} />
         </Col>
       </Row>
       <Row>

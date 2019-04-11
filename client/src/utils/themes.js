@@ -1,5 +1,10 @@
 const colorSchemes = {
-  login: {},
+
+
+  login: {
+    light: "#fefdd7"
+  },
+
   Warrior: {
     dark: "#393F26",
     light: "#818474",
