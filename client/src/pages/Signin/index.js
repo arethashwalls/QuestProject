@@ -15,8 +15,8 @@ const Signin = props => {
       <Container>
         <Row className="my-3">
           <Col className="mx-5">
-            <img alt="A Quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
-            <img alt="..." src={process.env.PUBLIC_URL + "/images/dot.png"} />
+            <Image alt="A Quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
+            <Image alt="..." src={process.env.PUBLIC_URL + "/images/dot.png"} />
 
           </Col>
         </Row>

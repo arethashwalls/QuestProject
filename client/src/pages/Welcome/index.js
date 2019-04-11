@@ -11,16 +11,23 @@ const Welcome = props => {
   return (
     <Container>
       <Row className="mt-4 mb-2 w-md-75 mx-auto">
-        <Col md={3} className="img-col">
-          {/* <Image
+        <Col md={3} xs={0} className="img-col">
+          <Image
             src="./images/flourish-left.png"
             className=" d-none d-md-inline-block"
             fluid
-          /> */}
+          />
         </Col>
         <Col>
-          <img alt="A quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
-          <img alt="..." src={process.env.PUBLIC_URL + "/images/dot.png"} />
+          <Image alt="A quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
+          <Image alt="..." src={process.env.PUBLIC_URL + "/images/dot.png"} />
+        </Col>
+        <Col md={3} xs={0} className="img-col">
+          <Image
+            src="./images/flourish-right.png"
+            className=" d-none d-md-inline-block"
+            fluid
+          />
         </Col>
       </Row>
       <Row>

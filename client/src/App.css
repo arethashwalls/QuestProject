@@ -4,7 +4,12 @@
   font-weight: normal;
   font-style: normal;
 }
-
+@font-face {
+  font-family: "Fredoka One";
+  src: url("./fonts/FredokaOne-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
 /* Default theme/Login theme: */
 html, html[data-theme="Warrior"] {
   --background: url("./images/background.jpg");
@@ -46,7 +51,6 @@ body {
   background-image: var(--background);
   color: var(--lightColor);
   font-family: "Fredoka One";
-  font-family: "Archivo Black", sans-serif;
 }
 h2,
 strong {
@@ -72,7 +76,4 @@ button:hover {
 }
 button a:hover {
   text-decoration: none !important;
-} */
-
-input {
 }
