@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import SignupForm from "../../components/auth/SignupForm";
+import './style.css';
 
 const Signup = props => {
     return <div>
