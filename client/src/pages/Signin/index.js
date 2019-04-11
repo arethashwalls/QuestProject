@@ -22,7 +22,7 @@ const Signin = props => {
         </Row>
         <Row className="mb-3">
           <Col xs={12} lg={9}>
-          <SigninForm />
+            <SigninForm />
           </Col>
           {/* <Col className="d-block d-lg-none"> */}
           {/* <Image
