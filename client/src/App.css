@@ -38,6 +38,9 @@ strong {
 strong {
   font-size: 3rem;
 }
+button.btn {
+  border-radius: 2rem;
+}
 button,
 button:hover {
   transition: color 0.25s ease;
