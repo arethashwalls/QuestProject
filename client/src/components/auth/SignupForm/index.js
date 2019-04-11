@@ -37,12 +37,8 @@ class Register extends Component {
       });
     }
   }
-  onChange = e => {
-    this.setState({ [e.target.id]: e.target.value }, () => {
-      console.log(this.state);
-      this.props.setTheme(this.state.class);
-    });
-  };
+  onChange = e => this.setState({ [e.target.id]: e.target.value });
+
   onSubmit = e => {
     e.preventDefault();
     const newUser = {

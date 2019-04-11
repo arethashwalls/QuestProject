@@ -11,7 +11,6 @@ import Welcome from "./pages/Welcome";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import NoMatch from "./pages/NoMatch";
-import themes from "./utils/themes";
 import "./App.css";
 
 // Check for token to keep user logged in
@@ -35,18 +34,9 @@ if (localStorage.jwtToken) {
 // Imports:
 
 class App extends Component {
-  state = {
-    theme: themes("Warrior")
-  };
-
-  setThemeByClass = charclass => {
-    this.setState({ theme: themes(charclass) });
-  };
+  
 
   render() {
-    // document.getElementById("root").style.backgroundImage = `url('${
-    //   this.state.theme.backgrdPic.imgFile
-    // }')`;
     return (
       <Provider store={store}>
         <Router>

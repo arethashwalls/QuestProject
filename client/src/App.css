@@ -12,18 +12,45 @@
 }
 
 /* Default theme/Login theme: */
-html, body {
+html, html[data-theme="Warrior"] {
   --background: url("./images/background.jpg");
   --darkColor: #393F26;
   --lightColor: #EDDDD4;
   --hoverLightColor: #A89D97;
   --splashColor: #AD0101;
   --hoverSplashColor: #6d0000;
-  background-image: var(--background);
-  color: var(--lightColor);
+}
+
+html[data-theme="Mage"] {
+  --background: url("./images/background.jpg");
+  --darkColor: #393F26;
+  --lightColor: #EDDDD4;
+  --hoverLightColor: #A89D97;
+  --splashColor: blue;
+  --hoverSplashColor: #6d0000;
+}
+
+html[data-theme="Cleric"] {
+  --background: url("./images/background.jpg");
+  --darkColor: #393F26;
+  --lightColor: #EDDDD4;
+  --hoverLightColor: #A89D97;
+  --splashColor: yellow;
+  --hoverSplashColor: #6d0000;
+}
+
+html[data-theme="Bard"] {
+  --background: url("./images/background.jpg");
+  --darkColor: #393F26;
+  --lightColor: #EDDDD4;
+  --hoverLightColor: #A89D97;
+  --splashColor: purple;
+  --hoverSplashColor: #6d0000;
 }
 
 body {
+  background-image: var(--background);
+  color: var(--lightColor);
   font-family: "Fredoka One";
 }
 h2,

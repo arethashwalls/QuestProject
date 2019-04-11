@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../../actions/authActions";
+import setTheme from '../../../actions/themeActions';
 import classnames from "classnames";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -49,6 +50,10 @@ class Login extends Component {
     this.props.loginUser(userData);
   };
   render() {
+    console.log('State:')
+    console.log(this.state);
+    console.log('Props:')
+    console.log(this.props)
     const { errors } = this.state;
     return (
       <div>
@@ -110,9 +115,10 @@ class Login extends Component {
 }
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
+  setTheme: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
 };
 const mapStateToProps = state => ({
   auth: state.auth,
@@ -121,6 +127,7 @@ const mapStateToProps = state => ({
 export default withRouter(
   connect(
     mapStateToProps,
-    { loginUser }
+    { loginUser },
+   setTheme 
   )(Login)
 );
