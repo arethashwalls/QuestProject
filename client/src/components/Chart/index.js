@@ -79,6 +79,16 @@ class Chart extends Component {
     });
   }
 
+  getAdventureList = user => {
+
+    API.getAdventures(user)
+      .then(res => {
+        this.setState({ adventures: res.data });
+        console.log(res.data);
+      })
+      .catch(err => console.log(err))
+  }
+
   //When the page loads
   componentDidMount() {
     //Bring in the color/style themes based on what the user selected on Sign up
@@ -112,11 +122,10 @@ class Chart extends Component {
       }
     });
 
-
     //If you want to remove an element from the paper, simply double click.
     this.paper.on('element:pointerdblclick', function (elementView) {
 
-      var currentElement = elementView.model;
+      let currentElement = elementView.model;
       currentElement.remove();
     });
 
@@ -148,7 +157,6 @@ class Chart extends Component {
     this.graph.addCell(start);
   }
 
-
   //If the user wants to start a fresh chart, simply reload the page
   createNew = () => {
     window.location.reload();
@@ -162,7 +170,7 @@ class Chart extends Component {
   }
 
   //Grab the list of adventures the user has saved to their account
-  getAdventureList = user => {
+  /*getAdventureList = user => {
 
     API.getAdventures(user)
       .then(res => {
@@ -170,7 +178,7 @@ class Chart extends Component {
         console.log(res.data);
       })
       .catch(err => console.log(err))
-  }
+  }*/
 
   //Wraps the text so that it can stay contained in the cell. Otherwise, it just goes out without abandon
   sentenceWrapped = (sentence, lineSize, maxSize) => {
@@ -305,9 +313,9 @@ class Chart extends Component {
             <Form>
               <Form.Group>
                 <Form.Label>Quest name: </Form.Label>
-                <Form.Control id='add-quest' type='text' defaultValue='No Mission Name' />
+                <Form.Control id='add-quest' type='text' />
                 <Form.Label className='mt-1'>Quest description: </Form.Label>
-                <Form.Control id='quest-description' type='text' defaultValue='No Mission' />
+                <Form.Control id='quest-description' type='text' />
                 <Button
                   id='add-quest'
                   type='submit'
@@ -354,14 +362,11 @@ class Chart extends Component {
 
             <br className='d-none d-lg-block' />
 
-            {(this.state.adventures.length > 0)
-              ? <NavDropdown title="My Quests" id="collapsible-nav-dropdown" style={this.props.theme.lightText} onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
+            {(this.state.adventures)
+              && <NavDropdown title="My Quests" id="collapsible-nav-dropdown" style={this.props.theme.lightText} onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
                 {this.state.adventures.map((quest, index) => {
                   return <NavDropdown.Item href="" key={index} value={index} onClick={() => this.getQuest(this.props.loggedInUserId, index)}>{quest.title}</NavDropdown.Item>;
                 })}
-              </NavDropdown>
-              : <NavDropdown title="No Quests" id="collapsible-nav-dropdown" style={this.props.theme.lightText}>
-                <NavDropdown.Item href = "">No Saved Quest</NavDropdown.Item>
               </NavDropdown>
             }
 
@@ -369,9 +374,11 @@ class Chart extends Component {
               className="modal"
               show={this.state.isOpenSave}
               close={this.toggleSaveModal}
-              saveQuest={() => this.saveQuest(this.state.title, this.props.loggedInUserId)}>
+              saveQuest={() => this.saveQuest(this.state.title, this.props.loggedInUserId)}
+              >
+              
               <Form.Label>Name Your Adventure: </Form.Label>
-              <Form.Control id='add-title' type='text' name='title' value={this.state.title} onChange={this.handleOnChangeTitle} defaultValue='Untitled' />
+              <Form.Control id='add-title' type='text' name='title' value={this.state.title} onChange={this.handleOnChangeTitle} />
             </SaveModal>
 
             <DeleteModal
