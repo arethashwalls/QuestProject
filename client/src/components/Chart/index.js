@@ -87,7 +87,7 @@ class Chart extends Component {
       drawGrid: true,
       model: this.graph,
       background: {
-        color: "#fefdd7"
+        color: "#efd5bd"
       },
       defaultLink: questLink,
 
@@ -126,8 +126,8 @@ class Chart extends Component {
       position: { x: 398, y: 83 },
       size: { width: 150, height: 90 },
       attrs: {
-        rect: { fill: "orange", stroke: "none" },
-        text: { text: "Start Campaign", fill: "white", "font-size": 15 }
+        rect: { fill: "orange", stroke: "none", rx: "10px", ry: "10px" },
+        text: { text: "Start Campaign", fill: "black", "font-size": 15 }
       },
 
       outPorts: [""],

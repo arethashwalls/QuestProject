@@ -20,12 +20,15 @@ const Welcome = props => {
         </Col>
         <Col>
           {/* <h1 className='text-center homepage-title' style={props.theme.titleText}><strong>A Quest!</strong></h1> */}
-          <img alt="A quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
+          <img
+            alt="A quest"
+            src={process.env.PUBLIC_URL + "/images/quest.png"}
+          />
           <img alt="..." src={process.env.PUBLIC_URL + "/images/dot.png"} />
         </Col>
       </Row>
       <Row>
-        <Col className="col-md-3 pt-5 p-4">
+        <Col className="col-md-3 col-sm-12 pt-5 p-4">
           <div className="fix">
             <img src="images/B.jpg" alt="Bard" className="img-fluid" />
             <div className="title">
@@ -34,7 +37,7 @@ const Welcome = props => {
           </div>
         </Col>
 
-        <Col className="col-md-3 pt-5 p-4">
+        <Col className="col-md-3 col-sm-12 pt-5 p-4">
           <div className="fix">
             <img
               src="images/White_Mage.jpg"
@@ -47,7 +50,7 @@ const Welcome = props => {
           </div>
         </Col>
 
-        <Col className="col-md-3 pt-5 p-4">
+        <Col className="col-md-3 col-sm-12 pt-5 p-4">
           <div className="fix">
             <img src="images/Warrior.jpg" alt="Warrior" className="img-fluid" />
             <div className="title">
@@ -56,7 +59,7 @@ const Welcome = props => {
           </div>
         </Col>
 
-        <Col className="col-md-3 pt-5 p-4">
+        <Col className="col-md-3 col-sm-12  pt-5 p-4">
           <div className="fix">
             <img src="images/Cleric.jpg" alt="Warrior" className="img-fluid" />
             <div className="title">
