@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import SignupForm from "../../components/auth/SignupForm";
-import './style.css';
+import "./style.css";
 
 const Signup = props => {
   return (
@@ -31,6 +31,7 @@ const Signup = props => {
         </Row>
       </Container>
     </div>
+  );
 };
 
 export default Signup;
