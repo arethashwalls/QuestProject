@@ -3,7 +3,6 @@ import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../../actions/authActions";
-import setTheme from '../../../actions/themeActions';
 import classnames from "classnames";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -111,19 +110,17 @@ class Login extends Component {
 }
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
-  setTheme: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
 const mapStateToProps = state => ({
   auth: state.auth,
-  setTheme: state.setTheme,
   errors: state.errors
 });
 export default withRouter(
   connect(
     mapStateToProps,
-    { loginUser, setTheme }
+    { loginUser }
   )(Login)
 );

@@ -152,7 +152,6 @@ class Chart extends Component {
     API.getAdventures(user)
       .then(res => {
         this.setState({ adventures: res.data });
-        console.log(res.data);
       })
       .catch(err => console.log(err))
   }
@@ -181,7 +180,6 @@ class Chart extends Component {
   //Create a quest with a title and text. Once it's formed, the user can position it anywhere on the graph
   addQuest = event => {
     event.preventDefault();
-
     let rectangle = new joint.shapes.devs.Model({
       position: { x: 150, y: 300 },
       size: { width: 250, height: 200 },
@@ -258,12 +256,9 @@ class Chart extends Component {
     });
   };
 
-  handleOnChangeDropdown = event => {
-    console.log(event.target.value)
-  }
-
   //Make it WORK!
   render() {
+    document.documentElement.setAttribute("data-theme", this.props.loggedInUserClass);
     return (
       <Container as='section'>
         <Row className='mt-3 mb-4'>
@@ -338,6 +333,7 @@ class Chart extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     loggedInUserId: state.auth.user.id,
