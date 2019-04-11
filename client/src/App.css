@@ -4,17 +4,53 @@
   font-weight: normal;
   font-style: normal;
 }
-/* @font-face {
-  font-family: "Landliebe";
-  src: url("./fonts/Landliebe.eot");
-  src: url("./fonts/Landliebe.eot?#iefix") format("embedded-opentype"),
-    url("./fonts/Landliebe.woff") format("woff");
+@font-face {
+  font-family: "Fredoka One";
+  src: url("./fonts/FredokaOne-Regular.ttf");
   font-weight: normal;
   font-style: normal;
-} */
+}
+/* Default theme/Login theme: */
+html, html[data-theme="Warrior"] {
+  --background: url("./images/background.jpg");
+  --darkColor: #393F26;
+  --lightColor: #EDDDD4;
+  --hoverLightColor: #A89D97;
+  --splashColor: #AD0101;
+  --hoverSplashColor: #6d0000;
+}
+
+html[data-theme="Mage"] {
+  --background: url("./images/background.jpg");
+  --darkColor: #393F26;
+  --lightColor: #EDDDD4;
+  --hoverLightColor: #A89D97;
+  --splashColor: blue;
+  --hoverSplashColor: #6d0000;
+}
+
+html[data-theme="Cleric"] {
+  --background: url("./images/background.jpg");
+  --darkColor: #393F26;
+  --lightColor: #EDDDD4;
+  --hoverLightColor: #A89D97;
+  --splashColor: yellow;
+  --hoverSplashColor: #6d0000;
+}
+
+html[data-theme="Bard"] {
+  --background: url("./images/background.jpg");
+  --darkColor: #393F26;
+  --lightColor: #EDDDD4;
+  --hoverLightColor: #A89D97;
+  --splashColor: purple;
+  --hoverSplashColor: #6d0000;
+}
 
 body {
-  font-family: "Archivo Black", sans-serif;
+  background-image: var(--background);
+  color: var(--lightColor);
+  font-family: "Fredoka One";
 }
 h2,
 strong {
@@ -25,6 +61,9 @@ strong {
 }
 
 button.btn {
+  background-color: var(--splashColor);
+  color: var(--lightColor);
+  border: 2px solid var(--lightColor);
   border-radius: 2rem;
 }
 button,
@@ -32,12 +71,9 @@ button:hover {
   transition: color 0.25s ease;
 }
 button:hover {
-
-  background-color: #3b3a3b !important;
+  border: 2px solid var(--lightColor) !important;
+  background-color: var(--hoverSplashColor) !important;
 }
 button a:hover {
   text-decoration: none !important;
-} */
-
-input {
 }

@@ -98,7 +98,7 @@ class Login extends Component {
                   : ''
                 }
               </Form.Group>
-              <Button type='submit' className='float-left' style={this.props.theme.buttons}>Your Quest Awaits...</Button>
+              <Button type='submit' className='float-left'>Your Quest Awaits...</Button>
             </Form>
           </Col>
         </Row>
@@ -112,7 +112,7 @@ Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
 };
 const mapStateToProps = state => ({
   auth: state.auth,

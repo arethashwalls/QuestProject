@@ -12,19 +12,17 @@ import "./style.css";
 const Signin = props => {
   return (
     <div>
-      {/* <QuestNav theme={props.theme} signedIn={props.signedIn} /> */}
-      <Container style={props.theme.lightText}>
+      <Container>
         <Row className="my-3">
           <Col className="mx-5">
-            <img src={process.env.PUBLIC_URL + "/images/quest.png"} />
-            <img src={process.env.PUBLIC_URL + "/images/dot.png"} />
+            <Image alt="A Quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
+            <Image alt="..." src={process.env.PUBLIC_URL + "/images/dot.png"} />
+
           </Col>
         </Row>
         <Row className="mb-3">
-          {/* <Col className="d-none d-lg-block mr-3">
-          </Col> */}
           <Col xs={12} lg={9}>
-            <SigninForm theme={props.theme} />
+          <SigninForm />
           </Col>
           {/* <Col className="d-block d-lg-none"> */}
           {/* <Image
