@@ -328,14 +328,14 @@ class Chart extends Component {
               <Form.Group>
                 <Form.Label>Quest name: </Form.Label>
 
-                <Form.Control id='add-quest' type='text' />
+                <Form.Control id='add-quest' type='text' required />
                 <Form.Label className='mt-1'>Quest description: </Form.Label>
-                <Form.Control id='quest-description' type='text' />
+                <Form.Control id='quest-description' type='text' required />
 
                 <Button
                   id="add-quest"
                   type="submit"
-                  onClick={this.addQuest}
+                  onSubmit={this.addQuest}
                   className="mt-2"
                 >
                   Submit
@@ -399,7 +399,6 @@ class Chart extends Component {
               </NavDropdown>
 
             }
-
 
             <SaveModal
               className="modal"
