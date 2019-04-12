@@ -382,7 +382,7 @@ class Chart extends Component {
 
 
             {(this.state.adventures)
-              && <NavDropdown title="My Quests" id="collapsible-nav-dropdown" style={this.props.theme.lightText} onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
+              && <NavDropdown title="My Quests" id="collapsible-nav-dropdown" onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
 
                 {this.state.adventures.map((quest, index) => {
                   return (
@@ -418,6 +418,7 @@ class Chart extends Component {
                 name="title"
                 value={this.state.title}
                 onChange={this.handleOnChangeTitle}
+                required
               />
 
             </SaveModal>
