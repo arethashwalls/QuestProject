@@ -91,8 +91,6 @@ class Chart extends Component {
 
   //When the page loads
   componentDidMount() {
-    //Bring in the color/style themes based on what the user selected on Sign up
-    this.props.setTheme(this.props.loggedInUserClass);
     //Creates the paper our quests will be contained in
     this.paper = new joint.dia.Paper({
       el: ReactDOM.findDOMNode(this.refs.placeholder),
@@ -436,10 +434,6 @@ class Chart extends Component {
               <div id="paper" ref="placeholder" className="scroller" />
             </div>
           </Col>
-          {/* <Col xs={2} lg={6} className="text-lg-right">
-            <br className="d-none d-lg-block" /> */}
-
-          {/* </Col> */}
         </Row>
       </Container>
     );
