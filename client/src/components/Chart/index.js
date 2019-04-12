@@ -91,8 +91,6 @@ class Chart extends Component {
 
   //When the page loads
   componentDidMount() {
-    //Bring in the color/style themes based on what the user selected on Sign up
-    this.props.setTheme(this.props.loggedInUserClass);
     //Creates the paper our quests will be contained in
     this.paper = new joint.dia.Paper({
       el: ReactDOM.findDOMNode(this.refs.placeholder),
@@ -330,14 +328,14 @@ class Chart extends Component {
               <Form.Group>
                 <Form.Label>Quest name: </Form.Label>
 
-                <Form.Control id='add-quest' type='text' />
+                <Form.Control id='add-quest' type='text' required />
                 <Form.Label className='mt-1'>Quest description: </Form.Label>
-                <Form.Control id='quest-description' type='text' />
+                <Form.Control id='quest-description' type='text' required />
 
                 <Button
                   id="add-quest"
                   type="submit"
-                  onClick={this.addQuest}
+                  onSubmit={this.addQuest}
                   className="mt-2"
                 >
                   Submit
@@ -382,7 +380,7 @@ class Chart extends Component {
 
 
             {(this.state.adventures)
-              && <NavDropdown title="My Quests" id="collapsible-nav-dropdown" style={this.props.theme.lightText} onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
+              && <NavDropdown title="My Quests" id="collapsible-nav-dropdown" onClick={() => this.getAdventureList(this.props.loggedInUserId)}>
 
                 {this.state.adventures.map((quest, index) => {
                   return (
@@ -402,7 +400,6 @@ class Chart extends Component {
 
             }
 
-
             <SaveModal
               className="modal"
               show={this.state.isOpenSave}
@@ -418,6 +415,7 @@ class Chart extends Component {
                 name="title"
                 value={this.state.title}
                 onChange={this.handleOnChangeTitle}
+                required
               />
 
             </SaveModal>
@@ -435,10 +433,6 @@ class Chart extends Component {
               <div id="paper" ref="placeholder" className="scroller" />
             </div>
           </Col>
-          {/* <Col xs={2} lg={6} className="text-lg-right">
-            <br className="d-none d-lg-block" /> */}
-
-          {/* </Col> */}
         </Row>
       </Container>
     );
