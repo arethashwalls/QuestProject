@@ -83,8 +83,8 @@ class Register extends Component {
               </Form.Group>
               <Form.Group>
                 <Form.Label>Character Class:</Form.Label>
-                <Form.Control as="select" onChange={this.onChange} id="class">
-                  <option value="" disabled selected>Select a character class.</option>
+                <Form.Control as="select" defaultValue='DEFAULT' onChange={this.onChange} id="class">
+                  <option value="DEFAULT" disabled>Select a character class.</option>
                   <option value="Warrior">Warrior</option>
                   <option value="Mage">Mage</option>
                   <option value="Cleric">Cleric</option>
