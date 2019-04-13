@@ -7,6 +7,7 @@ import Image from "react-bootstrap/Image";
 import SignupForm from "../../components/auth/SignupForm";
 import "./style.css";
 
+
 const Signup = props => {
     return <div>
         <QuestNav signedIn={props.signedIn} />
@@ -18,13 +19,7 @@ const Signup = props => {
                 </Col>
             </Row>
             <Row className='mb-3'>
-            
-                <Col xs={12} lg={9} >
-                    <SignupForm />
-                </Col>
-                <Col className='d-block d-lg-none' >
-                    <Image src='https://via.placeholder.com/600x300' className='center-block' fluid />
-                </Col>
+                <SignupForm />
             </Row>
         </Container>
     </div>
