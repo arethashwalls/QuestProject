@@ -1,3 +1,9 @@
 .invalid {
     color: #a30101;
 }
+.signup-instructions .instruction-text:after,  .signup-instructions .instruction-text:before {
+    left: 25%;
+}
+.signup-instructions .instruction-box {
+  top: -230px;
+}

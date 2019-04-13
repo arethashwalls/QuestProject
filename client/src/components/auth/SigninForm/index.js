@@ -41,9 +41,8 @@ class Login extends Component {
       });
     }
   }
-  hideInstructions = () => {
-    document.querySelector('.instruction-box').classList.add('d-none');
-  }
+  hideInstructions = () => document.querySelector('.instruction-box').classList.add('d-none');
+  
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
