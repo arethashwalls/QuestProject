@@ -21,7 +21,6 @@ const Welcome = props => {
         </Col>
         <Col>
           <Image alt="A quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
-          <Image alt="..." src={process.env.PUBLIC_URL + "/images/dot.png"} />
         </Col>
         <Col md={3} xs={0} className="img-col">
           <Image
@@ -32,7 +31,7 @@ const Welcome = props => {
         </Col>
       </Row>
       <Row>
-        <Col className="col-md-3 col-sm-12 pt-5 p-4">
+        <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
             <img src="images/B.jpg" alt="Bard" className="img-fluid" />
             <div className="title">
@@ -41,7 +40,7 @@ const Welcome = props => {
           </div>
         </Col>
 
-        <Col className="col-md-3 col-sm-12 pt-5 p-4">
+        <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
             <img
               src="images/White_Mage.jpg"
@@ -54,7 +53,7 @@ const Welcome = props => {
           </div>
         </Col>
 
-        <Col className="col-md-3 col-sm-12 pt-5 p-4">
+        <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
             <img src="images/Warrior.jpg" alt="Warrior" className="img-fluid" />
             <div className="title">
@@ -63,7 +62,7 @@ const Welcome = props => {
           </div>
         </Col>
 
-        <Col className="col-md-3 col-sm-12  pt-5 p-4">
+        <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
             <img src="images/Cleric.jpg" alt="Warrior" className="img-fluid" />
             <div className="title">
@@ -78,7 +77,6 @@ const Welcome = props => {
             <Button>Sign Up</Button>
           </Link>
         </Col>
-        <Col>{/* <Image src="./images/flourish.png" fluid /> */}</Col>
         <Col className="text-left">
           <Link to="/signin">
             <Button>Sign In</Button>

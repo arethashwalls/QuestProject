@@ -27,13 +27,16 @@
   background: red;
 }
 .title {
-  font-weight: 500px;
-  font-size: 18px;
-  background: white;
+  font-weight: 500;
   width: 100%;
   padding-top: 15px;
   text-align: center;
   position: relative;
-  color: var(--darkColor)
-  /* bottom: -60px; */
+  color: var(--darkColor);
+  background: var(--lightColor);
+  border-radius: 10px;
+  margin-top: 5px;
+}
+strong {
+  font-size: 2rem!important;
 }
