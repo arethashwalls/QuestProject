@@ -10,8 +10,9 @@
   font-weight: normal;
   font-style: normal;
 }
+
 /* Default theme/Login theme: */
-html {
+html, html[data-theme=""] {
   --background: url("./images/background.jpg");
   --darkColor: #393F26;
   --lightColor: #EDDDD4;

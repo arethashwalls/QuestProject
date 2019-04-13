@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import "./style.css";
 
 const Welcome = props => {
+  document.documentElement.setAttribute("data-theme", '');
   return (
     <Container>
       <Row className="mt-4 mb-2 w-md-75 mx-auto">
