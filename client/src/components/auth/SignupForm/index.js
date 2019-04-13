@@ -17,7 +17,7 @@ class Register extends Component {
     super();
     this.state = {
       name: "",
-      class: "Login",
+      class: "Warrior",
       email: "",
       password: "",
       password2: "",
@@ -37,12 +37,12 @@ class Register extends Component {
       });
     }
   }
-  onChange = e => {
+  onChange = e => { 
     this.setState({ [e.target.id]: e.target.value }, () => {
-      console.log(this.state);
-      this.props.setTheme(this.state.class);
+      document.documentElement.setAttribute("data-theme", this.state.class);
     });
-  };
+  }
+
   onSubmit = e => {
     e.preventDefault();
     const newUser = {
@@ -83,6 +83,7 @@ class Register extends Component {
               <Form.Group>
                 <Form.Label>Character Class:</Form.Label>
                 <Form.Control as="select" onChange={this.onChange} id="class">
+                  <option value="" disabled selected>Select a character class.</option>
                   <option value="Warrior">Warrior</option>
                   <option value="Mage">Mage</option>
                   <option value="Cleric">Cleric</option>
@@ -143,7 +144,7 @@ class Register extends Component {
                   ""
                 )}
               </Form.Group>
-              <Button type='submit' className='float-left' style={this.props.theme.buttons}>Your Quest Awaits...</Button>
+              <Button type='submit' className='float-left'>Your Quest Awaits...</Button>
 
             </Form>
           </Col>

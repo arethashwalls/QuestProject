@@ -8,10 +8,11 @@ import Button from "react-bootstrap/Button";
 import "./style.css";
 
 const Welcome = props => {
+  document.documentElement.setAttribute("data-theme", '');
   return (
     <Container>
       <Row className="mt-4 mb-2 w-md-75 mx-auto">
-        <Col md={3} className="img-col">
+        <Col md={3} xs={0} className="img-col">
           <Image
             src="./images/flourish-left.png"
             className=" d-none d-md-inline-block"
@@ -19,38 +20,31 @@ const Welcome = props => {
           />
         </Col>
         <Col>
-          {/* <h1 className='text-center homepage-title' style={props.theme.titleText}><strong>A Quest!</strong></h1> */}
-          <img alt="A quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
-          <img alt="..." src={process.env.PUBLIC_URL + "/images/dot.png"} />
+          <Image alt="A quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
         </Col>
-        <Col md={3} className="img-col">
+        <Col md={3} xs={0} className="img-col">
           <Image
             src="./images/flourish-right.png"
-            className="d-none d-md-inline-block"
+            className=" d-none d-md-inline-block"
             fluid
           />
         </Col>
       </Row>
       <Row>
-        <Col className="col-md-3 pt-5 p-4">
-          {/* <Image
-            src="https://via.placeholder.com/900x400"
-            className="center-block"
-            fluid
-          /> */}
-
+        <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
-            <img src="images/Bard.jpg" alt="Bard" className="img-fluid" />
+            <img src="images/B.jpg" alt="Bard" className="img-fluid" />
             <div className="title">
               <strong>Bard</strong>
             </div>
           </div>
         </Col>
-        <Col className="col-md-3 pt-5 p-4">
+
+        <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
             <img
               src="images/White_Mage.jpg"
-              alt="White Mage"
+              alt="White_Mage"
               className="img-fluid"
             />
             <div className="title">
@@ -58,7 +52,8 @@ const Welcome = props => {
             </div>
           </div>
         </Col>
-        <Col className="col-md-3 pt-5 p-4">
+
+        <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
             <img src="images/Warrior.jpg" alt="Warrior" className="img-fluid" />
             <div className="title">
@@ -66,7 +61,8 @@ const Welcome = props => {
             </div>
           </div>
         </Col>
-        <Col className="col-md-3 pt-5 p-4">
+
+        <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
             <img src="images/Cleric.jpg" alt="Warrior" className="img-fluid" />
             <div className="title">
@@ -77,16 +73,13 @@ const Welcome = props => {
       </Row>
       <Row className="mt-4 mb-3">
         <Col className="text-right">
-          <Link style={props.theme.lightText} to="/signup">
-            <Button style={props.theme.buttons}>Sign Up</Button>
+          <Link to="/signup">
+            <Button>Sign Up</Button>
           </Link>
         </Col>
-        <Col>
-          <Image src="./images/flourish.png" fluid />
-        </Col>
         <Col className="text-left">
-          <Link style={props.theme.lightText} to="/signin">
-            <Button style={props.theme.buttons}>Sign In</Button>
+          <Link to="/signin">
+            <Button>Sign In</Button>
           </Link>
         </Col>
       </Row>

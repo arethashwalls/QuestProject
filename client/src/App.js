@@ -11,7 +11,6 @@ import Welcome from "./pages/Welcome";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import NoMatch from "./pages/NoMatch";
-import themes from "./utils/themes";
 import "./App.css";
 
 // Check for token to keep user logged in
@@ -35,18 +34,8 @@ if (localStorage.jwtToken) {
 // Imports:
 
 class App extends Component {
-  state = {
-    theme: themes("Warrior")
-  };
-
-  setThemeByClass = charclass => {
-    this.setState({ theme: themes(charclass) });
-  };
 
   render() {
-    document.getElementById("root").style.backgroundImage = `url('${
-      this.state.theme.backgrdPic.imgFile
-    }')`;
     return (
       <Provider store={store}>
         <Router>
@@ -54,29 +43,24 @@ class App extends Component {
             <Route
               exact
               path="/welcome"
-              render={() => <Welcome theme={this.state.theme} />}
+              render={() => <Welcome />}
             />
             <Route
               exact
               path="/signup"
               render={() => (
-                <Signup
-                  theme={this.state.theme}
-                  setTheme={this.setThemeByClass}
-                />
+                <Signup />
               )}
             />
             <Route
               exact
               path="/signin"
-              render={() => <Signin theme={this.state.theme} />}
+              render={() => <Signin />}
             />
             <PrivateRoute
               exact
               path="/"
               component={Quest}
-              theme={this.state.theme}
-              setTheme={this.setThemeByClass}
             />
             <Route component={NoMatch} />
           </Switch>

@@ -1,12 +1,16 @@
 const colorSchemes = {
+
+
   login: {
     light: "#fefdd7"
   },
+
   Warrior: {
     dark: "#393F26",
     light: "#818474",
     highlight: "#EDDDD4",
-    splash: "#AD0101"
+    splash: "#AD0101",
+    neutral: "#fefdd7"
   },
   Mage: {
     dark: "blue",
@@ -49,11 +53,9 @@ const getTheme = themeName => {
     lightBg: {
       backgroundColor: light
     },
-    buttons: {
-      backgroundColor: splash,
-      border: `2px solid ${highlight}`,
-      boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.25)"
-    },
+    // buttons: {
+    //   backgroundColor: splash
+    // },
     mainText: {
       color: dark
     },
