@@ -13,7 +13,6 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import Image from 'react-bootstrap/Image';
 import "./style.css";
 import "./joint.css";
 
@@ -316,7 +315,7 @@ class Chart extends Component {
     return (
       <Container as="section">
         <Row className="mt-3 mb-4">
-          <Col xs={12} lg={3}>
+          <Col md={3}>
             <Button
               id="create-new-quest"
               type="button"
@@ -428,13 +427,12 @@ class Chart extends Component {
             />
           </Col>
 
-          <Col xs={12} lg={9}>
+          <Col md={9}>
             <div id="divPaperWrapper" style={paperStyle}>
               <div id="paper" ref="placeholder" className="scroller" />
             </div>
           </Col>
         </Row>
-        <Image className='charapic-chart' src={`images/${this.props.loggedInUserClass}-left.png`}/>
       </Container>
     );
   }

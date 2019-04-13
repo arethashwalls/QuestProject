@@ -19,7 +19,16 @@ const Signin = props => {
           </Col>
         </Row>
         <Row className="mb-3">
-          <SigninForm />
+          <Col xs={12} lg={9}>
+            <SigninForm />
+          </Col>
+          {/* <Col className="d-block d-lg-none"> */}
+          {/* <Image
+              src="https://via.placeholder.com/600x300"
+              className="center-block"
+              fluid
+            /> */}
+          {/* </Col> */}
         </Row>
       </Container>
     </div>
