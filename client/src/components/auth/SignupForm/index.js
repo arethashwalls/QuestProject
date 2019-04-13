@@ -38,7 +38,10 @@ class Register extends Component {
       });
     }
   }
-  onChange = e => { 
+
+  hideInstructions = () => document.querySelector('.instruction-box').classList.add('d-none');
+
+  onChange = e => {
     this.setState({ [e.target.id]: e.target.value }, () => {
       document.documentElement.setAttribute("data-theme", this.state.class);
     });
@@ -61,7 +64,7 @@ class Register extends Component {
       <Container fluid>
         <Row className='my-4'>
 
-          <Col xs={12} md={8} lg={6} className = "form">
+          <Col xs={12} md={6} className="form">
             <Form noValidate onSubmit={this.onSubmit}>
               <Form.Group>
                 <Form.Label>Name:</Form.Label>
@@ -78,13 +81,13 @@ class Register extends Component {
                 {errors.name ? (
                   <Alert variant="danger">{errors.name}</Alert>
                 ) : (
-                  ""
-                )}
+                    ""
+                  )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Character Class:</Form.Label>
-                <Form.Control as="select" onChange={this.onChange} id="class">
-                  <option value="" disabled selected>Select a character class.</option>
+                <Form.Control as="select" defaultValue='DEFAULT' onChange={this.onChange} id="class">
+                  <option value="DEFAULT" disabled>Select a character class.</option>
                   <option value="Warrior">Warrior</option>
                   <option value="Mage">Mage</option>
                   <option value="Cleric">Cleric</option>
@@ -106,8 +109,8 @@ class Register extends Component {
                 {errors.email ? (
                   <Alert variant="danger">{errors.email}</Alert>
                 ) : (
-                  ""
-                )}
+                    ""
+                  )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Password:</Form.Label>
@@ -124,8 +127,8 @@ class Register extends Component {
                 {errors.password ? (
                   <Alert variant="danger">{errors.password}</Alert>
                 ) : (
-                  ""
-                )}
+                    ""
+                  )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Confirm password:</Form.Label>
@@ -142,15 +145,24 @@ class Register extends Component {
                 {errors.password2 ? (
                   <Alert variant="danger">{errors.password2}</Alert>
                 ) : (
-                  ""
-                )}
+                    ""
+                  )}
               </Form.Group>
               <Button type='submit' className='float-left'>Your Quest Awaits...</Button>
 
             </Form>
           </Col>
-          <Col xs={12} md={2} lg={6} className='text-right'>
-                <Image className='char-portrait' src={`images/${this.state.class || 'mage'}.png`} />
+          <Col xs={12} md={6} className='instruction-col signup-instructions'>
+            <div className='instruction-box' onClick={this.hideInstructions}>
+              <p className='instruction-text'>
+              Welcome, adventurer! Begin your journey by filling out the Scroll of Registration.
+              <br /><br />
+              Your character class shall color your experience from this day forward...
+                  </p>
+              <p className="text-right">Click to dismiss.</p>
+
+            </div>
+            <Image className='char-portrait' src={`images/${this.state.class || 'mage'}.png`} />
           </Col>
         </Row>
       </Container>

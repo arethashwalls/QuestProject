@@ -306,6 +306,7 @@ class Chart extends Component {
     this.setState({title: event.target.value});
   }
 
+  hideInstructions = () => document.querySelector('.instruction-box').classList.add('d-none');
 
   //Make it WORK!
   render() {
@@ -434,7 +435,23 @@ class Chart extends Component {
             </div>
           </Col>
         </Row>
-        <Image className='charapic-chart' src={`images/${this.props.loggedInUserClass}-left.png`}/>
+        <div className='chart-instructions'>
+          <div className='instruction-box' onClick={this.hideInstructions}>
+                    <p className='instruction-text'>
+                      Welcome to your quest!
+                      <br /><br />
+                      To add a new quest to your current adventure, enter the name and description of your quest in the scroll to the left.
+                      <br /><br />
+                      To save your current adventure, click “Save Adventure”.
+                      <br /><br />
+                      To start a new adventure, click “Start New Adventure.”
+                      <br /><br />
+                      To pull up a previous adventure, click it’s name under My Quests.
+                    </p>
+                    <p className="text-right dismiss-text">Click to dismiss.</p>
+                  </div>
+          <Image className='charapic-chart' src={`images/${this.props.loggedInUserClass}-left.png`}/>
+        </div>
       </Container>
     );
   }
