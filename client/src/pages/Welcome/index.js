@@ -12,20 +12,20 @@ const Welcome = props => {
   return (
     <Container>
       <Row className="mt-4 mb-2 w-md-75 mx-auto">
-        <Col md={3} xs={0} className="img-col">
+        <Col lg={3} xs={0} className="img-col">
           <Image
             src="./images/flourish-left.png"
-            className=" d-none d-md-inline-block"
+            className=" d-none d-lg-inline-block"
             fluid
           />
         </Col>
         <Col className="text-center">
           <Image alt="A quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
         </Col>
-        <Col md={3} xs={0} className="img-col">
+        <Col lg={3} xs={0} className="img-col">
           <Image
             src="./images/flourish-right.png"
-            className=" d-none d-md-inline-block"
+            className=" d-none d-lg-inline-block"
             fluid
           />
         </Col>
