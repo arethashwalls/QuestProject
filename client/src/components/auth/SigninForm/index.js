@@ -41,6 +41,7 @@ class Login extends Component {
       });
     }
   }
+  
   hideInstructions = () => document.querySelector('.instruction-box').classList.add('d-none');
   
   onChange = e => {
@@ -111,7 +112,6 @@ class Login extends Component {
                     Welcome back, adventurer! What challenges await today? Provide your true name and secret passcode to see...
                   </p>
                   <p className="text-right">Click to dismiss.</p>
-
                 </div>
                 <Image className='char-portrait signin-pic' src={pic} />
           </Col>
