@@ -13,6 +13,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import Image from 'react-bootstrap/Image';
 import "./style.css";
 import "./joint.css";
 
@@ -433,6 +434,7 @@ class Chart extends Component {
             </div>
           </Col>
         </Row>
+        <Image className='charapic-chart' src={`images/${this.props.loggedInUserClass}-left.png`}/>
       </Container>
     );
   }
