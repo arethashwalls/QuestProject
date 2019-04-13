@@ -9,7 +9,7 @@
     .char-portrait {
         width: 75%;
     }
-    .char-portrait .signin-pic {
+    .signin-pic {
         margin-top: -4rem;
     }
 }

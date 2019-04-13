@@ -61,7 +61,7 @@ class Register extends Component {
       <Container fluid>
         <Row className='my-4'>
 
-          <Col xs={12} md={8} lg={6} className = "form">
+          <Col xs={12} md={6} className = "form">
             <Form noValidate onSubmit={this.onSubmit}>
               <Form.Group>
                 <Form.Label>Name:</Form.Label>
@@ -149,7 +149,7 @@ class Register extends Component {
 
             </Form>
           </Col>
-          <Col xs={12} md={2} lg={6} className='text-right'>
+          <Col xs={12} md={6} className='text-right'>
                 <Image className='char-portrait' src={`images/${this.state.class || 'mage'}.png`} />
           </Col>
         </Row>

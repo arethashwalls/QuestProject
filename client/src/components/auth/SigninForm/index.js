@@ -58,7 +58,7 @@ class Login extends Component {
       <div>
       <Container fluid>
         <Row className='my-1'>
-          <Col xs={12} md={8} lg={6}>
+          <Col xs={12} md={6}>
             <Form noValidate onSubmit={this.onSubmit}>
               <Form.Group >
                 <Form.Label>Email:</Form.Label>
@@ -103,7 +103,7 @@ class Login extends Component {
               <Button type='submit' className='float-left'>Your Quest Awaits...</Button>
             </Form>
           </Col>
-          <Col xs={12} md={2} lg={6} className='text-right'>
+          <Col xs={12} md={6} className='text-right'>
                 <Image className='char-portrait signin-pic' src={pic} />
           </Col>
         </Row>
