@@ -316,7 +316,7 @@ class Chart extends Component {
     return (
       <Container as="section">
         <Row className="mt-3 mb-4">
-          <Col md={3}>
+          <Col xs={12} lg={3}>
             <Button
               id="create-new-quest"
               type="button"
@@ -428,7 +428,7 @@ class Chart extends Component {
             />
           </Col>
 
-          <Col md={9}>
+          <Col xs={12} lg={9}>
             <div id="divPaperWrapper" style={paperStyle}>
               <div id="paper" ref="placeholder" className="scroller" />
             </div>
