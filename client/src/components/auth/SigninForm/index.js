@@ -10,7 +10,11 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import Image from 'react-bootstrap/Image';
 import "./style.css";
+
+const pics = ['warrior', 'mage', 'cleric', 'bard'];
+const pic = `images/${pics[Math.floor(Math.random() * 4)]}.png`
 
 class Login extends Component {
   constructor() {
@@ -52,11 +56,9 @@ class Login extends Component {
     const { errors } = this.state;
     return (
       <div>
-
       <Container fluid>
         <Row className='my-1'>
- 
-          <Col xs={9} lg={8}>
+          <Col xs={12} md={8} lg={6}>
             <Form noValidate onSubmit={this.onSubmit}>
               <Form.Group >
                 <Form.Label>Email:</Form.Label>
@@ -100,6 +102,9 @@ class Login extends Component {
               </Form.Group>
               <Button type='submit' className='float-left'>Your Quest Awaits...</Button>
             </Form>
+          </Col>
+          <Col xs={12} md={2} lg={6} className='text-right'>
+                <Image className='char-portrait signin-pic' src={pic} />
           </Col>
         </Row>
       </Container>
