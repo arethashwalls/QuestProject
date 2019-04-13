@@ -1,3 +1,7 @@
+#collapsible-nav-dropdown {
+  color: var(--lightColor)
+}
+
 #paper {
   border: 2px solid black;
   background-image: url("/images/quest.png") "";
