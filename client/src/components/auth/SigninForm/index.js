@@ -41,6 +41,9 @@ class Login extends Component {
       });
     }
   }
+  hideInstructions = () => {
+    document.querySelector('.instruction-box').classList.add('d-none');
+  }
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
@@ -103,7 +106,14 @@ class Login extends Component {
               <Button type='submit' className='float-left'>Your Quest Awaits...</Button>
             </Form>
           </Col>
-          <Col xs={12} md={6} className='text-right'>
+          <Col xs={12} md={6} className='instruction-col'>
+                <div className='instruction-box' onClick={this.hideInstructions}>
+                  <p className='instruction-text'>
+                    Welcome back, adventurer! What challenges await today? Provide your true name and secret passcode to see...
+                  </p>
+                  <p className="text-right">Click to dismiss.</p>
+
+                </div>
                 <Image className='char-portrait signin-pic' src={pic} />
           </Col>
         </Row>
