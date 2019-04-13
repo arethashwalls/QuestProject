@@ -104,7 +104,7 @@ class Login extends Component {
             </Form>
           </Col>
           <Col xs={12} md={2} lg={6} className='text-right'>
-                <Image className='char-portrait' src={pic} />
+                <Image className='char-portrait signin-pic' src={pic} />
           </Col>
         </Row>
       </Container>

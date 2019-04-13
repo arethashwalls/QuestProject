@@ -8,6 +8,8 @@
 @media (min-width: 992px) {
     .char-portrait {
         width: 75%;
+    }
+    .char-portrait .signin-pic {
         margin-top: -4rem;
     }
 }
