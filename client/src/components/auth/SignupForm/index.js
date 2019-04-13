@@ -10,6 +10,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import Image from 'react-bootstrap/Image';
 import "./style.css";
 
 class Register extends Component {
@@ -60,7 +61,7 @@ class Register extends Component {
       <Container fluid>
         <Row className='my-4'>
 
-          <Col xs={12} lg={8} className = "form">
+          <Col xs={12} md={8} lg={6} className = "form">
             <Form noValidate onSubmit={this.onSubmit}>
               <Form.Group>
                 <Form.Label>Name:</Form.Label>
@@ -147,6 +148,9 @@ class Register extends Component {
               <Button type='submit' className='float-left'>Your Quest Awaits...</Button>
 
             </Form>
+          </Col>
+          <Col xs={12} md={2} lg={6} className='text-right'>
+                <Image className='char-portrait' src={`images/${this.state.class || 'mage'}.png`} />
           </Col>
         </Row>
       </Container>
