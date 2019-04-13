@@ -10,41 +10,51 @@
   font-weight: normal;
   font-style: normal;
 }
+
 /* Default theme/Login theme: */
-html, html[data-theme="Warrior"] {
+html, html[data-theme=""] {
   --background: url("./images/background.jpg");
   --darkColor: #393F26;
   --lightColor: #EDDDD4;
-  --hoverLightColor: #A89D97;
+  --hoverLightColor: #C6B8A3;
   --splashColor: #AD0101;
   --hoverSplashColor: #6d0000;
 }
 
-html[data-theme="Mage"] {
-  --background: url("./images/background.jpg");
-  --darkColor: #393F26;
-  --lightColor: #EDDDD4;
+html[data-theme="Warrior"] {
+  --background: url("./images/background-red.jpg");
+  --darkColor: #9E1424;
+  --lightColor: #D9CAB3;
   --hoverLightColor: #A89D97;
-  --splashColor: blue;
-  --hoverSplashColor: #6d0000;
+  --splashColor: #5E0B15;
+  --hoverSplashColor: #3C080E;
 }
 
-html[data-theme="Cleric"] {
-  --background: url("./images/background.jpg");
-  --darkColor: #393F26;
-  --lightColor: #EDDDD4;
+html[data-theme="Mage"] {
+  --background: url("./images/background-blue.jpg");
+  --darkColor: #3A4454;
+  --lightColor: #FCD4E5;
+  --hoverLightColor: #CFAEBC;
+  --splashColor: #235789;
+  --hoverSplashColor: #1A4064;
+}
+
+html, html[data-theme="Cleric"] {
+  --background: url("./images/background-yellow.jpg");
+  --darkColor: #3C4F23;
+  --lightColor: #F7F3E3;
   --hoverLightColor: #A89D97;
-  --splashColor: yellow;
+  --splashColor: #BA9D50;
   --hoverSplashColor: #6d0000;
 }
 
 html[data-theme="Bard"] {
-  --background: url("./images/background.jpg");
-  --darkColor: #393F26;
-  --lightColor: #EDDDD4;
-  --hoverLightColor: #A89D97;
-  --splashColor: purple;
-  --hoverSplashColor: #6d0000;
+  --background: url("./images/background-purple.jpg");
+  --darkColor: #44323E;
+  --lightColor: #FCF6B1;
+  --hoverLightColor: #B8B381;
+  --splashColor: #5F4BB6;
+  --hoverSplashColor: #342964;
 }
 
 body {
@@ -71,8 +81,9 @@ button:hover {
   transition: color 0.25s ease;
 }
 button:hover {
-  border: 2px solid var(--lightColor) !important;
+  border: 2px solid var(--hoverLightColor) !important;
   background-color: var(--hoverSplashColor) !important;
+  color: var(--hoverLightColor) !important;
 }
 button a:hover {
   text-decoration: none !important;

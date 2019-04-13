@@ -11,9 +11,9 @@ const Signup = props => {
     return <div>
         <QuestNav signedIn={props.signedIn} />
         <Container>
-            <Row className='my-3 text-center' >
+            <Row className='mt-3 mb-2 text-center' >
                 <Col>
-                    <h1>Welcome to <strong>A Quest!</strong></h1>
+                    <h1 className='d-inline'>Welcome to</h1> <Image className='d-inline ml-2' src={process.env.PUBLIC_URL + "/images/quest.png"} />
                     <hr />
                 </Col>
             </Row>

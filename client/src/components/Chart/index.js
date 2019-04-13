@@ -210,8 +210,8 @@ class Chart extends Component {
   };
 
   //Create a quest with a title and text. Once it's formed, the user can position it anywhere on the graph
-  addQuest = event => {
-    event.preventDefault();
+  addQuest = e => {
+    e.preventDefault();
     let rectangle = new joint.shapes.devs.Model({
       position: { x: 20, y: 20 },
       size: { width: 230, height: 200 },
@@ -324,7 +324,7 @@ class Chart extends Component {
             >
               Create New Adventure
             </Button>
-            <Form>
+            <Form onSubmit={this.addQuest} >
               <Form.Group>
                 <Form.Label>Quest name: </Form.Label>
 
@@ -335,7 +335,6 @@ class Chart extends Component {
                 <Button
                   id="add-quest"
                   type="submit"
-                  onSubmit={this.addQuest}
                   className="mt-2"
                 >
                   Submit

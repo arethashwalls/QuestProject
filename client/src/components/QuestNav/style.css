@@ -25,3 +25,6 @@ nav.navbar {
 .navbar p {
     margin: auto 0;
 }
+.navbar img {
+    height: 2rem;
+}
