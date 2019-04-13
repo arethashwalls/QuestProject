@@ -95,7 +95,8 @@ button a:hover {
   border: 2px solid var(--darkColor);
   border-radius: 2rem;
   padding: 15px 17px;
-	position: relative;
+  position: relative;
+  box-shadow: 5px 5px var(--darkColor);
 }
 .instruction-text:after, .instruction-text:before {
 	top: 100%;
