@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom';
 import './style.css'
 
@@ -10,7 +11,7 @@ const QuestNav = props => {
         <Container>
             <Navbar.Brand>
                 <Link to='/' className='d-inline-block' >
-                    <h2>A Quest!</h2>
+                    <Image alt="A Quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
                 </Link>
             </Navbar.Brand>
             {props.username ? <p>Happy questing, {props.username}!</p> : ''}
