@@ -113,7 +113,7 @@ class Login extends Component {
                   </p>
                   <p className="text-right">Click to dismiss.</p>
                 </div>
-                <Image className='char-portrait signin-pic' src={pic} />
+                <Image className='char-portrait signin-pic' src={process.env.PUBLIC_URL + pic} />
           </Col>
         </Row>
       </Container>
