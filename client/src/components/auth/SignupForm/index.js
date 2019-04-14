@@ -162,7 +162,7 @@ class Register extends Component {
               <p className="text-right">Click to dismiss.</p>
 
             </div>
-            <Image className='char-portrait' src={process.env.PUBLIC_URL + `images/${this.state.class || 'mage'}.png`} />
+            <Image className='char-portrait' src={process.env.PUBLIC_URL + `images/${this.state.class.toLowerCase() || 'mage'}.png`} />
           </Col>
         </Row>
       </Container>
