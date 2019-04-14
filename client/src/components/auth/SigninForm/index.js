@@ -13,8 +13,14 @@ import Alert from "react-bootstrap/Alert";
 import Image from 'react-bootstrap/Image';
 import "./style.css";
 
-const pics = ['warrior', 'mage', 'cleric', 'bard'];
-const pic = `images/${pics[Math.floor(Math.random() * 4)]}.png`
+//Image imports:
+import bard from '../../../images/bard.png';
+import mage from '../../../images/mage.png';
+import warrior from '../../../images/warrior.png';
+import cleric from '../../../images/cleric.png';
+
+const pics = [warrior, mage, cleric, bard];
+const pic = pics[Math.floor(Math.random() * 4)]
 
 class Login extends Component {
   constructor() {

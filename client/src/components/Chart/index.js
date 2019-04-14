@@ -17,6 +17,19 @@ import Image from 'react-bootstrap/Image';
 import "./style.css";
 import "./joint.css";
 
+//Image imports:
+import bard from '../../images/bard.png'
+import mage from '../../images/mage.png';
+import warrior from '../../images/warrior.png';
+import cleric from '../../images/cleric.png';
+
+const pics = {
+  bard,
+  mage,
+  warrior,
+  cleric
+}
+
 //Link attributes
 let questLink = new joint.dia.Link({
   attrs: {
@@ -450,7 +463,7 @@ class Chart extends Component {
                     </p>
                     <p className="text-right dismiss-text">Click to dismiss.</p>
                   </div>
-          <Image className='charapic-chart' src={process.env.PUBLIC_URL + `images/${this.props.loggedInUserClass}-left.png`}/>
+          <Image className='charapic-chart' src={pics[this.props.loggedInUserClass.toLowerCase()]}/>
         </div>
       </Container>
     );

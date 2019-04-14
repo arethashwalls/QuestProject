@@ -7,6 +7,12 @@ import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import "./style.css";
 
+//Image imports:
+import bard from '../../images/bard.png';
+import mage from '../../images/mage.png';
+import warrior from '../../images/warrior.png';
+import cleric from '../../images/cleric.png';
+
 const Welcome = props => {
   document.documentElement.setAttribute("data-theme", '');
   return (
@@ -33,7 +39,7 @@ const Welcome = props => {
       <Row>
         <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
-            <img src={process.env.PUBLIC_URL + "images/bard.png"} alt="Bard" className="img-fluid" />
+            <img src={bard} alt="Bard" className="img-fluid" />
             <div className="title">
               <strong>Bard</strong>
             </div>
@@ -43,7 +49,7 @@ const Welcome = props => {
         <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
             <img
-              src={process.env.PUBLIC_URL + "images/mage.png"}
+              src={mage}
               alt="Mage"
               className="img-fluid"
             />
@@ -55,7 +61,7 @@ const Welcome = props => {
 
         <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
-            <img src={process.env.PUBLIC_URL + "images/warrior.png"} alt="Warrior" className="img-fluid" />
+            <img src={warrior} alt="Warrior" className="img-fluid" />
             <div className="title">
               <strong>Warrior</strong>
             </div>
@@ -64,7 +70,7 @@ const Welcome = props => {
 
         <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
-            <img src={process.env.PUBLIC_URL + "images/cleric.png"} alt="Warrior" className="img-fluid" />
+            <img src={cleric} alt="Cleric" className="img-fluid" />
             <div className="title">
               <strong>Cleric</strong>
             </div>
