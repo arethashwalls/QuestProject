@@ -33,7 +33,7 @@ const Welcome = props => {
       <Row>
         <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
-            <img src="images/bard.png" alt="Bard" className="img-fluid" />
+            <img src={process.env.PUBLIC_URL + "images/bard.png"} alt="Bard" className="img-fluid" />
             <div className="title">
               <strong>Bard</strong>
             </div>
@@ -43,8 +43,8 @@ const Welcome = props => {
         <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
             <img
-              src="images/mage.png"
-              alt="White_Mage"
+              src={process.env.PUBLIC_URL + "images/mage.png"}
+              alt="Mage"
               className="img-fluid"
             />
             <div className="title">
@@ -55,7 +55,7 @@ const Welcome = props => {
 
         <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
-            <img src="images/warrior.png" alt="Warrior" className="img-fluid" />
+            <img src={process.env.PUBLIC_URL + "images/warrior.png"} alt="Warrior" className="img-fluid" />
             <div className="title">
               <strong>Warrior</strong>
             </div>
@@ -64,7 +64,7 @@ const Welcome = props => {
 
         <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
-            <img src="images/cleric.png" alt="Warrior" className="img-fluid" />
+            <img src={process.env.PUBLIC_URL + "images/cleric.png"} alt="Warrior" className="img-fluid" />
             <div className="title">
               <strong>Cleric</strong>
             </div>

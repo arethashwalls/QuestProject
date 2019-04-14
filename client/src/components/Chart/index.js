@@ -450,7 +450,7 @@ class Chart extends Component {
                     </p>
                     <p className="text-right dismiss-text">Click to dismiss.</p>
                   </div>
-          <Image className='charapic-chart' src={`images/${this.props.loggedInUserClass}-left.png`}/>
+          <Image className='charapic-chart' src={process.env.PUBLIC_URL + `images/${this.props.loggedInUserClass}-left.png`}/>
         </div>
       </Container>
     );
