@@ -10,7 +10,11 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import Image from 'react-bootstrap/Image';
 import "./style.css";
+
+const pics = ['warrior', 'mage', 'cleric', 'bard'];
+const pic = `images/${pics[Math.floor(Math.random() * 4)]}.png`
 
 class Login extends Component {
   constructor() {
@@ -37,6 +41,9 @@ class Login extends Component {
       });
     }
   }
+  
+  hideInstructions = () => document.querySelector('.instruction-box').classList.add('d-none');
+  
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
@@ -52,11 +59,9 @@ class Login extends Component {
     const { errors } = this.state;
     return (
       <div>
-
       <Container fluid>
         <Row className='my-1'>
- 
-          <Col xs={9} lg={8}>
+          <Col xs={12} md={6}>
             <Form noValidate onSubmit={this.onSubmit}>
               <Form.Group >
                 <Form.Label>Email:</Form.Label>
@@ -100,6 +105,15 @@ class Login extends Component {
               </Form.Group>
               <Button type='submit' className='float-left'>Your Quest Awaits...</Button>
             </Form>
+          </Col>
+          <Col xs={12} md={6} className='instruction-col'>
+                <div className='instruction-box' onClick={this.hideInstructions}>
+                  <p className='instruction-text'>
+                    Welcome back, adventurer! What challenges await today? Provide your true name and secret passcode to see...
+                  </p>
+                  <p className="text-right">Click to dismiss.</p>
+                </div>
+                <Image className='char-portrait signin-pic' src={process.env.PUBLIC_URL + pic} />
           </Col>
         </Row>
       </Container>

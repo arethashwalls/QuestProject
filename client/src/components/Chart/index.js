@@ -13,6 +13,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import Image from 'react-bootstrap/Image';
 import "./style.css";
 import "./joint.css";
 
@@ -305,6 +306,7 @@ class Chart extends Component {
     this.setState({title: event.target.value});
   }
 
+  hideInstructions = () => document.querySelector('.instruction-box').classList.add('d-none');
 
   //Make it WORK!
   render() {
@@ -315,7 +317,7 @@ class Chart extends Component {
     return (
       <Container as="section">
         <Row className="mt-3 mb-4">
-          <Col md={3}>
+          <Col xs={12} lg={3}>
             <Button
               id="create-new-quest"
               type="button"
@@ -427,12 +429,29 @@ class Chart extends Component {
             />
           </Col>
 
-          <Col md={9}>
+          <Col xs={12} lg={9}>
             <div id="divPaperWrapper" style={paperStyle}>
               <div id="paper" ref="placeholder" className="scroller" />
             </div>
           </Col>
         </Row>
+        <div className='chart-instructions'>
+          <div className='instruction-box' onClick={this.hideInstructions}>
+                    <p className='instruction-text'>
+                      Welcome to your quest!
+                      <br /><br />
+                      To add a new quest to your current adventure, enter the name and description of your quest in the scroll to the left.
+                      <br /><br />
+                      To save your current adventure, click “Save Adventure”.
+                      <br /><br />
+                      To start a new adventure, click “Start New Adventure.”
+                      <br /><br />
+                      To pull up a previous adventure, click it’s name under My Quests.
+                    </p>
+                    <p className="text-right dismiss-text">Click to dismiss.</p>
+                  </div>
+          <Image className='charapic-chart' src={process.env.PUBLIC_URL + `images/${this.props.loggedInUserClass}-left.png`}/>
+        </div>
       </Container>
     );
   }

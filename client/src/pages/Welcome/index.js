@@ -12,20 +12,20 @@ const Welcome = props => {
   return (
     <Container>
       <Row className="mt-4 mb-2 w-md-75 mx-auto">
-        <Col md={3} xs={0} className="img-col">
+        <Col lg={3} xs={0} className="img-col">
           <Image
             src="./images/flourish-left.png"
-            className=" d-none d-md-inline-block"
+            className=" d-none d-lg-inline-block"
             fluid
           />
         </Col>
-        <Col>
+        <Col className="text-center">
           <Image alt="A quest" src={process.env.PUBLIC_URL + "/images/quest.png"} />
         </Col>
-        <Col md={3} xs={0} className="img-col">
+        <Col lg={3} xs={0} className="img-col">
           <Image
             src="./images/flourish-right.png"
-            className=" d-none d-md-inline-block"
+            className=" d-none d-lg-inline-block"
             fluid
           />
         </Col>
@@ -33,7 +33,7 @@ const Welcome = props => {
       <Row>
         <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
-            <img src="images/B.jpg" alt="Bard" className="img-fluid" />
+            <img src={process.env.PUBLIC_URL + "images/bard.png"} alt="Bard" className="img-fluid" />
             <div className="title">
               <strong>Bard</strong>
             </div>
@@ -43,8 +43,8 @@ const Welcome = props => {
         <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
             <img
-              src="images/White_Mage.jpg"
-              alt="White_Mage"
+              src={process.env.PUBLIC_URL + "images/mage.png"}
+              alt="Mage"
               className="img-fluid"
             />
             <div className="title">
@@ -55,7 +55,7 @@ const Welcome = props => {
 
         <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
-            <img src="images/Warrior.jpg" alt="Warrior" className="img-fluid" />
+            <img src={process.env.PUBLIC_URL + "images/warrior.png"} alt="Warrior" className="img-fluid" />
             <div className="title">
               <strong>Warrior</strong>
             </div>
@@ -64,7 +64,7 @@ const Welcome = props => {
 
         <Col className="col-12 col-md-6 col-xl-3 pt-5 p-4">
           <div className="fix">
-            <img src="images/Cleric.jpg" alt="Warrior" className="img-fluid" />
+            <img src={process.env.PUBLIC_URL + "images/cleric.png"} alt="Warrior" className="img-fluid" />
             <div className="title">
               <strong>Cleric</strong>
             </div>

@@ -19,12 +19,8 @@ const Signup = props => {
             </Row>
             <Row className='mb-3'>
             
-                <Col xs={12} lg={9} >
                     <SignupForm />
-                </Col>
-                <Col className='d-block d-lg-none' >
-                    <Image src='https://via.placeholder.com/600x300' className='center-block' fluid />
-                </Col>
+                
             </Row>
         </Container>
     </div>

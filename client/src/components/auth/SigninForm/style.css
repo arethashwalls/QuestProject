@@ -1,3 +1,15 @@
 .invalid {
     color: #a30101;
 }
+.char-portrait {
+    width: 100%;
+    height: auto;
+}
+@media (min-width: 992px) {
+    .char-portrait {
+        width: 75%;
+    }
+    .signin-pic {
+        margin-top: -4rem;
+    }
+}
