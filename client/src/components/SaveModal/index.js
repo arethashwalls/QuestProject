@@ -23,7 +23,6 @@ const SaveModal = (props) => {
                 <button 
                     className="btn-continue" 
                     type="submit" 
-                    // onSubmit={() => { props.saveQuest(); props.close() }} 
                 >
                     Save
                 </button>
