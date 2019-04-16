@@ -15,7 +15,7 @@ const SaveModal = (props) => {
             </Modal.Body>
             <Modal.Footer>
                 <button className="btn-cancel" onClick={props.close}>Cancel</button>
-                <button className="btn-continue" type="submit" onSubmit={() => { props.saveQuest(); props.close() }} >Save</button>
+                <button className="btn-continue" type="button" onClick={() => { props.saveQuest(); props.close() }} >Save</button>
             </Modal.Footer>
         </form>
     </Modal>
