@@ -4,7 +4,11 @@ import "./style.css"
 
 const SaveModal = (props) => {
     return <Modal show={props.show} onHide={props.close}>
-        <form onSubmit={() => { props.saveQuest(); props.close()}}>
+        <form onSubmit={e => { 
+            e.preventDefault();
+            props.saveQuest(); 
+            props.close()}
+        }>
             <Modal.Header>
                 <h3>Create adventure title</h3>
             </Modal.Header>
