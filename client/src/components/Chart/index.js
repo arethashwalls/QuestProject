@@ -244,7 +244,7 @@ class Chart extends Component {
               $("#quest-description")
                 .val()
                 .trim(),
-              30,
+              25,
               200
             )
         },
