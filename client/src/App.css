@@ -12,48 +12,50 @@
 }
 
 /* Default theme/Login theme: */
-html, html[data-theme=""] {
+html,
+html[data-theme=""] {
   --background: url("./images/background.jpg");
-  --darkColor: #393F26;
-  --lightColor: #EDDDD4;
-  --hoverLightColor: #C6B8A3;
-  --splashColor: #AD0101;
+  --darkColor: #393f26;
+  --lightColor: #edddd4;
+  --hoverLightColor: #c6b8a3;
+  --splashColor: #ad0101;
   --hoverSplashColor: #6d0000;
 }
 
 html[data-theme="Warrior"] {
   --background: url("./images/background-red.jpg");
-  --darkColor: #9E1424;
-  --lightColor: #D9CAB3;
-  --hoverLightColor: #A89D97;
-  --splashColor: #5E0B15;
-  --hoverSplashColor: #3C080E;
+  --darkColor: #9e1424;
+  --lightColor: #d9cab3;
+  --hoverLightColor: #a89d97;
+  --splashColor: #5e0b15;
+  --hoverSplashColor: #3c080e;
 }
 
 html[data-theme="Mage"] {
   --background: url("./images/background-blue.jpg");
-  --darkColor: #3A4454;
-  --lightColor: #FCD4E5;
-  --hoverLightColor: #CFAEBC;
+  --darkColor: #3a4454;
+  --lightColor: #fcd4e5;
+  --hoverLightColor: #cfaebc;
   --splashColor: #235789;
-  --hoverSplashColor: #1A4064;
+  --hoverSplashColor: #1a4064;
 }
 
-html, html[data-theme="Cleric"] {
+html,
+html[data-theme="Cleric"] {
   --background: url("./images/background-yellow.jpg");
-  --darkColor: #3C4F23;
-  --lightColor: #F7F3E3;
-  --hoverLightColor: #A89D97;
-  --splashColor: #BA9D50;
+  --darkColor: #3c4f23;
+  --lightColor: #f7f3e3;
+  --hoverLightColor: #a89d97;
+  --splashColor: #ba9d50;
   --hoverSplashColor: #6d0000;
 }
 
 html[data-theme="Bard"] {
   --background: url("./images/background-purple.jpg");
-  --darkColor: #44323E;
-  --lightColor: #FCF6B1;
-  --hoverLightColor: #B8B381;
-  --splashColor: #5F4BB6;
+  --darkColor: #44323e;
+  --lightColor: #fcf6b1;
+  --hoverLightColor: #b8b381;
+  --splashColor: #5f4bb6;
   --hoverSplashColor: #342964;
 }
 
@@ -98,25 +100,26 @@ button a:hover {
   position: relative;
   box-shadow: 5px 5px var(--darkColor);
 }
-.instruction-text:after, .instruction-text:before {
-	top: 100%;
-	left: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
+.instruction-text:after,
+.instruction-text:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
 }
 .instruction-text:after {
-	border-top-color: var(--lightColor);
-	border-width: 30px;
-	margin-left: -30px;
+  border-top-color: var(--lightColor);
+  border-width: 30px;
+  margin-left: -30px;
 }
 .instruction-text:before {
-	border-top-color: var(--darkColor);
-	border-width: 33px;
-	margin-left: -33px;
+  border-top-color: var(--darkColor);
+  border-width: 33px;
+  margin-left: -33px;
 }
 .instruction-col {
   position: relative;
@@ -125,4 +128,11 @@ button a:hover {
   position: absolute;
   top: -170px;
   z-index: 3000;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
 }
