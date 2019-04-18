@@ -24,6 +24,7 @@ const Signup = props => {
             </Row>
         </Container>
     </div>
+  
 };
 
 export default Signup;

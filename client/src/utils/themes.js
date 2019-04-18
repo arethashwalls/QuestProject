@@ -38,6 +38,15 @@ const getTheme = themeName => {
     backgrdPic: {
       imgFile: "images/background.jpg"
     },
+    Warrior: {
+      dark: "#393F26",
+      light: "#818474",
+      highlight: "#EDDDD4",
+      splash: "#AD0101"
+    },
+    Login: {
+      light: "#fefdd7"
+    },
     darkBg: {
       backgroundColor: dark
     },
