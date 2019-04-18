@@ -13,12 +13,25 @@ import Alert from "react-bootstrap/Alert";
 import Image from 'react-bootstrap/Image';
 import "./style.css";
 
+//Image imports:
+import bard from '../../../images/bard.png';
+import mage from '../../../images/mage.png';
+import warrior from '../../../images/warrior.png';
+import cleric from '../../../images/cleric.png';
+
+const pics = {
+  bard,
+  mage,
+  warrior,
+  cleric
+}
+
 class Register extends Component {
   constructor() {
     super();
     this.state = {
       name: "",
-      class: "Warrior",
+      class: "Cleric",
       email: "",
       password: "",
       password2: "",
@@ -162,7 +175,7 @@ class Register extends Component {
               <p className="text-right">Click to dismiss.</p>
 
             </div>
-            <Image className='char-portrait' src={process.env.PUBLIC_URL + `images/${this.state.class || 'mage'}.png`} />
+            <Image className='char-portrait' src={pics[this.state.class.toLowerCase()] || mage}/>
           </Col>
         </Row>
       </Container>
